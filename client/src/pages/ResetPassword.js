@@ -25,7 +25,7 @@ const ResetPassword = (props) => {
     return <Redirect to='/' />;
 
   return (
-    <div className='container col-sm-6'>
+    <div className='container mt-5 col-sm-6'>
       <h1>Enter Your Email</h1>
       <form onSubmit={e => onSubmit(e)}>
         <div className='form-group'>

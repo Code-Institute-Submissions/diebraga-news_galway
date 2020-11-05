@@ -53,10 +53,10 @@ const Login = ({ login, isAuthenticated }) => {
         <button className='btn btn-primary btn-block' type='submit'>Login</button>
       </form>
       <p className='mt-3'>
-      Don't have an account? <Link to='/register'>Register</Link>
+        Don't have an account? <Link to='/register'>Register</Link>
       </p>
       <p className='mt-3'>
-      Forgot your Password? <Link to='/reset_password'>Reset Password</Link>
+        Forgot your Password? <Link to='/reset_password'>Reset Password</Link>
       </p>
     </div>
   );

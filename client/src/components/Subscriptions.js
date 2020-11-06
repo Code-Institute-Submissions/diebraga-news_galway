@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { AiFillDownCircle } from 'react-icons/ai';
 import { GiCoins, GiMoneyStack } from 'react-icons/gi';
@@ -65,7 +66,12 @@ const Subscriptions = () => {
       <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div className="card-body">
           <h5 className="card-title">Donation Subscription</h5>
-          <p className="card-text">Support Our Content Creators to delivery quality news free of ads? Consider Subscribing starting from as litle as 0.99€.</p>
+          <p className="card-text">
+            Support Our Content Creators to delivery quality news free of ads? Consider Subscribing starting from as litle as 0.99€.<br/>Or visit our shop.<br/>
+          </p>
+          <Link to='/shop' className='btn btn-primary'>
+            Shop Now! >
+          </Link>
         </div>
       </div>
       </div>
@@ -74,7 +80,7 @@ const Subscriptions = () => {
     {/* Cards ! */}
       <div className="card m-3 flex-column">
       <GiCoins className="m-5 align-items-center" size={130}/>
-        <h3 className="card-title">0.99€</h3>
+        <h3 className="card-title">0.99€<br/><span style={{ fontSize: '10px' }}>montly</span></h3>
           <div className="card-body d-flex">
             <button className='btn btn-primary btn-block' role="link" onClick={handleClick}>
               Subscribe
@@ -83,7 +89,7 @@ const Subscriptions = () => {
         </div>
       <div className="card m-3 flex-column">
       <FaRegMoneyBillAlt className="m-5 align-items-center" size={130}/>
-        <h3 className="card-title">5.99€</h3>
+        <h3 className="card-title">5.99€<br/><span style={{ fontSize: '10px' }}>montly</span></h3>
           <div className="card-body d-flex">
             <button className='btn btn-primary btn-block' role="link" onClick={handleSubmit}>
               Subscribe
@@ -92,7 +98,7 @@ const Subscriptions = () => {
         </div>
       <div className="card m-3 flex-column">
       <GiMoneyStack className="m-5" size={130}/>
-        <h3 className="card-title">10.99€</h3>
+        <h3 className="card-title">10.99€<br/><span style={{ fontSize: '10px' }}>montly</span></h3>
           <div className="card-body d-flex">
             <button className='btn btn-primary btn-block' role="link" onClick={handleSubscription}>
               Subscribe

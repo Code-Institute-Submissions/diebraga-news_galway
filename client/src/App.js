@@ -7,6 +7,7 @@ import Activate from './pages/Activate';
 import ResetPassword from './pages/ResetPassword';
 import ResetPasswordConfirm from './pages/ResetPasswordConfirm';
 import Subscribe from './pages/Subscribe';
+import Shop from './pages/Shop';
 import Cancel from './pages/Cancel';
 import Success from './pages/Success';
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
           <Route exact path='/activate/:uid/:token' component={Activate} />
           <Route exact path='/subscribe' component={Subscribe} />
+          <Route exact path='/shop' component={Shop} />
           <Route exact path='/cancel' component={Cancel} />
           <Route exact path='/success' component={Success} />
         </Switch>

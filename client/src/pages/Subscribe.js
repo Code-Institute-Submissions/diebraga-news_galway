@@ -1,10 +1,10 @@
 import React from 'react';
-import Products from '../components/Products'
+import Subscriptions from '../components/Subscriptions';
 
 const Subscribe = () => {
   return (
     <>
-      <Products />
+      <Subscriptions />
     </>
   );
 }

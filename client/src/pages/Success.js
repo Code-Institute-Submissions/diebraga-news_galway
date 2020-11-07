@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Confetti from "react-confetti";
+import { MdCheckCircle } from 'react-icons/md';
 
 const Success = () => {
   const [width, setWidth] = useState(0);
@@ -15,15 +16,16 @@ const Success = () => {
 
   return (
     <>
-    <div className='text-center align-middle' style={{ marginTop: '70px' }}>
+    <div className='text-center align-middle' style={{ marginTop: '40px' }}>
       <Confetti width={width} height={height} numberOfPieces={450} />
-      <h1>congrats!</h1>
+      <MdCheckCircle className='text-success' size={100} />
+      <h1 className='mt-3'>congrats!</h1>
       <p style={{ fontSize: '20px' }}>Your payment has been processed successfully!</p>
       <br/>
-      <Link className='btn btn-primary' to='shop'>Shop Again</Link>
+      <Link className='btn btn-primary' to='shop'>Shop</Link>
       <br/>
       <br/>
-      <Link className='btn btn-primary' to='home'>Home Page</Link>
+      <Link className='btn btn-primary' to=''>Home Page</Link>
     </div>
     </>
   );

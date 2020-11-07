@@ -22,4 +22,8 @@ export default createGlobalStyle`
     color: black;
     border: 3px;
   }
+
+  .bg-dark {
+    background: black;
+  }
 `

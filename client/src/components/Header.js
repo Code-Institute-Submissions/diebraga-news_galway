@@ -22,7 +22,7 @@ const Header = ({ isAuthenticated, logout }) => {
   );
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <Link className="navbar-brand" to='/'> Galway News</Link>
     <button 
       className="navbar-toggler"

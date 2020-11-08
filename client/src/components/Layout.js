@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import { connect } from 'react-redux';
 import { checkAuthenticated, load_user } from '../redux/actions/auth';
+import GlobalStyles from '../styles/global';
 
 const Layout = (props) => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const Layout = (props) => {
 
   return (
     <div>
+      <GlobalStyles />
       <Header />
       {props.children}
     </div>

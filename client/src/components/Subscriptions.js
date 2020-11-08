@@ -67,7 +67,7 @@ const Subscriptions = () => {
         <div className="card-body">
           <h5 className="card-title">Donation Subscription</h5>
           <p className="card-text">
-            Support Our Content Creators to delivery quality news free of ads? Consider Subscribing starting from as litle as 0.99€.<br/>Or visit our shop.<br/>
+            Support Our Content Creators to deliver quality news free of ads? Consider Subscribing starting from as litle as 0.99€.<br/>Or visit our shop.<br/>
           </p>
           <Link to='/shop' className='btn btn-primary'>
             Shop Now! >

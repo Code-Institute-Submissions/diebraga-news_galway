@@ -10,6 +10,7 @@ import Subscribe from './pages/Subscribe';
 import Shop from './pages/Shop';
 import Cancel from './pages/Cancel';
 import Success from './pages/Success';
+// import PrivateRoute from './components/PrivateRoute';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';

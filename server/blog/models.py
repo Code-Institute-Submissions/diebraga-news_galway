@@ -4,18 +4,17 @@ from django.template.defaultfilters import slugify
 from authors.models import Author
 
 class Categories(models.TextChoices):
-        GALWAY = 'galway'
+        NEWS = 'news'
         EVENTS = 'events'
         GASTRONOMY = 'gastronomy'
-        SPORT = 'sport'
         JOBS = 'jobs'
 
 class BlogPost(models.Model):
     author = models.ForeignKey(Author, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=50)
     slug = models.SlugField()
-    category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.GALWAY)
-    thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d/')
+    category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.NEWS)
+    thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     excerpt = models.CharField(max_length=150, blank=False)
     month = models.CharField(max_length=3)
     day = models.CharField(max_length=2)

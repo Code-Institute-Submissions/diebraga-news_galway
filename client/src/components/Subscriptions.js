@@ -4,6 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { AiFillDownCircle } from 'react-icons/ai';
 import { GiCoins, GiMoneyStack } from 'react-icons/gi';
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
+import { FiCornerDownRight } from 'react-icons/fi';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -70,7 +71,7 @@ const Subscriptions = () => {
             Support Our Content Creators to deliver quality news free of ads? Consider Subscribing starting from as litle as 0.99€.<br/>Or visit our shop.<br/>
           </p>
           <Link to='/shop' className='btn btn-primary'>
-            Shop Now! >
+            Shop Now! <FiCornerDownRight />
           </Link>
         </div>
       </div>

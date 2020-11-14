@@ -41,9 +41,6 @@ const Header = ({ isAuthenticated, logout }) => {
           <Link className="nav-link" exact to='/blog'>Blog</Link >
         </li>
         <li className="nav-item">
-          <Link className="nav-link" exact to='/blog'>Blog</Link >
-        </li>
-        <li className="nav-item">
           <Link className="nav-link" exact to='/subscribe'>Subscribe</Link >
         </li>
         <li className="nav-item">

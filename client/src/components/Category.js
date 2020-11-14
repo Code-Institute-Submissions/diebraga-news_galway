@@ -1,100 +1,86 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
 
 const Category = (props) => {
-    const [blogs, setBlogs] = useState([]);
-    const [currentCategory, setCurrentCategory] = useState('');
+  const [posts, setPost] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState('');
 
-    useEffect(() => {
-        const category = props.match.params.id;
-        setCurrentCategory(capitalizeFirstLetter(category));
+  useEffect(() => {
+    const category = props.match.params.id;
+    setCurrentCategory(category);
 
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
-
-        const fetchData = async () => {
-            try {
-                const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/blog/category`, { category }, config);
-                setBlogs(res.data);
-            }
-            catch (err) {
-
-            }
-        }
-
-        fetchData();
-    }, [props.match.params.id]);
-
-    const capitalizeFirstLetter = (word) => {
-        if (word)
-            return word.charAt(0).toUpperCase() + word.slice(1);
-        else
-            return '';
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     };
 
-    const getCategoryBlogs = () => {
-        let list = [];
-        let result = [];
+    const fetchData = async () => {
+      try {
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/blog/category`, { category }, config);
+        setPost(res.data);
+      }
+      catch (err) {
 
-        blogs.map(blogPost => {
-            return list.push(
-                <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div className="col p-4 d-flex flex-column position-static">
-                        <strong className="d-inline-block mb-2 text-primary">{capitalizeFirstLetter(blogPost.category)}</strong>
-                        <h3 className="mb-0">{blogPost.title}</h3>
-                        <div className="mb-1 text-muted">{blogPost.month} {blogPost.day}</div>
-                        <p className="card-text mb-auto">{blogPost.excerpt}</p>
-                        <Link to={`/blog/${blogPost.slug}`} className="stretched-link">Continue reading</Link>
-                    </div>
-                    <div className="col-auto d-none d-lg-block">
-                        <img width="200" height="250" src={blogPost.thumbnail} alt='' />
-                    </div>
-                </div>
-            );
-        });
+      }
+    }
 
-        for (let i = 0; i < list.length; i += 2) {
-            result.push(
-                <div key={i} className='row mb-2'>
-                    <div className='col-md-6'>
-                        {list[i]}
-                    </div>
-                    <div className='col-md-6'>
-                        {list[i+1] ? list[i+1] : null}
-                    </div>
-                </div>
-            );
-        }
+    fetchData();
+  }, [props.match.params.id]);
 
-        return result;
-    };
+  const getCategoryBlogs = () => {
+    let list = [];
+    let result = [];
 
-    return (
-        <div className="container mt-3">
-            <h3 className='display-4'>{currentCategory} Category</h3>
-            <div className="nav-scroller py-1 mb-2">
-                <nav className="nav d-flex justify-content-between">
-                    <Link className="p-2 text-muted" exact to="/category/world">World</Link>
-                    <Link className="p-2 text-muted" exact to="/category/environment">Environment</Link>
-                    <Link className="p-2 text-muted" exact to="/category/technology">Technology</Link>
-                    <Link className="p-2 text-muted" exact to="/category/design">Design</Link>
-                    <Link className="p-2 text-muted" exact to="/category/culture">Culture</Link>
-                    <Link className="p-2 text-muted" exact to="/category/business">Business</Link>
-                    <Link className="p-2 text-muted" exact to="/category/politics">Politics</Link>
-                    <Link className="p-2 text-muted" exact to="/category/opinion">Opinion</Link>
-                    <Link className="p-2 text-muted" exact to="/category/science">Science</Link>
-                    <Link className="p-2 text-muted" exact to="/category/health">Health</Link>
-                    <Link className="p-2 text-muted" exact to="/category/style">Style</Link>
-                    <Link className="p-2 text-muted" exact to="/category/travel">Travel</Link>
-                </nav>
-            </div>
-            {getCategoryBlogs()}
+  posts.map(Post => {
+    return list.push(
+      <div className="position-relative row">
+        <div className="col p-4 d-flex flex-column position-static">
+          <h3 className="mb-0">{Post.title}</h3>
+          <strong className="d-inline-block mb-2 text-primary">{Post.category}</strong>
+          <p className="card-text mb-auto mr-2">{Post.excerpt}</p>
+          <div className="mb-1 text-muted">{Post.month} {Post.day}</div>
+          <Link to={`/blog/${Post.slug}`} className="stretched-link">read more <FiCornerDownRight /></Link>
         </div>
+        <img className='d-none d-sm-block' width="180" height="230" src={Post.thumbnail} alt='' />
+      </div>
     );
+  });
+
+  for (let i = 0; i < list.length; i += 2) {
+    result.push(
+      <div key={i} className='row mb-2'>
+        <div className='col-md-12'>
+          {list[i]}
+        </div>
+        <div className='col-md-12'>
+          {list[i+1] ? list[i+1] : null}
+        </div>
+      </div>
+    );
+  }
+
+  return result;
+};
+    
+  return (
+    <div className="container mt-3 mb-3">
+    <div className="nav-scroller py-1 mb-2">
+      <nav className="nav d-flex">
+        <Link className="p-2" to="/category/news">News</Link>
+        <Link className="p-2" to="/category/events">Events</Link>
+        <Link className="p-2" to="/category/gastronomy">Gastronomy</Link>
+        <Link className="p-2" to="/category/jobs">Jobs</Link>
+      </nav>
+    </div>
+      <hr />
+      {getCategoryBlogs()}
+      <hr />
+      <p className="p-2 p-md-2 mb-5"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
+  </div>
+  );
 };
 
 export default Category;

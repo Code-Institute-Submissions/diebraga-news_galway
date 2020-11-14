@@ -44,16 +44,14 @@ const Blog = () => {
       <div className="position-relative row mt-3">
         <div className="col p-4 d-flex flex-column position-static">
           <h3 className="mb-0">{Post.title}</h3>
-            <strong className="d-inline-block mb-2 text-primary">{Post.category}</strong>
-              <p className="card-text mb-auto">{Post.excerpt}</p>
-              <div className="mb-1 text-muted">{Post.month} {Post.day}</div>
-                <Link to={`/blog/${Post.slug}`} className="stretched-link">read more <FiCornerDownRight /></Link>
-              </div>
-          <div className="col-auto d-none d-lg-block">
+          <strong className="d-inline-block mb-2 text-primary">{Post.category}</strong>
+          <p className="card-text mb-auto mr-2">{Post.excerpt}</p>
+          <div className="mb-1 text-muted">{Post.month} {Post.day}</div>
+          <Link to={`/blog/${Post.slug}`} className="stretched-link">read more <FiCornerDownRight /></Link>
         </div>
         <img className='d-none d-sm-block' width="180" height="230" src={Post.thumbnail} alt='' />
       </div>
-    )
+    );
   });
 
   for (let i = 0; i < list.length; i += 2) {

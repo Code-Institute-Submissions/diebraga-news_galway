@@ -58,7 +58,7 @@ const Blog = () => {
 
   for (let i = 0; i < list.length; i += 2) {
     result.push(
-      <div key={i} className='row mb-5'>
+      <div key={i} className='row mb-2'>
         <div className='col-md-12'>
           {list[i]}
         </div>

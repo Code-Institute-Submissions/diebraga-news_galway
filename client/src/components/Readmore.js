@@ -45,7 +45,7 @@ const Readmore = (props) => {
       <div className="p-4 p-md-5 text-light bg-primary row">
         <div className="col-md-12 px-0">
           <h1 className="text-white">{post.title}</h1>
-          <h6 className="my-3 text-white">{post.category}<FiCornerDownRight /></h6>
+          <h6 className="my-3 mt-5 text-white">{post.category}<FiCornerDownRight /></h6>
         </div>
       </div>
       

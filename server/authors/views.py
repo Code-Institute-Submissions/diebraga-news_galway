@@ -12,3 +12,4 @@ class AuthorListView(ListAPIView):
 class AuthorView(RetrieveAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
+    permission_classes = (permissions.AllowAny, )

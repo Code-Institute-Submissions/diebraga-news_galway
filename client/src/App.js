@@ -11,6 +11,8 @@ import Shop from './pages/Shop';
 import Cancel from './pages/Cancel';
 import Success from './pages/Success';
 import Blog from './pages/Blog';
+import Readnore from './components/Readmore';
+// import Category from './components/Category';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -33,6 +35,8 @@ const App = () => (
           <Route exact path='/cancel' component={Cancel} />
           <Route exact path='/success' component={Success} />
           <Route exact path='/blog' component={Blog} />
+          <Route exact path='/blog/:id' component={Readnore} />
+          {/* <Route exact path='/category/:id' component={Category} /> */}
         </Switch>
       </Layout>
     </Router>

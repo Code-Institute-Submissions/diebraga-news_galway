@@ -28,7 +28,7 @@ const Shop = () => {
       <TShirt />
       <Mug />
       <NotBook />
-      </div>
+    </div>
     </>
   )
 }

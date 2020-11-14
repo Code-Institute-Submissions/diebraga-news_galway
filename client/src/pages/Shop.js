@@ -2,6 +2,7 @@ import React from 'react';
 import { Mask, TShirt, Mug, NotBook } from '../components/Products';
 import { Link } from 'react-router-dom';
 import { AiFillDownCircle } from 'react-icons/ai';
+import { FiCornerDownRight } from 'react-icons/fi';
 
 const Shop = () => {
   return (
@@ -18,7 +19,7 @@ const Shop = () => {
             Buying our products you are supporting our content creators for a independent page free of charge.<br/>Consider support us subscribing starting from 0.99€.<br/>
           </p>
           <Link to='/subscribe' className='btn btn-primary'>
-            Subscribe!
+            Subscribe! <FiCornerDownRight />
           </Link>
         </div>
       </div>
@@ -27,7 +28,7 @@ const Shop = () => {
       <TShirt />
       <Mug />
       <NotBook />
-      </div>
+    </div>
     </>
   )
 }

@@ -31,8 +31,7 @@ const Authors = () => {
         <img className='rounded-circle' width="230" height="230" src={Author.photo} alt='' />
           <h3 className="mb-0 mt-4">{Author.name}</h3>
           <h5 className="mb-0 mt-2">{Author.role}</h5>
-          <strong className="d-inline-block mb-3 text-primary">{Author.job}</strong>
-          <Link to={`/authors/${Author.id}`} className="stretched-link">View profile <FiCornerDownRight /></Link>
+          <Link to={`/authors/${Author.id}`} className="stretched-link mt-3">View profile <FiCornerDownRight /></Link>
         </div>
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FiCornerDownRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
 
 const Profile = (props) => {
   const [author, setAuthor] = useState({});
@@ -25,7 +26,7 @@ const Profile = (props) => {
     const [formData, setFormData] = useState({
       name: '',
       email: '',
-      subject: `${author.name}`,
+      subject: ``,
       message: '',
     });
 
@@ -125,6 +126,7 @@ const Profile = (props) => {
             -
           </form>
         </div>
+        <p className="p-2 p-md-2 mb-5"><Link to='/authors' className="font-weight-bold"><FiCornerDownLeft /> Back to Authors</Link></p>
       </div>
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
@@ -26,14 +27,16 @@ const Authors = () => {
 
   authors.map(Author => {
     return list.push(
-      <div className="position-relative col mt-3 text-center">
-        <div className="col p-4 d-flex flex-column position-static align-items-center">
-        <img className='rounded-circle' width="230" height="230" src={Author.photo} alt='' />
-          <h3 className="mb-0 mt-4">{Author.name}</h3>
-          <h5 className="mb-0 mt-2">{Author.role}</h5>
-          <Link to={`/authors/${Author.id}`} className="stretched-link mt-3">View profile <FiCornerDownRight /></Link>
+      <Fade duration={1200}>
+        <div className="position-relative col mt-3 text-center">
+          <div className="col p-4 d-flex flex-column position-static align-items-center">
+          <img className='rounded-circle' width="230" height="230" src={Author.photo} alt='' />
+            <h3 className="mb-0 mt-4">{Author.name}</h3>
+            <h5 className="mb-0 mt-2">{Author.role}</h5>
+            <Link to={`/authors/${Author.id}`} className="stretched-link mt-3">View profile <FiCornerDownRight /></Link>
+          </div>
         </div>
-      </div>
+      </Fade>
     );
   });
 

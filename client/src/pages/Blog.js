@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
@@ -72,23 +73,25 @@ const Blog = () => {
 
   return (
     <div className="container mt-3 mb-3">
-      <div className="nav-scroller py-1 mb-2">
-        <nav className="nav d-flex">
-          <Link className="p-2" to="/category/news">News</Link>
-          <Link className="p-2" to="/category/events">Events</Link>
-          <Link className="p-2" to="/category/gastronomy">Gastronomy</Link>
-          <Link className="p-2" to="/category/jobs">Jobs</Link>
-        </nav>
-      </div>
-
-      <div className="p-4 p-md-5 text-light bg-primary row">
-        <div className="col-md-12 px-0">
-          <h1 className="text-white">{featuredPost.title}</h1>
-          <p className="my-3">{featuredPost.excerpt}</p>
-          <p className="mb-0"><Link to={`/blog/${featuredPost.slug}`} className="text-white">read more <FiCornerDownRight /></Link></p>
+      <Fade duration={1200}>
+        <div className="nav-scroller py-1 mb-2">
+          <nav className="nav d-flex">
+            <Link className="p-2" to="/category/news">News</Link>
+            <Link className="p-2" to="/category/events">Events</Link>
+            <Link className="p-2" to="/category/gastronomy">Gastronomy</Link>
+            <Link className="p-2" to="/category/jobs">Jobs</Link>
+          </nav>
         </div>
-      </div>
+
+        <div className="p-4 p-md-5 text-light bg-primary row">
+          <div className="col-md-12 px-0">
+            <h1 className="text-white">{featuredPost.title}</h1>
+            <p className="my-3">{featuredPost.excerpt}</p>
+            <p className="mb-0"><Link to={`/blog/${featuredPost.slug}`} className="text-white">read more <FiCornerDownRight /></Link></p>
+          </div>
+        </div>
         {getPosts()}
+      </Fade>
     </div>
   );
 };

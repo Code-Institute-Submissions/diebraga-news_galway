@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Fade } from "react-awesome-reveal";
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { signup } from '../redux/actions/auth';
@@ -27,13 +28,14 @@ const Register = ({ signup, isAuthenticated }) => {
   };
 
   if (isAuthenticated)
-    return <Redirect to='/' />;
+    return <Redirect to='/blog' />;
 
   if (accountCreated)
     return <Redirect to='login' />;
   
   return (
     <div className='container mt-5 col-sm-6'>
+      <Fade duration={1200}>
         <h1>Register</h1>
         <p>Create a New Account</p>
         <form onSubmit={e => onSubmit(e)}>
@@ -88,6 +90,7 @@ const Register = ({ signup, isAuthenticated }) => {
       <p className='mt-3'>
         Already have an account? <Link to='/login'>Sign In</Link>
       </p>
+      </Fade>
     </div>
   );
 };

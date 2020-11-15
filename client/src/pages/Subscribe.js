@@ -1,10 +1,13 @@
 import React from 'react';
+import { Fade } from "react-awesome-reveal";
 import Subscriptions from '../components/Subscriptions';
 
 const Subscribe = () => {
   return (
     <>
-      <Subscriptions />
+      <Fade duration={1200}>
+        <Subscriptions />
+      </Fade>
     </>
   );
 }

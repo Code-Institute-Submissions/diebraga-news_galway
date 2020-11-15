@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Fade } from "react-awesome-reveal";
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reset_password } from '../redux/actions/auth';
+import { FiCornerDownLeft } from 'react-icons/fi';
 
 const ResetPassword = (props) => {
   const [requestSent, setRequestSent] = useState(false);
@@ -26,6 +28,7 @@ const ResetPassword = (props) => {
 
   return (
     <div className='container mt-5 col-sm-6'>
+      <Fade duration={1200}>
       <h1>Enter Your Email</h1>
       <form onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
@@ -39,14 +42,15 @@ const ResetPassword = (props) => {
             required
           />
         </div>
-          <button className='btn btn-primary btn-block' type='submit'>Request Password</button>
-        </form>
+        <button className='btn btn-primary btn-block' type='submit'>Request Password</button>
+      </form>
         <p className='mt-3'>
           Don't have an account? <Link to='/register'>Register</Link>
         </p>
         <p className='mt-3'>
-          <Link to="/login">Back to Login</Link>
+          <Link to="/login"><FiCornerDownLeft />  Back to Login</Link>
         </p>
+      </Fade>
     </div>
   );
 };

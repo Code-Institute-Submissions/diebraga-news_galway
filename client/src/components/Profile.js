@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
@@ -66,6 +67,7 @@ const Profile = (props) => {
 
     return (
     <>
+    <Fade duration={1200}>
       <div className="position-relative col mt-4 text-center">
         -
         <div className="col p-4 d-flex flex-column position-static align-items-center">
@@ -128,6 +130,7 @@ const Profile = (props) => {
         </div>
         <p className="p-2 p-md-2 mb-5"><Link to='/authors' className="font-weight-bold"><FiCornerDownLeft /> Back to Authors</Link></p>
       </div>
+    </Fade>
     </>
   );
 }

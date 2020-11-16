@@ -18,13 +18,14 @@ const ResetPassword = (props) => {
 
   const onSubmit = e => {
     e.preventDefault();
+    alert('Verify in you email account!')
 
     props.reset_password(email);
     setRequestSent(true);
   };
 
   if (requestSent)
-    return <Redirect to='/' />;
+    return <Redirect to='/login' />;
 
   return (
     <div className='container mt-5 col-sm-6'>

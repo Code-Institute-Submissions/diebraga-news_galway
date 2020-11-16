@@ -108,7 +108,7 @@ export const login = (email, password) => async dispatch => {
     dispatch({
       type: LOGIN_FAIL
     });
-    alert('Authenticatioin failed')
+    alert('Authenticatioin failed!')
   }
 };
 
@@ -132,6 +132,7 @@ export const signup = ({ name, email, password, re_password }) => async dispatch
     dispatch({
       type: SIGNUP_FAIL
     });
+    alert('Error Signup try again!')
   }
 };
 
@@ -155,6 +156,7 @@ export const verify = (uid, token) => async dispatch => {
     dispatch({
       type: ACTIVATION_FAIL
     });
+    alert('Error verifyig!');
   }
 };
 
@@ -178,6 +180,7 @@ export const reset_password = (email) => async dispatch => {
       dispatch({
         type: RESET_PASSWORD_FAIL
       });
+      alert('Error reseting!')
     }
 };
 
@@ -201,11 +204,11 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
     dispatch({
       type: RESET_PASSWORD_CONFIRM_FAIL
     });
-    alert('Error activating!')
+    alert('Error verifyig!')
   }
 };
 
 export const logout = () => dispatch => {
     dispatch({ type: LOGOUT });
-    alert('Logout succefully')
+    alert('Logout succesfully!')
 };

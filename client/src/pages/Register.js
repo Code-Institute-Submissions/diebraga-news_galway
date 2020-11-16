@@ -74,27 +74,39 @@ const Register = ({ signup, isAuthenticated }) => {
               name='password'
               value={password}
               onChange={e => onChange(e)}
-              minLength='6'
+              minLength='7'
+              pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}'
+              title="Must contain at least one  number and one uppercase 
+              and lowercase letter, and at least 7 or more characters"
               required
             />
           </div>
-        <div className='form-group'>
-          <input
-            className='form-control'
-            type='password'
-            placeholder='Confirm Password*'
-            name='re_password'
-            value={re_password}
-            onChange={e => onChange(e)}
-            minLength='6'
-            required
-          />
-        </div>
+          <div className='form-group'>
+            <input
+              className='form-control'
+              type='password'
+              placeholder='Confirm Password*'
+              name='re_password'
+              value={re_password}
+              onChange={e => onChange(e)}
+              minLength='7'
+              pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}'
+              title="Must contain at least one  number and one uppercase 
+              and lowercase letter, and at least 7 or more characters."
+              required
+            />
+          </div>
         <button className='btn btn-primary btn-block' type='submit'>Register</button>
       </form>
       <p className='mt-3'>
         Already have an account? <Link to='/login'>Login</Link>
       </p>
+      <label className='text-danger'>
+        <small>
+          Must contain at least one  number and one uppercase 
+          and lowercase letter, and at least 7 or more characters.
+        </small>
+      </label>
       </Fade>
     </div>
   );

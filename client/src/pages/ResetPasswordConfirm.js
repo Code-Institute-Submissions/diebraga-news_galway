@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiCornerDownLeft } from 'react-icons/fi';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reset_password_confirm } from '../redux/actions/auth';
@@ -23,10 +24,14 @@ const ResetPasswordConfirm = (props) => {
 
     props.reset_password_confirm(uid, token, new_password, re_new_password);
     setRequestSent(true);
+
+    if (new_password !== re_new_password) {
+      alert('Password does not match!');
+    }  
   };
 
-  if (requestSent)
-    return <Redirect to='/' />;
+  if (requestSent && new_password === re_new_password)
+    return <Redirect to='/login' />;
 
   return (
     <div className='container mt-5 col-sm-6'>
@@ -40,7 +45,8 @@ const ResetPasswordConfirm = (props) => {
               name='new_password'
               value={new_password}
               onChange={e => onChange(e)}
-              minLength='6'
+              minLength='9'
+              pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
               required
             />
           </div>
@@ -52,15 +58,24 @@ const ResetPasswordConfirm = (props) => {
               name='re_new_password'
               value={re_new_password}
               onChange={e => onChange(e)}
-              minLength='6'
+              minLength='7'
+              pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}'
+              title="Must contain at least one  number and one uppercase 
+              and lowercase letter, and at least 7 or more characters."
               required
             />
           </div>
           <button className='btn btn-primary btn-block' type='submit'>Reset Password</button>
       </form>
       <p className='mt-3'>
-        <Link to="/login">Back to Login</Link>
+        <Link to="/login"><FiCornerDownLeft /> Back to Login</Link>
       </p>
+      <label className='text-danger'>
+        <small>
+          Must contain at least one  number and one uppercase 
+          and lowercase letter, and at least 7 or more characters.
+        </small>
+      </label>
     </div>
   );
 };

@@ -28,7 +28,7 @@ const Authors = () => {
   authors.map(Author => {
     return list.push(
       <Fade duration={1200}>
-        <div className="position-relative col mt-3 text-center">
+        <div className="position-relative col mt-3 text-center mb-5">
           <div className="col p-4 d-flex flex-column position-static align-items-center">
           <img className='rounded-circle' width="230" height="230" src={Author.photo} alt='' />
             <h3 className="mb-0 mt-4">{Author.name}</h3>

@@ -68,7 +68,7 @@ const Profile = (props) => {
     return (
     <>
     <Fade duration={1200}>
-      <div className="position-relative col mt-4 text-center">
+      <div className="position-relative col mt-4 text-center mb-5">
         -
         <div className="col p-4 d-flex flex-column position-static align-items-center">
           <img className='rounded-circle' width="230" height="230" src={author.photo} alt='' />

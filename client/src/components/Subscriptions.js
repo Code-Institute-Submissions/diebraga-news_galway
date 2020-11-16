@@ -97,7 +97,7 @@ const Subscriptions = () => {
             </button>
           </div>
         </div>
-      <div className="card m-3 flex-column">
+      <div className="card m-3 flex-column mb-5">
       <GiMoneyStack className="m-5" size={130}/>
         <h3 className="card-title">10.99€<br/><span style={{ fontSize: '10px' }}>montly</span></h3>
           <div className="card-body d-flex">

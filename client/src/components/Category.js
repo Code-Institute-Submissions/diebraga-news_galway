@@ -23,7 +23,7 @@ const Category = (props) => {
         setPost(res.data);
       }
       catch (err) {
-
+        alert('Error connection!')
       }
     }
 
@@ -66,20 +66,22 @@ const Category = (props) => {
 };
     
   return (
-    <div className="container mt-3 mb-3">
-    <div className="nav-scroller py-1 mb-2">
-      <nav className="nav d-flex">
-        <Link className="p-2" to="/category/news">News</Link>
-        <Link className="p-2" to="/category/events">Events</Link>
-        <Link className="p-2" to="/category/gastronomy">Gastronomy</Link>
-        <Link className="p-2" to="/category/jobs">Jobs</Link>
-      </nav>
-    </div>
+    <>
+    <div className="container mt-3 mb-5">
+      <div className="nav-scroller py-1 mb-2">
+        <nav className="nav d-flex">
+          <Link className="p-2" to="/category/news">News</Link>
+          <Link className="p-2" to="/category/events">Events</Link>
+          <Link className="p-2" to="/category/gastronomy">Gastronomy</Link>
+          <Link className="p-2" to="/category/jobs">Jobs</Link>
+        </nav>
+      </div>
       <hr />
       {getCategoryBlogs()}
       <hr />
-      <p className="p-2 p-md-2 mb-5"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
-  </div>
+      <p className="p-2 p-md-2 mb-3"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
+    </div>
+    </>
   );
 };
 

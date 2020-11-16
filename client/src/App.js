@@ -35,8 +35,8 @@ const App = () => (
           <Route exact path='/activate/:uid/:token' component={Activate} />
           <PrivateRoute exact path='/subscribe' component={Subscribe} />
           <PrivateRoute exact path='/shop' component={Shop} />
-          <PrivateRoute exact path='/cancel' component={Cancel} />
-          <PrivateRoute exact path='/success' component={Success} />
+          <Route exact path='/cancel' component={Cancel} />
+          <Route exact path='/success' component={Success} />
           <Route exact path='/blog' component={Blog} />
           <PrivateRoute exact path='/blog/:id' component={Readnore} />
           <PrivateRoute exact path='/category/:id' component={Category} />

@@ -42,22 +42,24 @@ const Readmore = (props) => {
   };
 
   return (
-    <div className="container mt-5 mb-3">
-      <Fade duration={1200}>
-        <div className="p-4 p-md-5 text-light bg-primary row">
-          <div className="col-md-12 px-0">
-            <h1 className="text-white">{post.title}</h1>
-            <h6 className="my-3 mt-5 text-white">{post.category}<FiCornerDownRight /></h6>
+    <>
+      <div className="container mt-5 mb-5">
+        <Fade duration={1200}>
+          <div className="p-4 p-md-5 text-light bg-primary row">
+            <div className="col-md-12 px-0">
+              <h1 className="text-white">{post.title}</h1>
+              <h6 className="my-3 mt-5 text-white">{post.category}<FiCornerDownRight /></h6>
+            </div>
           </div>
-        </div>
-        
-        <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
-          <h6>Posted by: {author.name}</h6>
-          <hr />
-          <h5 className='p-1 p-md-1 mr-2'>{post.month} {post.day}</h5>
-          <p className="p-2 p-md-2 mb-5"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
-      </Fade>
-    </div>
+          
+          <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
+            <h6>Posted by: {author.name}</h6>
+            <hr />
+            <h5 className='p-1 p-md-1 mr-2'>{post.month} {post.day}</h5>
+            <p className="p-2 p-md-2 mb-5"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
+        </Fade>
+      </div>
+    </>
   );
 }
 

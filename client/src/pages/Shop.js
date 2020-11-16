@@ -8,7 +8,7 @@ import { FiCornerDownRight } from 'react-icons/fi';
 const Shop = () => {
   return (
     <>
-    <div className='d-flex justify-content-around flex-wrap text-center subscriptions'>
+    <div className='d-flex justify-content-around flex-wrap text-center subscriptions mb-5'>
       <Fade duration={1200}>
         <div id="accordion" className='w-100'>
         <span className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

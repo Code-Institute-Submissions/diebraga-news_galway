@@ -17,7 +17,7 @@ const Readmore = (props) => {
         setPost(res.data);
       })
       .catch(err => {
-        
+        alert('Error connection!')
       });
   }, [props.match.params.id]);
 
@@ -31,7 +31,7 @@ const Readmore = (props) => {
           setAuthor(res.data);
         })
         .catch(err => {
-          
+          alert('Error connection!')
         });
     }
   }, post.author);

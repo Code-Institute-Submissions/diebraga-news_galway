@@ -11,7 +11,7 @@ const Layout = (props) => {
         await props.checkAuthenticated();
         await props.load_user();
     } catch (err) {
-
+      alert('Error connection')
     }
   }
   fetchData();

@@ -16,6 +16,7 @@ import Category from './components/Category';
 import Authors from './pages/Authors';
 import Profile from './components/Profile';
 
+import PrivateRoute from './components/PrivateRoute';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
@@ -32,15 +33,15 @@ const App = () => (
           <Route exact path='/reset_password' component={ResetPassword} />
           <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
           <Route exact path='/activate/:uid/:token' component={Activate} />
-          <Route exact path='/subscribe' component={Subscribe} />
-          <Route exact path='/shop' component={Shop} />
-          <Route exact path='/cancel' component={Cancel} />
-          <Route exact path='/success' component={Success} />
+          <PrivateRoute exact path='/subscribe' component={Subscribe} />
+          <PrivateRoute exact path='/shop' component={Shop} />
+          <PrivateRoute exact path='/cancel' component={Cancel} />
+          <PrivateRoute exact path='/success' component={Success} />
           <Route exact path='/blog' component={Blog} />
-          <Route exact path='/blog/:id' component={Readnore} />
-          <Route exact path='/category/:id' component={Category} />
+          <PrivateRoute exact path='/blog/:id' component={Readnore} />
+          <PrivateRoute exact path='/category/:id' component={Category} />
           <Route exact path='/authors' component={Authors} />
-          <Route exact path='/authors/:id' component={Profile} />
+          <PrivateRoute exact path='/authors/:id' component={Profile} />
         </Switch>
       </Layout>
     </Router>

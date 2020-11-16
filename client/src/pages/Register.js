@@ -24,6 +24,11 @@ const Register = ({ signup, isAuthenticated }) => {
     if (password === re_password) {
       signup({ name, email, password, re_password });
       setAccountCreated(true);
+      alert('Verify in your email account!');
+    }
+
+    if (password !== re_password) {
+      alert('Password does not match!');
     }
   };
 

@@ -12,10 +12,12 @@ const Activate = (props) => {
 
     props.verify(uid, token);
     setVerified(true);
+
+    alert('Your account has been activated!');
   };
 
-  if (verified)
-    return <Redirect to='/' />;
+  if (verified) 
+    return <Redirect to='/blog' />;
 
   return (
     <div className='container mt-5 col-sm-6'>

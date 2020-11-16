@@ -108,6 +108,7 @@ export const login = (email, password) => async dispatch => {
     dispatch({
       type: LOGIN_FAIL
     });
+    alert('Authenticatioin failed')
   }
 };
 
@@ -125,7 +126,7 @@ export const signup = ({ name, email, password, re_password }) => async dispatch
 
     dispatch({
       type: SIGNUP_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
@@ -200,9 +201,11 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
     dispatch({
       type: RESET_PASSWORD_CONFIRM_FAIL
     });
+    alert('Error activating!')
   }
 };
 
 export const logout = () => dispatch => {
     dispatch({ type: LOGOUT });
+    alert('Logout succefully')
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -12,7 +14,8 @@ const PrivateRoute = ({
     {...rest}
     render={props =>
       !isAuthenticated && !loading ? (
-        <Redirect to="/login" />
+        alert('Please login into your account!'),
+        <Redirect to='/login' />
       ) : (
         <Component {...props} />
       )

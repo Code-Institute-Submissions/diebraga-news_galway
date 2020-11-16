@@ -13,10 +13,10 @@ const Header = ({ isAuthenticated, logout }) => {
   const guestLinks = (
     <>
       <li className="nav-item">
-        <NavLink className="nav-link" exact to='/login'>Login</NavLink>
+        <NavLink className="nav-link" to='/login'>Login</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" exact to='/register'>Register</NavLink>
+        <NavLink className="nav-link" to='/register'>Register</NavLink>
       </li>
     </>
   );
@@ -38,16 +38,16 @@ const Header = ({ isAuthenticated, logout }) => {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className="nav-link" exact to='/blog'>Blog</Link >
+          <Link className="nav-link" to='/blog'>Blog</Link >
         </li>
         <li className="nav-item">
-          <Link className="nav-link" exact to='/subscribe'>Subscribe</Link >
+          <Link className="nav-link" to='/subscribe'>Subscribe</Link >
         </li>
         <li className="nav-item">
-          <Link className="nav-link" exact to='/shop'>Shop</Link >
+          <Link className="nav-link" to='/shop'>Shop</Link >
         </li>
         <li className="nav-item">
-          <Link className="nav-link" exact to='/authors'>Authors</Link >
+          <Link className="nav-link" to='/authors'>Authors</Link >
         </li>
           { <>{ isAuthenticated ? authLinks : guestLinks }</> }
       </ul>

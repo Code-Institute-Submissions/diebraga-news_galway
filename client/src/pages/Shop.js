@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { AiFillDownCircle } from 'react-icons/ai';
 import { FiCornerDownRight } from 'react-icons/fi';
 
+// Shop page render all Stripe products from Product Components
+// add more in Products.js
+ 
 const Shop = () => {
   return (
     <>

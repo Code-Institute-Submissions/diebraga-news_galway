@@ -4,21 +4,23 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
 
+// Component fetchs api authors and list all them.
+
 const Authors = () => {
   const [authors, setAuthors] = useState([]);
 
   useEffect(() => {
-    const fetchAuthord = async () => {
+    const fetchAuthor = async () => {
     try {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/authors/`);
         setAuthors(res.data);
     }
     catch (err) {
-
+      alert('Error connection!')
     }
-    }
+  }
 
-    fetchAuthord();
+    fetchAuthor();
   }, []);
 
   const getAuthors = () => {

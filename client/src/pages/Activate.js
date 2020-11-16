@@ -3,6 +3,10 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { verify } from '../redux/actions/auth';
 
+/**
+ *  Component activate account and redirects to blog.
+ */
+
 const Activate = (props) => {
   const [verified, setVerified] = useState(false);
 

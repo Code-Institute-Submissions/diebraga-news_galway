@@ -4,6 +4,14 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
 
+/**
+ *  Page fetches api matching author id to 
+ *  show his profile.
+ * 
+ *  Get in touch saves message in the database
+ *  and send email.
+ */
+
 const Profile = (props) => {
   const [author, setAuthor] = useState({});
 
@@ -11,12 +19,12 @@ const Profile = (props) => {
     const id = props.match.params.id;
 
     axios
-      .get(`http://127.0.0.1:8000/api/authors/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/authors/${id}`)
       .then(res => {
         setAuthor(res.data);
       })
       .catch(err => {
-        
+        alert('Error connection!')
       });
   }, [props.match.params.id]);
 

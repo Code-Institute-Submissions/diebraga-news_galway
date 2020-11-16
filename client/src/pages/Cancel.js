@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { MdCancel } from 'react-icons/md';
 
-const Success = () => {
+// Redirect to cancel page when payment canceled
+
+const Cancel = () => {
   return (
     <>
     <div className='text-center align-middle' style={{ marginTop: '40px' }}>
@@ -19,4 +21,4 @@ const Success = () => {
   );
 }; 
  
-export default Success;
+export default Cancel;

@@ -3,6 +3,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
 
+/**
+ *  Page match params between post and cayegory
+ *  to filter poster by category and list them.
+ */
+
 const Category = (props) => {
   const [posts, setPost] = useState([]);
   const [currentCategory, setCurrentCategory] = useState('');

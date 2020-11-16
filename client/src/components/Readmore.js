@@ -4,6 +4,11 @@ import { Fade } from "react-awesome-reveal";
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
 
+/**
+ *  Component matchs the params between author and post
+ *  to render them in the page.
+ */
+
 const Readmore = (props) => {
   const [post, setPost] = useState({});
   const [author, setAuthor] = useState({});
@@ -12,7 +17,7 @@ const Readmore = (props) => {
     const slug = props.match.params.id;
 
     axios
-      .get(`http://127.0.0.1:8000/api/blog/${slug}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/blog/${slug}`)
       .then(res => {
         setPost(res.data);
       })
@@ -26,7 +31,7 @@ const Readmore = (props) => {
   
     if (id) {
       axios
-        .get(`http://127.0.0.1:8000/api/authors/${id}`)
+        .get(`${process.env.REACT_APP_API_URL}/api/authors/${id}`)
         .then(res => {
           setAuthor(res.data);
         })
@@ -51,7 +56,7 @@ const Readmore = (props) => {
               <h6 className="my-3 mt-5 text-white">{post.category}<FiCornerDownRight /></h6>
             </div>
           </div>
-          
+          {/* HTML rendered from backend to keep summernote styles */}
           <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
             <h6>Posted by: {author.name}</h6>
             <hr />

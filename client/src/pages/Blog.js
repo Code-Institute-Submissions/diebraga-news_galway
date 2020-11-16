@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
 
+// Component fetches all post and list them
+// + Feature post ag the top
+
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [featuredPost, setFeaturedPost] = useState([]);

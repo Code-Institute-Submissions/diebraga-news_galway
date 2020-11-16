@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Confetti from "react-confetti";
 import { MdCheckCircle } from 'react-icons/md';
 
+// Redirect to success page when payment succesfully
+
 const Success = () => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);

@@ -1,7 +1,9 @@
 from django.db import models
 from datetime import datetime
 
+
 class Author(models.Model):
+    # Model fields create author
     name = models.CharField(max_length=50)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
     role = models.CharField(max_length=20)

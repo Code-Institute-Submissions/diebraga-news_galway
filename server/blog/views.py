@@ -5,25 +5,31 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 from blog.models import BlogPost
 from blog.serializers import BlogPostSerializer
 
+
 class BlogPostListView(ListAPIView):
+    # Retrieve all posts 
     queryset = BlogPost.objects.order_by('-date_created')
     serializer_class = BlogPostSerializer
     lookup_field = 'slug'
     permission_classes = (permissions.AllowAny, )
 
+
 class BlogPostDetailView(RetrieveAPIView):
+    # Retrieve more details
     queryset = BlogPost.objects.order_by('-date_created')
     serializer_class = BlogPostSerializer
     lookup_field = 'slug'
     permission_classes = (permissions.AllowAny, )
 
 class BlogPostFeaturedView(ListAPIView):
+    # Retrieve featured post
     queryset = BlogPost.objects.all().filter(featured=True)
     serializer_class = BlogPostSerializer
     lookup_field = 'slug'
     permission_classes = (permissions.AllowAny, )
 
 class BlogPostCategoryView(APIView):
+    # Retrieve post by category.
     serializer_class = BlogPostSerializer
     permission_classes = (permissions.AllowAny, )
 

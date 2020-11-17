@@ -3,13 +3,16 @@ from datetime import datetime
 from django.template.defaultfilters import slugify
 from authors.models import Author
 
+
 class Categories(models.TextChoices):
+        # Categories
         NEWS = 'news'
         EVENTS = 'events'
         GASTRONOMY = 'gastronomy'
         JOBS = 'jobs'
 
 class BlogPost(models.Model):
+    # Model fields create posts and associate to authors model.
     author = models.ForeignKey(Author, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=50)
     slug = models.SlugField()
@@ -23,6 +26,7 @@ class BlogPost(models.Model):
     date_created = models.DateTimeField(default=datetime.now, blank=True)
 
     def save(self, *args, **kwargs):
+        # Func creates unique id in case same title.
         original_slug = slugify(self.title)
         queryset = BlogPost.objects.all().filter(slug__iexact=original_slug).count()
 

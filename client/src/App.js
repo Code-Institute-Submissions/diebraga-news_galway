@@ -33,15 +33,15 @@ const App = () => (
           <Route exact path='/reset_password' component={ResetPassword} />
           <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
           <Route exact path='/activate/:uid/:token' component={Activate} />
-          <PrivateRoute exact path='/subscribe' component={Subscribe} />
-          <PrivateRoute exact path='/shop' component={Shop} />
+          <Route exact path='/subscribe' component={Subscribe} />
+          <Route exact path='/shop' component={Shop} />
           <Route exact path='/cancel' component={Cancel} />
           <Route exact path='/success' component={Success} />
           <Route exact path='/blog' component={Blog} />
-          <PrivateRoute exact path='/blog/:id' component={Readnore} />
-          <PrivateRoute exact path='/category/:id' component={Category} />
+          <Route exact path='/blog/:id' component={Readnore} />
+          <Route exact path='/category/:id' component={Category} />
           <Route exact path='/authors' component={Authors} />
-          <PrivateRoute exact path='/authors/:id' component={Profile} />
+          <Route exact path='/authors/:id' component={Profile} />
         </Switch>
       </Layout>
     </Router>

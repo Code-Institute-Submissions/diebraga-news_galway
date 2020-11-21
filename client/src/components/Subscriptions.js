@@ -78,35 +78,37 @@ const Subscriptions = () => {
       </div>
       <br/>
     </div>
+    </div>
     {/* Cards ! */}
-      <div className="card m-3 flex-column">
-      <GiCoins className="m-5 align-items-center" size={130}/>
+    <div class="d-flex justify-content-around flex-wrap text-center my-3">
+      <div class="card mt-2">
+        <GiCoins className="m-5 align-items-center" size={130}/>
         <h3 className="card-title">0.99€<br/><span style={{ fontSize: '10px' }}>montly</span></h3>
-          <div className="card-body d-flex">
-            <button className='btn btn-primary btn-block' role="link" onClick={handleClick}>
-              Subscribe
-            </button>
-          </div>
-        </div>
-      <div className="card m-3 flex-column">
-      <FaRegMoneyBillAlt className="m-5 align-items-center" size={130}/>
-        <h3 className="card-title">5.99€<br/><span style={{ fontSize: '10px' }}>montly</span></h3>
-          <div className="card-body d-flex">
-            <button className='btn btn-primary btn-block' role="link" onClick={handleSubmit}>
-              Subscribe
-            </button>
-          </div>
-        </div>
-      <div className="card m-3 flex-column mb-5">
-      <GiMoneyStack className="m-5" size={130}/>
-        <h3 className="card-title">10.99€<br/><span style={{ fontSize: '10px' }}>montly</span></h3>
-          <div className="card-body d-flex">
-            <button className='btn btn-primary btn-block' role="link" onClick={handleSubscription}>
-              Subscribe
-            </button>
-          </div>
+        <div className="card-body d-flex">
+          <button className='btn btn-primary btn-block' role="link" onClick={handleClick}>
+            Subscribe
+          </button>
         </div>
       </div>
+      <div class="card mt-2">
+        <FaRegMoneyBillAlt className="m-5 align-items-center" size={130}/>
+        <h3 className="card-title">5.99€<br/><span style={{ fontSize: '10px' }}>montly</span></h3>
+        <div className="card-body d-flex">
+          <button className='btn btn-primary btn-block' role="link" onClick={handleSubmit}>
+            Subscribe
+          </button>
+        </div>
+      </div>
+      <div class="card mt-2">
+      <GiMoneyStack className="m-5" size={130}/>
+        <div class="card-body">
+            <h3 className="card-title">10.99€<br/><span style={{ fontSize: '10px' }}>montly</span></h3>
+          <button className='btn btn-primary btn-block' role="link" onClick={handleSubscription}>
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
     </>
   );
 }

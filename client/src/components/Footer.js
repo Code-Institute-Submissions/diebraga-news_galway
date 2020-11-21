@@ -4,7 +4,7 @@ import { GrLinkedin } from 'react-icons/gr';
 
 const Footer = () => {
   return (
-    <footer className="container-flex align-items-center bg-primary fixed-bottom">
+    <footer className="container-flex align-items-center bg-primary">
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-center col">
         <div>
           <a href='https://github.com/diebraga' target="_blank" className='text-white h2 my-5'><FaGithub /></a>

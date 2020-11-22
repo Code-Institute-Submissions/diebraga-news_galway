@@ -20,8 +20,8 @@ const Subscriptions = () => {
         {price: `${process.env.REACT_APP_PRICE_ID}`, quantity: 1}
       ],
       mode: 'subscription',
-      successUrl: 'http://localhost:3000/success',
-      cancelUrl: 'http://localhost:3000/cancel',
+      successUrl: `${process.env.REACT_APP_API_URL}/success`,
+      cancelUrl: `${process.env.REACT_APP_API_URL}/cancel`,
       billingAddressCollection: 'required',
     });
     // If `redirectToCheckout` fails due to a browser or network
@@ -36,8 +36,8 @@ const Subscriptions = () => {
         {price: `${process.env.REACT_APP_PRICE_ID2}`, quantity: 1}
       ],
       mode: 'subscription',
-      successUrl: 'http://localhost:3000/success',
-      cancelUrl: 'http://localhost:3000/cancel',
+      successUrl: `${process.env.REACT_APP_API_URL}/success`,
+      cancelUrl: `${process.env.REACT_APP_API_URL}/cancel`,
       billingAddressCollection: 'required',
     });
   };
@@ -49,8 +49,8 @@ const Subscriptions = () => {
         {price: `${process.env.REACT_APP_PRICE_ID3}`, quantity: 1}
       ],
       mode: 'subscription',
-      successUrl: 'http://localhost:3000/success',
-      cancelUrl: 'http://localhost:3000/cancel',
+      successUrl: `${process.env.REACT_APP_API_URL}/success`,
+      cancelUrl: `${process.env.REACT_APP_API_URL}/cancel`,
       billingAddressCollection: 'required',
     });
   };

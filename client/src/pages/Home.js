@@ -2,6 +2,7 @@ import React from 'react';
 import { Fade } from "react-awesome-reveal";
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -34,6 +35,7 @@ const Home = () => {
         <Link className="text-white mr-4" to='/login'>Login</Link> - <Link className="text-white ml-4" to='/register'>Register</Link>
       </h6>
       -
+      <Footer />
     </div>
   )
 }

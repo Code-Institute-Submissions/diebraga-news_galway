@@ -39,7 +39,7 @@ const Register = ({ signup, isAuthenticated }) => {
     return <Redirect to='login' />;
   
   return (
-    <div className='container mt-5 col-sm-6'>
+    <div className='container mt-5 col-sm-6 pb-5'>
       <Fade duration={1200}>
         <h1>Register</h1>
         <p>Create a New Account</p>
@@ -101,7 +101,7 @@ const Register = ({ signup, isAuthenticated }) => {
       <p className='mt-3'>
         Already have an account? <Link to='/login'>Login</Link>
       </p>
-      <label className='text-danger'>
+      <label className='text-danger p-5'>
         <small>
           Must contain at least one  number and one uppercase 
           and lowercase letter, and at least 7 or more characters.

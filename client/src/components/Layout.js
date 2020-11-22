@@ -23,7 +23,6 @@ const Layout = (props) => {
       <GlobalStyles />
       <Header />
       {props.children}
-      <br /><br /><br />
       <Footer />
     </div>
   )

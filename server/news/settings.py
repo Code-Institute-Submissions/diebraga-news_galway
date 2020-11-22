@@ -1,5 +1,6 @@
 import os
 import dj_database_url
+import django_heroku
 from datetime import timedelta
 from decouple import config
 
@@ -16,7 +17,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = [config('HEROKU_HOST'), 'http://localhost:3000']
+ALLOWED_HOSTS = [config('HEROKU_HOST'), '127.0.0.1:8000']
 
 
 # Application definition
@@ -37,11 +38,14 @@ INSTALLED_APPS = [
     'authors',
     'accounts',
     'contacts',
+    'storages',
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -84,7 +88,7 @@ WSGI_APPLICATION = 'news.wsgi.application'
 
 # Use in production!
 DATABASES = {
-    'default': dj_database_url.parse(config('HEROKU_URL'))
+    'default': dj_database_url.parse(config('DATABASE_URL'))
 }
 
 # Email 
@@ -133,13 +137,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+django_heroku.settings(locals())
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'build/static')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

@@ -367,7 +367,7 @@ Use `4242424242424242`	to Succeeds and immediately processes the payment.
 Use `4000000000003220`	to 3D Secure 2 authentication must be completed for a successful payment. <br/>
 Use `4000000000009995`	To fails with a decline code of insufficient_funds.
 
-<img src="assets/stripe.png" width="180" height="200"/>    
+<img src="assets/stripe.gif" width="180" height="200"/>    
 
 
 ## Usage 

@@ -30,11 +30,23 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 - authors: Creates and stores in the database all authors you can add info and a profilo photo in the admin panel only. <br/> 
 - blogs: Creates and stores in the database all posts in the app where you can add, edit, delete all data, thumbnail including <br/>
 costomize the post using django <a href='https://github.com/summernote/django-summernote' target='_blank'>summernote</a>. <br/>
+    <details>
+    <summary>Click to views details</summary>
+    <img src="assets/24.png" width="200" height="200"/>
+
+    </details>
 - contacts: Handle send email funcionalitie and Stores in the database messages sent by users in the contact us section. <br/><br/>
     - Authentication: All the authentication and validation procces is handled by <a href='https://djoser.readthedocs.io/en/latest/getting_started.html'>Djoser</a><br/> It is responsible <br/>
     for handle send account activation, send account update password, Authenticate through JWT tokens and validate <br/>
     in case the password is to easy, email is non valid already, existent, empty, password does not match etc.
     - smtp service: I'm using a smtp service ofered by gmail to handle send email get your password to add in your .env files<br/> following those steps on <a href='https://support.google.com/mail/answer/185833?hl=en-GB'>GOOGLE</a>  or use Mailtrap or whatever service you prefer.
+    - Admin panel you can manage all those features.
+    <details>
+    <summary>Click to views details</summary>
+    <img src="assets/23.png" width="200" height="200"/>
+
+    </details>
+
 
 ### Structure
 
@@ -201,8 +213,8 @@ server
     
     <br/>
     
-    - Validation handled by Djoser ✔  <br/>
-    
+    - Server side Validation handled by Djoser ✔  <br/>
+        
 ### Usage
 
 Requirements: <br/>
@@ -352,13 +364,10 @@ preventing errors.
 It's running in test mode <br/>
 
 Use `4242424242424242`	to Succeeds and immediately processes the payment. 
-<details>
-<summary>Click to views details.</summary>
-
-</details>
-
 Use `4000000000003220`	to 3D Secure 2 authentication must be completed for a successful payment. <br/>
 Use `4000000000009995`	To fails with a decline code of insufficient_funds.
+
+<img src="assets/stripe.png" width="180" height="200"/>    
 
 
 ## Usage 
@@ -389,10 +398,12 @@ Requirements: <br/>
 `warning` if you're usig the current version of django-simplejwt=6.0.0 for some reason <br/>
 is not compatible with heroku use version: 4.4.0
 
-Configure your App and postgres DB on Heroku.
+cd your `client` folder and run `yarn build` it will generate a build of your react app copy <br/>
+the `build` folder in your `server` folder.
 
-Install the Heroku CLI <br/>
 Download and install the Heroku CLI.
+
+Than cd `server` and Configure your App and postgres DB on Heroku.
 
 Log in to your Heroku account. <br/>
 ```
@@ -411,6 +422,8 @@ $ git add .
 $ git commit -am "make it better" 
 $ git push heroku master 
 ```
+Done! you made it! 🚀🚀🚀
+
 ## Acknowledgements
 
 - I received inspiration for this project from:

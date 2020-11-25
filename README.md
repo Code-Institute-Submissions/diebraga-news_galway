@@ -67,11 +67,9 @@ server
 ```
 </details>
 
-### Database Model & Mockups.
+### Database Model.
 
 - <a href='https://drive.google.com/file/d/1DcL5OYMX7CdvsOyOPlMilgYbecAeMfS6/view?usp=sharing'>Click Here</a> to view DB model.
-
-- <a href=''>Click here</a> to see project's mockups. <br/>
 
 
 ## Stripe
@@ -82,7 +80,7 @@ server
   to the success page without pay for the product. <br />
   
   
- ## Test
+ ## Test and Validations
   - I'm using <a href="https://insomnia.rest/">Insomnia<a/> to do my api requests and test the api routes, the insominia JSON file is <br/> avalibe in the server root folder. feel free to use <a href="https://www.postman.com/">Postman</a> or any other.
   - Test routes:
     - List Authors <br/> 
@@ -164,7 +162,234 @@ server
     
     <br/>
     
+### Usage
+
+Requirements: <br/>
+<a href='https://www.python.org/'>Python</a> and <a href='https://pypi.org/project/pip/'>Pip</a>
+   - In your root diredtory: <br/>     
+   In your `.env.example` rename the file to > `.env` and change the Env variable.
+   - Windows: <p>
+    
+    ```
+        cd server
+        python -m venv env
+        env/Scripts/activate
+        pip install -r requirements.txt
+        python manage.py runserver
+    ```   
+ </p>
+   - Linux or mac: <p>
+    
+    ```
+        cd server
+        python -m venv env
+        source env/bin/activate
+        pip install -r requirements.txt
+        python manage.py runserver
+    ```   
+ </p>
+ <br/>
+    Your api is running in your localhost on port: 8000 Now you're ready to go! 🚀
+
+    
 ## Frontend
+- A React app consisted in a `src` folder where the all the code source is stored. <br/>
+- `App.js` is what wrappes the project there I've all routes in the application and makes <br/>
+   the store disponible to all children. <br/>
+- it's devide in `Pages` folder stores all primary components in the app `Components` folder <br/>
+  all secondary or elements that can be used more than once in the app, `Redux` folder that <br/>
+  that stores all states and actions in the app, `Styles` folder that stores the global styles <br/>
+  and assets to stores static files in the frontend.
+- In the app users can see all news, all staff but to read more about the articles, view profiles <br/>
+  access shop or donation they will need to authenticate.
+- Shop and Donation 
+  After you choose your product or donation subscription you'll be redirected to checkout page <br/>
+  if the payment is succesfull user is redirected to success page if it fails redirected to cancel page. <br/> 
+  
+  
+### Structure
+
+<details>
+<summary>Click to views the folder structure</summary>
+
+```
+  src              
+   ├── assets
+   |    └── *static files
+   ├── components
+   |    ├── Category.js
+   |    ├── Footer.js
+   |    ├── Header.js
+   |    ├── Layoute.js
+   |    ├── PrivateRoute.js
+   |    ├── Products.js
+   |    ├── Profile.js
+   |    ├── Readmore.js
+   |    └── Subscriptions.js
+   ├── pages
+   |    ├── Activate.js
+   |    ├── Authors.js
+   |    ├── Blog.js
+   |    ├── Cancel.js
+   |    ├── Home.js
+   |    ├── Login.js
+   |    ├── Register.js
+   |    ├── ResetPassword.js
+   |    ├── ResetPasswordComfirm.js
+   |    ├── Shop.js
+   |    ├── Subscribe.js
+   |    └── Success.js
+   ├── redux
+   |    ├── actions
+   |    |       ├── auth.js
+   |    |       └── types.js
+   |    ├── reducers
+   |    |       ├── auth.js
+   |    |       └── index.js
+   |    └── store.js
+   ├── styles
+   |    └── globals.js
+   ├── app.js
+   └── index.js
+
+```
+
+</details>
+
+
+### Mockups
+
+- <a href=''>Press here<a> to view.
+    
+
+## Test and Validations:
+
+#### Functionality Testing. <br/>
+   Routes Links in the app are tested you can free navigate in the application.
+   
+   Links in the app to an external pages are working perfectly with target blank.
+  
+   Compatibility Testing. <br/>
+   I tested the app manually on a variaty of browsers:
+   
+   Chrome <br/>
+   Brave <br/>
+   Edge <br/>
+   
+   and mobile:
+   
+   Iphone 10 <br/>
+   Sansung Galaxy S7
+   
+   Performance Testing. <br/>
+   and different screen sizes using the inspector. <br/>
+   criteria: responsivity, fluidity, design, sizes functionality behavior.   
+   
+Form: <br/>
+HTML Validation <br/>
+fields required + strong password length and patterns <br/>
+Validation through js code. <br/>
+if password does not match and send if strict matches. 
+
+Creation user sending emails. ✔ <br/>
+Request new password.  ✔ <br/>
+Activate account. ✔ <br/>
+Resset password. ✔ <br/>
+Get in touch sending email and storing in the DB ✔ <br/>
+Buttons update and inputs 100% working. ✔ <br/>
+Alerts set in case of network connection and authentication problems. ✔ <br/>
+Link buttons working directs user to the right place. ✔ <br/>
+Link Troggle Buttons working and fluid. ✔ <br/>
+Navbar Links working and responsive. ✔ <br/>
+
+ESlint: Tool verify and correct automatcally JS errors, preventing, <br/>
+reporting syntax errors, integrated with prettier  <br/>
+will ensure a beautifull and good style guid for better reading  <br/>
+preventing errors.
+
+#### Stripe
+It's running in test mode <br/>
+
+Use `4242424242424242`	to Succeeds and immediately processes the payment. 
+<details>
+<summary>Click to views details.</summary>
+
+</details>
+
+Use `4000000000003220`	to 3D Secure 2 authentication must be completed for a successful payment. <br/>
+Use `4000000000009995`	To fails with a decline code of insufficient_funds.
+
+
+## Usage 
+
+Requirements: <br/>
+<a href='https://nodejs.org/en/'>Nodejs and NPM</a> <br/>
+opcional
+<a href='https://yarnpkg.com/'> Yarn</a> <br/>
+
+In the root folder. <br/>
+`cd client` folder. <br/>
+Rename `.env.example` to `.env` and change the env variables. <br/>
+`warning` prices_id are required* create yours in stripe dashboard. <br/>
+
+in the terminal run `yarn` or `npm run`<br/>
+Than `yarn start` or `npm run start` <br/>
+
+*Remenber: You will need to have your api running too!. <br/>
+*Now you're ready to go!. 🚀🚀
+
+
+## Deployment 
+
+The app is deployed on Heroku. <br/>
+Requirements: <br/>
+<a href='https://github.com/heroku/django-heroku'>Heroku_django</a>
+<a href='http://whitenoise.evans.io/en/stable/'>WhiteNoise</a> for static files. <br/>
+`warning` if you're usig the current version of django-simplejwt=6.0.0 for some reason <br/>
+is not compatible with heroku use version: 4.4.0
+
+Configure your App and postgres DB on Heroku.
+
+Install the Heroku CLI <br/>
+Download and install the Heroku CLI.
+
+Log in to your Heroku account. <br/>
+```
+$ heroku login 
+```
+Clone the repository <br/>
+Use Git to clone your app code source code to your local machine. <br/>
+```
+$ heroku git:clone -a galway-news 
+$ cd galway-news 
+```
+Deploy your changes <br/>
+Make some changes to the code you just cloned and deploy them to Heroku using Git. <br/>
+```
+$ git add . 
+$ git commit -am "make it better" 
+$ git push heroku master 
+```
+## Acknowledgements
+
+- I received inspiration for this project from:
+  
+  https://codeinstitute.net/
+  https://rocketseat.com.br/
+  
+## License
+
+- Free Open Source.
+  
+
+
+
+
+
+
+  
+
+   
   
 
 

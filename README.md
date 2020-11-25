@@ -22,7 +22,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 - <a href='https://reactrouter.com/web/guides/quick-start' target='_blank'>React router dom</a><br/>
 - <a href='https://getbootstrap.com/' target='_blank'>Bootstrap</a><br/>
 - <a href='https://stripe.com/docs/stripe-js/react' target='_blank'>React Stripe</a><br/>
-- <a href='https://github.com/dennismorello/react-awesome-reveal' target='_blank'>react-awesome-reveal Stripe</a><br/>
+- <a href='https://github.com/dennismorello/react-awesome-reveal' target='_blank'>react-awesome-reveal</a><br/>
 
 ## Backend 
 - The Api 'news' built with django-rest-framework consists in 5 app: accounts, authors, blog and contacts. <br/>
@@ -30,11 +30,23 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 - authors: Creates and stores in the database all authors you can add info and a profilo photo in the admin panel only. <br/> 
 - blogs: Creates and stores in the database all posts in the app where you can add, edit, delete all data, thumbnail including <br/>
 costomize the post using django <a href='https://github.com/summernote/django-summernote' target='_blank'>summernote</a>. <br/>
+    <details>
+    <summary>Click to views details</summary>
+    <img src="assets/24.png" width="200" height="200"/>
+
+    </details>
 - contacts: Handle send email funcionalitie and Stores in the database messages sent by users in the contact us section. <br/><br/>
     - Authentication: All the authentication and validation procces is handled by <a href='https://djoser.readthedocs.io/en/latest/getting_started.html'>Djoser</a><br/> It is responsible <br/>
     for handle send account activation, send account update password, Authenticate through JWT tokens and validate <br/>
     in case the password is to easy, email is non valid already, existent, empty, password does not match etc.
     - smtp service: I'm using a smtp service ofered by gmail to handle send email get your password to add in your .env files<br/> following those steps on <a href='https://support.google.com/mail/answer/185833?hl=en-GB'>GOOGLE</a>  or use Mailtrap or whatever service you prefer.
+    - Admin panel you can manage all those features.
+    <details>
+    <summary>Click to views details</summary>
+    <img src="assets/23.png" width="200" height="200"/>
+
+    </details>
+
 
 ### Structure
 
@@ -67,11 +79,9 @@ server
 ```
 </details>
 
-### Database Model & Mockups.
+### Database Model.
 
 - <a href='https://drive.google.com/file/d/1DcL5OYMX7CdvsOyOPlMilgYbecAeMfS6/view?usp=sharing'>Click Here</a> to view DB model.
-
-- <a href=''>Click here</a> to see project's mockups. <br/>
 
 
 ## Stripe
@@ -82,89 +92,358 @@ server
   to the success page without pay for the product. <br />
   
   
- ## Test
+ ## Test and Validations
   - I'm using <a href="https://insomnia.rest/">Insomnia<a/> to do my api requests and test the api routes, the insominia JSON file is <br/> avalibe in the server root folder. feel free to use <a href="https://www.postman.com/">Postman</a> or any other.
   - Test routes:
     - List Authors <br/> 
     Method `'GET': http://127.0.0.1:8000/api/authors/` <br/>
     <details>
     <summary>Click to view</summary>
-    
+    <img src="assets/1.png" width="200" height="200"/>
+        
+        As you can see it returns all authors in the Database if it's empty it simple returns an [] array.
     </details>
 
     - List Author by pk <br/> 
     Method `'GET': http://127.0.0.1:8000/api/authors/<pk>` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/2.png" width="200" height="200"/>
     
+        As you can see typing the id_ at the ending it returns the specific author. if the author does not exist it simple returns "not found".
     </details>
     
     - List Posts <br/> 
     Method `'GET': http://127.0.0.1:8000/api/blog/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/3.png" width="200" height="200"/>
     
+        As you can see it returns all posts in the Database if it's empty it simple returns an [] array.                
     </details>
     
     - List Post by slug <br/> 
     Method `'GET': http://127.0.0.1:8000/api/blog/<slug>` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/4.png" width="200" height="200"/>      <img src="assets/5.png" width="200" height="200"/>
     
+        As you can see typing the <slug/> at the ending it returns the specific post with the content. if the 
+        author does not exist it  simple returns "not found".    
     </details>
     
     - Find post by category <br/> 
-    Method `'POST': http://127.0.0.1:8000/news/category` <br/>
+    Method `'POST': http://127.0.0.1:8000/api/blog/category` <br/>
     <details>
     <summary>Click to view</summary>
-    
+    <img src="assets/6.png" width="200" height="200"/>
+
+        As you can see simple posting the category it returns an array with all posts in this category is it's empity 
+        it returns an array [].
     </details>
     
     - Create new user <br/> 
     Method `'GET': http://127.0.0.1:8000/auth/users/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/7.png" width="200" height="200"/>    <img src="assets/8.png" width="200" height="200"/>    <img src="assets/9.png" width="200" height="200"/>
+    <img src="assets/10.png" width="200" height="200"/>
     
+        As you can see all fields server side validations are handled by Djoser in case of invalid email,
+        week password, blank fields and email already exists, in case of success it returns a status 200 with your id
+        and email.
     </details>
     
     - Activate new user <br/> 
     Method `'POST': http://127.0.0.1:8000/auth/users/activation/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/11.png" width="200" height="200"/>    <img src="assets/12.png" width="200" height="200"/>
+    <img src="assets/13.png" width="200" height="200"/>
     
+    When you recieve the email with the token to activate account you can post the uid and token djoser validates 
+    if the token is valid or not, if it has been sent returns a status 200.
+    clicking it redirects you to the frontent.
+
     </details>
     
     - Create Session <br/> 
     Method `'POST': http://127.0.0.1:8000/auth/jwt/create` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/14.png" width="200" height="200"/>    <img src="assets/15.png" width="200" height="200"/>
+    <img src="assets/16.png" width="200" height="200"/>
     
+    Djoser validates if accout exists or it's blank, if the email and password are correct it returns the token.
+
     </details>
 
     - Request new password <br/> 
     Method `'POST': http://127.0.0.1:8000/auth/users/reset_password/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/17.png" width="200" height="200"/>   
     
+    Request new password and verify in your email account.
+
     </details>
 
     - Set new password <br/> 
     Method `'POST': http://127.0.0.1:8000/auth/users/reset_password_confirm/` <br/>
     <details>
     <summary>Click to view</summary>
-    
+    <img src="assets/18.png" width="200" height="200"/>    <img src="assets/19.png" width="200" height="200"/>
+    <img src="assets/20.png" width="200" height="200"/>
+
+    When you recieve the email with the token to reset account you can post the uid and token. djoser validates 
+    if the token is valid, if passsword and repassword does not match, if it has been sent returns a status 200
+    and the password has been modified and you ecieve an email.
+    clicking the link redirects you to the frontend.
+
     </details>
 
     - Send Email <br/> 
     Method `'POST': http://127.0.0.1:8000/api/contacts/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/21.png" width="200" height="200"/>    <img src="assets/22.png" width="200" height="200"/>
     
+    When you send the email it says sent succesfully check your email. it's gonna be saved in the database.
     </details>
     
     <br/>
     
+    - Server side Validation handled by Djoser ✔  <br/>
+        
+### Usage
+
+Requirements: <br/>
+<a href='https://www.python.org/'>Python</a> and <a href='https://pypi.org/project/pip/'>Pip</a>
+   - In your root diredtory: <br/>     
+   In your `.env.example` rename the file to > `.env` and change the Env variable.
+   - Windows: <p>
+    
+    ```
+        cd server
+        python -m venv env
+        env/Scripts/activate
+        pip install -r requirements.txt
+        python manage.py runserver
+    ```   
+ </p>
+   - Linux or mac: <p>
+    
+    ```
+        cd server
+        python -m venv env
+        source env/bin/activate
+        pip install -r requirements.txt
+        python manage.py runserver
+    ```   
+ </p>
+ <br/>
+    Your api is running in your localhost on port: 8000 Now you're ready to go! 🚀
+
+    
 ## Frontend
+- A React app consisted in a `src` folder where the all the code source is stored. <br/>
+- `App.js` is what wrappes the project there I've all routes in the application and makes <br/>
+   the store disponible to all children. <br/>
+- it's devide in `Pages` folder stores all primary components in the app `Components` folder <br/>
+  all secondary or elements that can be used more than once in the app, `Redux` folder that <br/>
+  that stores all states and actions in the app, `Styles` folder that stores the global styles <br/>
+  and assets to stores static files in the frontend.
+- In the app users can see all news, all staff but to read more about the articles, view profiles <br/>
+  access shop or donation they will need to authenticate.
+- Shop and Donation 
+  After you choose your product or donation subscription you'll be redirected to checkout page <br/>
+  if the payment is succesfull user is redirected to success page if it fails redirected to cancel page. <br/> 
+  
+  
+### Structure
+
+<details>
+<summary>Click to views the folder structure</summary>
+
+```
+  src              
+   ├── assets
+   |    └── *static files
+   ├── components
+   |    ├── Category.js
+   |    ├── Footer.js
+   |    ├── Header.js
+   |    ├── Layoute.js
+   |    ├── PrivateRoute.js
+   |    ├── Products.js
+   |    ├── Profile.js
+   |    ├── Readmore.js
+   |    └── Subscriptions.js
+   ├── pages
+   |    ├── Activate.js
+   |    ├── Authors.js
+   |    ├── Blog.js
+   |    ├── Cancel.js
+   |    ├── Home.js
+   |    ├── Login.js
+   |    ├── Register.js
+   |    ├── ResetPassword.js
+   |    ├── ResetPasswordComfirm.js
+   |    ├── Shop.js
+   |    ├── Subscribe.js
+   |    └── Success.js
+   ├── redux
+   |    ├── actions
+   |    |       ├── auth.js
+   |    |       └── types.js
+   |    ├── reducers
+   |    |       ├── auth.js
+   |    |       └── index.js
+   |    └── store.js
+   ├── styles
+   |    └── globals.js
+   ├── app.js
+   └── index.js
+
+```
+
+</details>
+
+
+### Mockups
+
+- <a href=''>Press here<a> to view.
+    
+
+## Test and Validations:
+
+#### Functionality Testing. <br/>
+   Routes Links in the app are tested you can free navigate in the application.
+   
+   Links in the app to an external pages are working perfectly with target blank.
+  
+   Compatibility Testing. <br/>
+   I tested the app manually on a variaty of browsers:
+   
+   Chrome <br/>
+   Brave <br/>
+   Edge <br/>
+   
+   and mobile:
+   
+   Iphone 10 <br/>
+   Sansung Galaxy S7
+   
+   Performance Testing. <br/>
+   and different screen sizes using the inspector. <br/>
+   criteria: responsivity, fluidity, design, sizes functionality behavior.   
+   
+Form: <br/>
+HTML Validation <br/>
+fields required + strong password length and patterns <br/>
+Validation through js code. <br/>
+if password does not match and send if strict matches. 
+
+Creation user sending emails. ✔ <br/>
+Request new password.  ✔ <br/>
+Activate account. ✔ <br/>
+Resset password. ✔ <br/>
+Get in touch sending email and storing in the DB ✔ <br/>
+Buttons update and inputs 100% working. ✔ <br/>
+Alerts set in case of network connection and authentication problems. ✔ <br/>
+Link buttons working directs user to the right place. ✔ <br/>
+Link Troggle Buttons working and fluid. ✔ <br/>
+Navbar Links working and responsive. ✔ <br/>
+
+ESlint: Tool verify and correct automatcally JS errors, preventing, <br/>
+reporting syntax errors, integrated with prettier  <br/>
+will ensure a beautifull and good style guid for better reading  <br/>
+preventing errors.
+
+#### Stripe
+It's running in test mode <br/>
+
+Use `4242424242424242`	to Succeeds and immediately processes the payment. 
+Use `4000000000003220`	to 3D Secure 2 authentication must be completed for a successful payment. <br/>
+Use `4000000000009995`	To fails with a decline code of insufficient_funds.
+
+<img src="assets/stripe.png" width="180" height="200"/>    
+
+
+## Usage 
+
+Requirements: <br/>
+<a href='https://nodejs.org/en/'>Nodejs and NPM</a> <br/>
+opcional
+<a href='https://yarnpkg.com/'> Yarn</a> <br/>
+
+In the root folder. <br/>
+`cd client` folder. <br/>
+Rename `.env.example` to `.env` and change the env variables. <br/>
+`warning` prices_id are required* create yours in stripe dashboard. <br/>
+
+in the terminal run `yarn` or `npm run`<br/>
+Than `yarn start` or `npm run start` <br/>
+
+*Remenber: You will need to have your api running too!. <br/>
+*Now you're ready to go!. 🚀🚀
+
+
+## Deployment 
+
+The app is deployed on Heroku. <br/>
+Requirements: <br/>
+<a href='https://github.com/heroku/django-heroku'>Heroku_django</a>
+<a href='http://whitenoise.evans.io/en/stable/'>WhiteNoise</a> for static files. <br/>
+`warning` if you're usig the current version of django-simplejwt=6.0.0 for some reason <br/>
+is not compatible with heroku use version: 4.4.0
+
+cd your `client` folder and run `yarn build` it will generate a build of your react app copy <br/>
+the `build` folder in your `server` folder.
+
+Download and install the Heroku CLI.
+
+Than cd `server` and Configure your App and postgres DB on Heroku.
+
+Log in to your Heroku account. <br/>
+```
+$ heroku login 
+```
+Clone the repository <br/>
+Use Git to clone your app code source code to your local machine. <br/>
+```
+$ heroku git:clone -a galway-news 
+$ cd galway-news 
+```
+Deploy your changes <br/>
+Make some changes to the code you just cloned and deploy them to Heroku using Git. <br/>
+```
+$ git add . 
+$ git commit -am "make it better" 
+$ git push heroku master 
+```
+Done! you made it! 🚀🚀🚀
+
+## Acknowledgements
+
+- I received inspiration for this project from:
+  
+  https://codeinstitute.net/
+  https://rocketseat.com.br/
+  
+## License
+
+- Free Open Source.
+  
+
+
+
+
+
+
+  
+
+   
   
 
 

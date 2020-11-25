@@ -30,11 +30,11 @@ const Home = () => {
         </h5>
         </Fade>
       </div>
-      -
+      
       <h6>
         <Link className="text-white mr-4" to='/login'>Login</Link> - <Link className="text-white ml-4" to='/register'>Register</Link>
       </h6>
-      -
+      
       <Footer />
     </div>
   )

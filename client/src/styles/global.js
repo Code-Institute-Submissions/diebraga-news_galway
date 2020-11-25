@@ -23,13 +23,6 @@ export default createGlobalStyle`
     border: 3px;
   }
 
-  .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-
-  }
-
   #root {
     position: relative;
     min-height: 100vh;

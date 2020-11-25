@@ -22,7 +22,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 - <a href='https://reactrouter.com/web/guides/quick-start' target='_blank'>React router dom</a><br/>
 - <a href='https://getbootstrap.com/' target='_blank'>Bootstrap</a><br/>
 - <a href='https://stripe.com/docs/stripe-js/react' target='_blank'>React Stripe</a><br/>
-- <a href='https://github.com/dennismorello/react-awesome-reveal' target='_blank'>react-awesome-reveal Stripe</a><br/>
+- <a href='https://github.com/dennismorello/react-awesome-reveal' target='_blank'>react-awesome-reveal</a><br/>
 
 ## Backend 
 - The Api 'news' built with django-rest-framework consists in 5 app: accounts, authors, blog and contacts. <br/>
@@ -87,80 +87,121 @@ server
     Method `'GET': http://127.0.0.1:8000/api/authors/` <br/>
     <details>
     <summary>Click to view</summary>
-    
+    <img src="assets/1.png" width="200" height="200"/>
+        
+        As you can see it returns all authors in the Database if it's empty it simple returns an [] array.
     </details>
 
     - List Author by pk <br/> 
     Method `'GET': http://127.0.0.1:8000/api/authors/<pk>` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/2.png" width="200" height="200"/>
     
+        As you can see typing the id_ at the ending it returns the specific author. if the author does not exist it simple returns "not found".
     </details>
     
     - List Posts <br/> 
     Method `'GET': http://127.0.0.1:8000/api/blog/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/3.png" width="200" height="200"/>
     
+        As you can see it returns all posts in the Database if it's empty it simple returns an [] array.                
     </details>
     
     - List Post by slug <br/> 
     Method `'GET': http://127.0.0.1:8000/api/blog/<slug>` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/4.png" width="200" height="200"/>      <img src="assets/5.png" width="200" height="200"/>
     
+        As you can see typing the <slug/> at the ending it returns the specific post with the content. if the 
+        author does not exist it  simple returns "not found".    
     </details>
     
     - Find post by category <br/> 
-    Method `'POST': http://127.0.0.1:8000/news/category` <br/>
+    Method `'POST': http://127.0.0.1:8000/api/blog/category` <br/>
     <details>
     <summary>Click to view</summary>
-    
+    <img src="assets/6.png" width="200" height="200"/>
+
+        As you can see simple posting the category it returns an array with all posts in this category is it's empity 
+        it returns an array [].
     </details>
     
     - Create new user <br/> 
     Method `'GET': http://127.0.0.1:8000/auth/users/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/7.png" width="200" height="200"/>    <img src="assets/8.png" width="200" height="200"/>    <img src="assets/9.png" width="200" height="200"/>
+    <img src="assets/10.png" width="200" height="200"/>
     
+        As you can see all fields server side validations are handled by Djoser in case of invalid email,
+        week password, blank fields and email already exists, in case of success it returns a status 200 with your id
+        and email.
     </details>
     
     - Activate new user <br/> 
     Method `'POST': http://127.0.0.1:8000/auth/users/activation/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/11.png" width="200" height="200"/>    <img src="assets/12.png" width="200" height="200"/>
+    <img src="assets/13.png" width="200" height="200"/>
     
+    When you recieve the email with the token to activate account you can post the uid and token djoser validates 
+    if the token is valid or not, if it has been sent returns a status 200.
+    clicking it redirects you to the frontent.
+
     </details>
     
     - Create Session <br/> 
     Method `'POST': http://127.0.0.1:8000/auth/jwt/create` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/14.png" width="200" height="200"/>    <img src="assets/15.png" width="200" height="200"/>
+    <img src="assets/16.png" width="200" height="200"/>
     
+    Djoser validates if accout exists or it's blank, if the email and password are correct it returns the token.
+
     </details>
 
     - Request new password <br/> 
     Method `'POST': http://127.0.0.1:8000/auth/users/reset_password/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/17.png" width="200" height="200"/>   
     
+    Request new password and verify in your email account.
+
     </details>
 
     - Set new password <br/> 
     Method `'POST': http://127.0.0.1:8000/auth/users/reset_password_confirm/` <br/>
     <details>
     <summary>Click to view</summary>
-    
+    <img src="assets/18.png" width="200" height="200"/>    <img src="assets/19.png" width="200" height="200"/>
+    <img src="assets/20.png" width="200" height="200"/>
+
+    When you recieve the email with the token to reset account you can post the uid and token. djoser validates 
+    if the token is valid, if passsword and repassword does not match, if it has been sent returns a status 200
+    and the password has been modified and you ecieve an email.
+    clicking the link redirects you to the frontend.
+
     </details>
 
     - Send Email <br/> 
     Method `'POST': http://127.0.0.1:8000/api/contacts/` <br/>
     <details>
     <summary>Click to view</summary>
+    <img src="assets/21.png" width="200" height="200"/>    <img src="assets/22.png" width="200" height="200"/>
     
+    When you send the email it says sent succesfully check your email. it's gonna be saved in the database.
     </details>
     
     <br/>
+    
+    - Validation handled by Djoser ✔  <br/>
     
 ### Usage
 

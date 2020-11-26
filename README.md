@@ -312,8 +312,45 @@ Requirements: <br/>
 
 ### Mockups
 
-- <a href=''>Press here<a> to view.
+  - Header <br/> 
+   
+    <details>
+    <summary>Click to view</summary>
+    <img src="assets/header.png" width="200" height="200"/>   
     
+</details>
+
+  - Authentication <br/> 
+   
+    <details>
+    <summary>Click to view</summary>
+    <img src="assets/auth.png" width="200" height="200"/>   
+    
+</details>
+
+  - Blog <br/> 
+   
+    <details>
+    <summary>Click to view</summary>
+<img src="assets/blog.png" width="500" height="300"/>
+    
+</details>
+
+  - Shop <br/> 
+   
+    <details>
+<summary>Shop</summary>
+<img src="assets/shop.png" width="500" height="300"/>
+    
+</details>
+
+  - Authentication <br/> 
+   
+<summary>Profile</summary>
+<img src="assets/profile.png" width="500" height="300"/>
+    
+</summary>    
+
 
 ## Test and Validations:
 
@@ -364,10 +401,12 @@ preventing errors.
 It's running in test mode <br/>
 
 Use `4242424242424242`	to Succeeds and immediately processes the payment. 
-Use `4000000000003220`	to 3D Secure 2 authentication must be completed for a successful payment. <br/>
+
+Use `4000000000003220`	to 3D Secure 2 authentication must be completed for a successful payment. 
+
 Use `4000000000009995`	To fails with a decline code of insufficient_funds.
 
-<img src="assets/stripe.png" width="180" height="200"/>    
+<img src="assets/stripe.gif" width="120" height="200"/>    
 
 
 ## Usage 
@@ -422,6 +461,8 @@ $ git add .
 $ git commit -am "make it better" 
 $ git push heroku master 
 ```
+Don't forget to set your env variables!
+
 Done! you made it! 🚀🚀🚀
 
 ## Acknowledgements

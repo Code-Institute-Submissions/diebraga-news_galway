@@ -314,42 +314,28 @@ Requirements: <br/>
 
   - Header <br/> 
    
-    <details>
-    <summary>Click to view</summary>
-    <img src="assets/header.png" width="200" height="200"/>   
+    <img src="assets/header.png" width="500" height="300"/>   
     
-</details>
 
   - Authentication <br/> 
    
-    <details>
-    <summary>Click to view</summary>
-    <img src="assets/auth.png" width="200" height="200"/>   
+    <img src="assets/auth.png" width="500" height="300"/>   
     
-</details>
 
   - Blog <br/> 
    
-    <details>
-    <summary>Click to view</summary>
 <img src="assets/blog.png" width="500" height="300"/>
     
-</details>
 
   - Shop <br/> 
    
-    <details>
-<summary>Shop</summary>
-<img src="assets/shop.png" width="500" height="300"/>
+<img src="assets/shop.png" width="500" height="280"/>
     
-</details>
 
   - Authentication <br/> 
    
-<summary>Profile</summary>
 <img src="assets/profile.png" width="500" height="300"/>
     
-</summary>    
 
 
 ## Test and Validations:

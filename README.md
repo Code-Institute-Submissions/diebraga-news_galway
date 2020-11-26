@@ -312,35 +312,45 @@ Requirements: <br/>
 
 ### Mockups
 
-- <details>
-<summary>Header</summary>
-<img src="assets/header.png" width="500" height="300"/>
+  - Header <br/> 
+   
+    <details>
+    <summary>Click to view</summary>
+    <img src="assets/header.png" width="200" height="200"/>   
     
-</summary>
+</details>
 
-- <details>
-<summary>Authentication</summary>
-<img src="assets/auth.png" width="500" height="300"/>
+  - Authentication <br/> 
+   
+    <details>
+    <summary>Click to view</summary>
+    <img src="assets/auth.png" width="200" height="200"/>   
     
-</summary>
+</details>
 
-- <details>
-<summary>Blog</summary>
+  - Blog <br/> 
+   
+    <details>
+    <summary>Click to view</summary>
 <img src="assets/blog.png" width="500" height="300"/>
     
-</summary>
+</details>
 
-- <details>
+  - Shop <br/> 
+   
+    <details>
 <summary>Shop</summary>
 <img src="assets/shop.png" width="500" height="300"/>
     
-</summary>
+</details>
 
-- <details>
+  - Authentication <br/> 
+   
 <summary>Profile</summary>
 <img src="assets/profile.png" width="500" height="300"/>
     
-</summary>
+</summary>    
+
 
 ## Test and Validations:
 
@@ -451,6 +461,8 @@ $ git add .
 $ git commit -am "make it better" 
 $ git push heroku master 
 ```
+Don't forget to set your env variables!
+
 Done! you made it! 🚀🚀🚀
 
 ## Acknowledgements

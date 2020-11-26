@@ -312,8 +312,35 @@ Requirements: <br/>
 
 ### Mockups
 
-- <a href=''>Press here<a> to view.
+- <details>
+<summary>Header</summary>
+<img src="assets/header.png" width="500" height="300"/>
     
+</summary>
+
+- <details>
+<summary>Authentication</summary>
+<img src="assets/auth.png" width="500" height="300"/>
+    
+</summary>
+
+- <details>
+<summary>Blog</summary>
+<img src="assets/blog.png" width="500" height="300"/>
+    
+</summary>
+
+- <details>
+<summary>Shop</summary>
+<img src="assets/shop.png" width="500" height="300"/>
+    
+</summary>
+
+- <details>
+<summary>Profile</summary>
+<img src="assets/profile.png" width="500" height="300"/>
+    
+</summary>
 
 ## Test and Validations:
 

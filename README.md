@@ -332,7 +332,7 @@ Requirements: <br/>
 <img src="assets/shop.png" width="500" height="280"/>
     
 
-  - Authentication <br/> 
+  - Profile <br/> 
    
 <img src="assets/profile.png" width="500" height="300"/>
     

@@ -5,9 +5,19 @@ from django.db import models
 
 
 class UserAdminConfig(UserAdmin):
-    search_fields = ('email', 'name',)
-    list_filter = ('email', 'name', 'is_active', 'is_staff')
-    ordering = ()
-    list_display = ('email', 'name','is_active', 'is_staff')
+    list_display = ('email', 'is_staff', 'is_active',)
+    list_filter = ('email', 'is_staff', 'is_active',)
+    fieldsets = (
+        (None, {'fields': ('email', 'name', 'password')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+    )
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'name', 'password1', 'password2', 'is_staff', 'is_active')}
+        ),
+    )
+    search_fields = ('email',)
+    ordering = ('email',)
 
 admin.site.register(UserAccount, UserAdminConfig)

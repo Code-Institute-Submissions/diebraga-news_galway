@@ -15,7 +15,7 @@ const Readmore = (props) => {
 
   useEffect(() => {
     const slug = props.match.params.id;
-    // send auithorization in the localstorage through header
+    // send auithorization in the localstorage through
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const Readmore = (props) => {
     };
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/${slug}`, config)
+      .get(`${process.env.REACT_APP_API_URL}/api/blog/${slug}`, config)
       .then(res => {
         setPost(res.data);
       })
@@ -33,7 +33,6 @@ const Readmore = (props) => {
         alert('Error connection!')
       });
     }, [props.match.params.id]);
-
 
   useEffect(() => {
     const id = post.author;
@@ -48,7 +47,7 @@ const Readmore = (props) => {
   
     if (id) {
       axios
-        .get(`${process.env.REACT_APP_API_URL}/api/authors/${id}`, config)
+        .get(`https://galway-news.herokuapp.com/api/authors/${id}`, config)
         .then(res => {
           setAuthor(res.data);
         })

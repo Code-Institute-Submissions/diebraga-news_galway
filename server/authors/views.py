@@ -11,8 +11,8 @@ class AuthorListView(ListAPIView):
     serializer_class = AuthorSerializer
     pagination_class = None
 
+
 class AuthorView(RetrieveAPIView):
     # Retrieve author by id
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
-    permission_classes = (permissions.AllowAny, )

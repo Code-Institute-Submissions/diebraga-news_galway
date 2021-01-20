@@ -5,8 +5,8 @@ from django.db import models
 
 
 class UserAdminConfig(UserAdmin):
-    list_display = ('email', 'is_staff', 'is_active',)
-    list_filter = ('email', 'is_staff', 'is_active',)
+    list_display = ('email', 'name', 'is_staff', 'is_active',)
+    list_filter = ('email', 'name', 'is_staff', 'is_active',)
     fieldsets = (
         (None, {'fields': ('email', 'name', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),

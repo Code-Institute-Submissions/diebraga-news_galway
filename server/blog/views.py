@@ -19,7 +19,7 @@ class BlogPostDetailView(RetrieveAPIView):
     queryset = BlogPost.objects.order_by('-date_created')
     serializer_class = BlogPostSerializer
     lookup_field = 'slug'
-    permission_classes = (permissions.AllowAny, )
+
 
 class BlogPostFeaturedView(ListAPIView):
     # Retrieve featured post
@@ -28,10 +28,10 @@ class BlogPostFeaturedView(ListAPIView):
     lookup_field = 'slug'
     permission_classes = (permissions.AllowAny, )
 
+
 class BlogPostCategoryView(APIView):
     # Retrieve post by category.
     serializer_class = BlogPostSerializer
-    permission_classes = (permissions.AllowAny, )
 
     def post(self, request, format=None):
         data = self.request.data

@@ -15,23 +15,40 @@ const Readmore = (props) => {
 
   useEffect(() => {
     const slug = props.match.params.id;
+    // send auithorization in the localstorage through header
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `JWT ${localStorage.getItem('access')}`,
+        'Accept': 'application/json'
+      }
+    };
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/blog/${slug}`)
+      .get(`${process.env.REACT_APP_API_URL}/${slug}`, config)
       .then(res => {
         setPost(res.data);
       })
       .catch(err => {
         alert('Error connection!')
       });
-  }, [props.match.params.id]);
+    }, [props.match.params.id]);
+
 
   useEffect(() => {
     const id = post.author;
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `JWT ${localStorage.getItem('access')}`,
+        'Accept': 'application/json'
+      }
+    };
   
     if (id) {
       axios
-        .get(`${process.env.REACT_APP_API_URL}/api/authors/${id}`)
+        .get(`${process.env.REACT_APP_API_URL}/api/authors/${id}`, config)
         .then(res => {
           setAuthor(res.data);
         })

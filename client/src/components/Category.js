@@ -15,10 +15,12 @@ const Category = (props) => {
   useEffect(() => {
     const category = props.match.params.id;
     setCurrentCategory(category);
-
+    // send auithorization in the localstorage through header
     const config = {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `JWT ${localStorage.getItem('access')}`,
+        'Accept': 'application/json'
       }
     };
 

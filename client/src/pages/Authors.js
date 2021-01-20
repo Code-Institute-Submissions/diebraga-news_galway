@@ -23,6 +23,50 @@ const Authors = () => {
     fetchAuthor();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: ``,
+    message: '',
+  });
+
+  const { name, email, subject, message } = formData;
+
+  const [loading, setLoading] = useState(false);
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    setLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/api/contacts/`,
+        { name, email, subject, message },
+        config,
+      )
+      .then(res => {
+        setLoading(false);
+        window.scrollTo(0, 0);
+      })
+      .catch(err => {
+        setLoading(false);
+        window.scrollTo(0, 0);
+      });
+    };
+
   const getAuthors = () => {
     let list = [];
     let result = [];
@@ -71,6 +115,58 @@ const Authors = () => {
       </div>
     </div>
     {getAuthors()}
+    <div className='d-flex justify-content-center'>
+    <form className="form-group col-md-6 align-items-center mt-5" onSubmit={e => onSubmit(e)}>
+      <h4 className='mb-0'>Get in touch <FiCornerDownRight /></h4>
+      -
+      <input
+        className="form-control"
+        name="name"
+        type="text"
+        placeholder="Full Name"
+        onChange={e => onChange(e)}
+        value={name}
+        required
+      />
+      <input
+        className="form-control mt-3"
+        name="email"
+        type="email"
+        placeholder="Your Email"
+        onChange={e => onChange(e)}
+        value={email}
+        required
+      />
+      <input
+        className="form-control mt-3"
+        name="subject"
+        type="text"
+        placeholder="Subject"
+        onChange={e => onChange(e)}
+        value={subject}
+        required
+      />
+      <textarea
+        className="form-control mt-3"
+        name="message"
+        placeholder="Message"
+        onChange={e => onChange(e)}
+        value={message}
+        required
+      />
+      <br />
+      {loading ? (
+        <div>
+          Loading...
+        </div>
+      ) : (
+        <button className="btn btn-primary btn-lg btn-block" type="submit">
+          Send
+        </button>
+      )}
+      -
+    </form>
+    </div>
     </>
   );
 };

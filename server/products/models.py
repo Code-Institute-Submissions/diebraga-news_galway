@@ -6,7 +6,6 @@ from django.template.defaultfilters import slugify
 class Product(models.Model):
     # Model fields create products.
     title = models.CharField(max_length=50)
-    slug = models.SlugField()
     image = models.ImageField(upload_to='photos/%Y/%m/%d/')
     description = models.CharField(max_length=150, blank=False)
     # Price_id create on stripe dashboard

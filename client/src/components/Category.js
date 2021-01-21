@@ -26,7 +26,8 @@ const Category = (props) => {
 
     const fetchData = async () => {
       try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/blog/category`, { category }, config);
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}
+        /api/blog/category`, { category }, config);
         setPost(res.data);
       }
       catch (err) {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
+import { FiCornerDownLeft } from 'react-icons/fi';
 
 /**
  *  Page fetches api matching author id to 

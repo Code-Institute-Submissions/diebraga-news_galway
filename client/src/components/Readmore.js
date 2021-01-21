@@ -47,7 +47,7 @@ const Readmore = (props) => {
   
     if (id) {
       axios
-        .get(`https://galway-news.herokuapp.com/api/authors/${id}`, config)
+        .get(`${process.env.REACT_APP_API_URL}/api/authors/${id}`, config)
         .then(res => {
           setAuthor(res.data);
         })

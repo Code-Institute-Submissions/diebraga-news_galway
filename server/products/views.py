@@ -10,7 +10,7 @@ class ProductListView(ListAPIView):
     # Retrieve all products 
     queryset = Product.objects.order_by('-date_created')
     serializer_class = ProductSerializer
-    lookup_field = 'slug'
+    lookup_field = 'title'
     permission_classes = (permissions.AllowAny, )
 
 

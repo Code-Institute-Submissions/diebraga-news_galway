@@ -13,6 +13,7 @@ urlpatterns = [
     path('api/authors/', include('authors.urls')),
     path('api/contacts/', include('contacts.urls')),
     path('api/products/', include('products.urls')),
+    path('api/subscriptions/', include('subscriptions.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]

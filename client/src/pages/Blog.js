@@ -13,8 +13,17 @@ const Blog = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `JWT ${localStorage.getItem('access')}`,
+          'Accept': 'application/json'
+        }
+      };
+  
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/featured`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/featured`, config);
         setFeaturedPost(res.data[0]);
       }
       catch (err) {
@@ -28,8 +37,8 @@ const Blog = () => {
   useEffect(() => {
     const fetchPost = async () => {
     try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/`);
-        setPosts(res.data);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/`);
+      setPosts(res.data);
     }
     catch (err) {
       alert('Error connection!')

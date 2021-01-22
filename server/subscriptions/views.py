@@ -11,7 +11,7 @@ class SubscriptionListView(ListAPIView):
     queryset = Subscription.objects.order_by('-date_created')
     serializer_class = SubscriptionSerializer
     lookup_field = 'title'
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.IsAuthenticated, )
 
 
 

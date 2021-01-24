@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'storages',
     'products',
     'subscriptions',
+    'suggestions'
 ]
 
 MIDDLEWARE = [

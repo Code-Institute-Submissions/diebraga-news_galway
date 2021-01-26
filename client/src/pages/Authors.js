@@ -78,6 +78,13 @@ const Authors = () => {
           draggable: true,
           progress: undefined,
         });
+
+        setFormData({
+          name: '',
+          email: '',
+          subject: ``,
+          message: '',
+        })
       })
       .catch(err => {
         setLoading(false);
@@ -189,9 +196,9 @@ const Authors = () => {
           Loading...
         </div>
       ) : (
-        <button className="btn btn-primary btn-lg btn-block" type="submit">
-          Send
-        </button>
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
       )}
       -
     </form>

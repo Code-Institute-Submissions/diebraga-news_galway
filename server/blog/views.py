@@ -32,6 +32,7 @@ class BlogPostFeaturedView(ListAPIView):
 class BlogPostCategoryView(APIView):
     # Retrieve post by category.
     serializer_class = BlogPostSerializer
+    permission_classes = (permissions.AllowAny, )
 
     def post(self, request, format=None):
         data = self.request.data

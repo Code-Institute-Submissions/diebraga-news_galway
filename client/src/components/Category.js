@@ -15,19 +15,16 @@ const Category = (props) => {
   useEffect(() => {
     const category = props.match.params.id;
     setCurrentCategory(category);
-    // send auithorization in the localstorage through header
+
     const config = {
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `JWT ${localStorage.getItem('access')}`,
-        'Accept': 'application/json'
+        'Content-Type': 'application/json'
       }
     };
 
     const fetchData = async () => {
       try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}
-        /api/blog/category`, { category }, config);
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/blog/category`, { category }, config);
         setPost(res.data);
       }
       catch (err) {

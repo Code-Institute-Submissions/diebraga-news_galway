@@ -49,6 +49,16 @@ const Header = ({ isAuthenticated, logout }) => {
         <li className="nav-item">
           <Link className="nav-link" to='/authors'>Authors</Link >
         </li>
+        <li class="nav-item dropdown">
+          <Link class="nav-link dropdown-toggle" to="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            More
+          </Link>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <Link class="dropdown-item" to="/suggestions">Suggestion list</Link>
+            <Link class="dropdown-item" to="/suggest">Suggest</Link>
+            <Link class="dropdown-item" to="/reset_password">Change password</Link>
+          </div>
+        </li>
           { <>{ isAuthenticated ? authLinks : guestLinks }</> }
       </ul>
     </div>

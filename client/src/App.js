@@ -16,6 +16,7 @@ import Category from './components/Category';
 import Authors from './pages/Authors';
 import Profile from './components/Profile';
 import Suggestions from './pages/Suggestions';
+import PostSuggestion from './pages/PostSuggestion';
 
 import PrivateRoute from './components/PrivateRoute';
 import { Provider } from 'react-redux';
@@ -45,6 +46,7 @@ const App = () => (
           <Route exact path='/category/:id' component={Category} />
           <PrivateRoute exact path='/authors/:id' component={Profile} />
           <PrivateRoute exact path='/suggestions' component={Suggestions} />
+          <PrivateRoute exact path='/suggest' component={PostSuggestion} />
         </Switch>
       </Layout>
     </Router>

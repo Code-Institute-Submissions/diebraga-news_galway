@@ -15,12 +15,14 @@ import Readnore from './components/Readmore';
 import Category from './components/Category';
 import Authors from './pages/Authors';
 import Profile from './components/Profile';
+import Suggestions from './pages/Suggestions';
 
 import PrivateRoute from './components/PrivateRoute';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
 import Layout from './components/Layout';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => (
   <Provider store={store}>
@@ -40,8 +42,9 @@ const App = () => (
           <PrivateRoute exact path='/subscribe' component={Subscribe} />
           <PrivateRoute exact path='/shop' component={Shop} />
           <PrivateRoute exact path='/blog/:id' component={Readnore} />
-          <PrivateRoute exact path='/category/:id' component={Category} />
+          <Route exact path='/category/:id' component={Category} />
           <PrivateRoute exact path='/authors/:id' component={Profile} />
+          <PrivateRoute exact path='/suggestions' component={Suggestions} />
         </Switch>
       </Layout>
     </Router>

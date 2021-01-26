@@ -3,6 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
+import { toast, ToastContainer } from 'react-toastify';
 
 // Component fetchs api authors and list all them.
 
@@ -16,7 +17,15 @@ const Authors = () => {
         setAuthors(res.data);
     }
     catch (err) {
-      alert('Error connection!')
+      toast.error('Error connection!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
@@ -60,10 +69,29 @@ const Authors = () => {
       .then(res => {
         setLoading(false);
         window.scrollTo(0, 0);
+        toast.success('Message sent successfully!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       })
       .catch(err => {
         setLoading(false);
         window.scrollTo(0, 0);
+        toast.error('Error sending message!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
       });
     };
 
@@ -118,6 +146,7 @@ const Authors = () => {
     <div className='d-flex justify-content-center'>
     <form className="form-group col-md-6 align-items-center mt-5" onSubmit={e => onSubmit(e)}>
       <h4 className='mb-0'>Get in touch <FiCornerDownRight /></h4>
+      <ToastContainer />
       -
       <input
         className="form-control"

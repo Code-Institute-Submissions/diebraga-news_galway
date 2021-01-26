@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../redux/actions/auth';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Header = ({ isAuthenticated, logout }) => {
   const authLinks = (
@@ -60,6 +61,7 @@ const Header = ({ isAuthenticated, logout }) => {
           </div>
         </li>
           { <>{ isAuthenticated ? authLinks : guestLinks }</> }
+          <ToastContainer />
       </ul>
     </div>
   </nav>

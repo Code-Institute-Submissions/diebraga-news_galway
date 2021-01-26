@@ -16,6 +16,7 @@ import {
   AUTHENTICATED_FAIL,
   AUTHENTICATED_SUCCESS
 } from './types';
+import { toast } from 'react-toastify';
 
 export const checkAuthenticated = () => async dispatch => {
   if (typeof window == 'undefined') {
@@ -102,13 +103,30 @@ export const login = (email, password) => async dispatch => {
       type: LOGIN_SUCCESS,
       payload: res.data
     });
+    toast.success('Login successfull!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
     dispatch(load_user());
   } catch (err) {
     dispatch({
       type: LOGIN_FAIL
     });
-    alert('Authenticatioin failed!')
+    toast.error('Error authentication failed!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 };
 
@@ -132,7 +150,15 @@ export const signup = ({ name, email, password, re_password }) => async dispatch
     dispatch({
       type: SIGNUP_FAIL
     });
-    alert('Error Signup try again!')
+    toast.error('Error signup try again!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 };
 
@@ -156,7 +182,15 @@ export const verify = (uid, token) => async dispatch => {
     dispatch({
       type: ACTIVATION_FAIL
     });
-    alert('Error verifyig!');
+    toast.error('Error connection!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 };
 
@@ -165,7 +199,7 @@ export const reset_password = (email) => async dispatch => {
     headers: {
       'Content-Type': 'application/json'
     }
-    }
+  }
 
     const body = JSON.stringify({ email }); 
 
@@ -180,8 +214,16 @@ export const reset_password = (email) => async dispatch => {
       dispatch({
         type: RESET_PASSWORD_FAIL
       });
-      alert('Error reseting!')
-    }
+      toast.error('Error resetting!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      }
 };
 
 export const reset_password_confirm = (uid, token, new_password, re_new_password) => async dispatch => {
@@ -204,11 +246,28 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
     dispatch({
       type: RESET_PASSWORD_CONFIRM_FAIL
     });
-    alert('Error verifyig!')
+    toast.error('Error verifying!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   }
 };
 
 export const logout = () => dispatch => {
     dispatch({ type: LOGOUT });
-    alert('Logout succesfully!')
-};
+    toast.error('Error connection!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };

@@ -3,6 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
+import { toast, ToastContainer } from 'react-toastify';
 
 // Component fetches all post and list them
 // + Feature post ag the top
@@ -25,7 +26,15 @@ const Blog = () => {
         setFeaturedPost(res.data[0]);
       }
       catch (err) {
-        alert('Error connection!')
+        toast.error('Error connection!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     }
 
@@ -39,9 +48,9 @@ const Blog = () => {
       setPosts(res.data);
     }
     catch (err) {
-      alert('Error connection!')
+      // Display error only once
     }
-    }
+  }
 
     fetchPost();
   }, []);
@@ -101,6 +110,7 @@ const Blog = () => {
               <p className="mb-0"><Link to={`/blog/${featuredPost.slug}`} className="text-white">read more <FiCornerDownRight /></Link></p>
             </div>
           </div>
+          <ToastContainer />
           {getPosts()}
         </Fade>
       </div>

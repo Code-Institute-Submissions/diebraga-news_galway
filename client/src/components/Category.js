@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
+import { toast, ToastContainer } from 'react-toastify';
 
 /**
  *  Page match params between post and cayegory
@@ -28,7 +29,15 @@ const Category = (props) => {
         setPost(res.data);
       }
       catch (err) {
-        alert('Error connection!')
+        toast.error('Error connection!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     }
 
@@ -82,6 +91,7 @@ const Category = (props) => {
         </nav>
       </div>
       <hr />
+      <ToastContainer />
       {getCategoryBlogs()}
       <hr />
       <p className="p-2 p-md-2 mb-3"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>

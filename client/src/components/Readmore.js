@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Fade } from "react-awesome-reveal";
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
+import { toast, ToastContainer } from 'react-toastify';
 
 /**
  *  Component matchs the params between author and post
@@ -30,7 +31,15 @@ const Readmore = (props) => {
         setPost(res.data);
       })
       .catch(err => {
-        alert('Error connection!')
+        toast.error('Error connection!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
     }, [props.match.params.id]);
 
@@ -75,7 +84,7 @@ const Readmore = (props) => {
           {/* HTML rendered from backend to keep summernote styles */}
           <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
             <h6>Posted by: {author.name}</h6>
-            <hr />
+            <hr /><ToastContainer />
             <h5 className='p-1 p-md-1 mr-2'>{post.month} {post.day}</h5>
             <p className="p-2 p-md-2 mb-5"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
         </Fade>

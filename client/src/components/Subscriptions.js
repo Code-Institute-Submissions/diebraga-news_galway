@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FcMoneyTransfer } from 'react-icons/fc'
+import { toast, ToastContainer } from 'react-toastify';
 
 import { loadStripe } from '@stripe/stripe-js';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -24,11 +25,19 @@ export const Subscriptions = () => {
     };
 
     try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/subscriptions/`, config);
-        setSubscriptions(res.data);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/subscriptions/`, config);
+      setSubscriptions(res.data);
     }
     catch (err) {
-      alert('Error connection!')
+      toast.error('Error connection!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
@@ -96,6 +105,7 @@ export const Subscriptions = () => {
 
   return (
     <>
+    <ToastContainer />
     {getSubscriptions()}
     </>
   );

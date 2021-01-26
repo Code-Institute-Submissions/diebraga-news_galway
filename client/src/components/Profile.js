@@ -3,6 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownLeft } from 'react-icons/fi';
+import { toast, ToastContainer } from 'react-toastify';
 
 /**
  *  Page fetches api matching author id to 
@@ -32,7 +33,15 @@ const Profile = (props) => {
         setAuthor(res.data);
       })
       .catch(err => {
-        alert('Error connection!')
+        toast.error('Error connection!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   }, [props.match.params.id]);
     
@@ -41,7 +50,7 @@ const Profile = (props) => {
     <>
     <Fade duration={1200}>
       <div className="position-relative col mt-4 text-center mb-5">
-        -
+        -<ToastContainer />
         <div className="col p-4 d-flex flex-column position-static align-items-center">
           <img className='rounded-circle' width="230" height="230" src={author.photo} alt='' />
           <h3 className="mb-0 mt-4">{author.name}</h3>

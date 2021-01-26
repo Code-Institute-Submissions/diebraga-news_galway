@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 import { loadStripe } from '@stripe/stripe-js';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -26,7 +27,15 @@ export const Products = () => {
         setProducts(res.data);
     }
     catch (err) {
-      alert('Error connection!')
+      toast.error('Error connection!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
@@ -94,6 +103,7 @@ export const Products = () => {
 
   return (
     <>
+    <ToastContainer />
     {getProducts()}
     </>
   );

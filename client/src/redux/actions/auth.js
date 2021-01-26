@@ -261,7 +261,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
 
 export const logout = () => dispatch => {
     dispatch({ type: LOGOUT });
-    toast.error('Error connection!', {
+    toast.info('Logout successfully!', {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,

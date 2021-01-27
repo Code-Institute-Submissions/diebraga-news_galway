@@ -32,7 +32,7 @@ const PostSuggestion = () => {
     setLoading(true);
     axios
       .post(
-        `${process.env.REACT_APP_API_URL}/api/contacts/`,
+        `${process.env.REACT_APP_API_URL}/api/suggestions/create`,
         { topic, user, content },
         config,
       )
@@ -77,7 +77,7 @@ const PostSuggestion = () => {
       <div className="col-md-12 px-0">
         <h1 className="text-white">Suggestio request</h1>
         <h6 className="my-3 mt-5 text-white">...</h6>
-        <p className="mb-0"><Link to='/suggestions' className="text-white">Suggestion <FiCornerDownRight /></Link></p>
+        <p className="mb-0"><Link to='/suggestions' className="text-white">Suggestions <FiCornerDownRight /></Link></p>
       </div>
     </div>
     <div className='d-flex justify-content-center'>

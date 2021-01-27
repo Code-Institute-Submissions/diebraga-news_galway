@@ -10,25 +10,28 @@ class SuggestionListView(ListAPIView):
     queryset = Suggestion.objects.order_by('-date_created')
     serializer_class = SuggestionSerializer
     lookup_field = 'slug'
-    permission_classes = (permissions.IsAuthenticated, )
 
 
 class CreateSuggestion(CreateAPIView):
     queryset = Suggestion.objects.order_by('-date_created')
     queryset = Suggestion.objects.all()
     serializer_class = SuggestionSerializer
-    permission_classes = (permissions.IsAuthenticated, )
 
 
 class UpdateSuggestion(UpdateAPIView):
     queryset = Suggestion.objects.order_by('-date_created')
     serializer_class = SuggestionSerializer
     queryset = Suggestion.objects.all()
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAdminUser, )
 
 
 class DeleteSuggestion(RetrieveDestroyAPIView):
     queryset = Suggestion.objects.order_by('-date_created')
     serializer_class = SuggestionSerializer
     queryset = Suggestion.objects.all()
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAdminUser, )
+
+
+# The IsAdminUser permission class will deny permission to any user, unless user.is_staff is True in which case permission will be allowed.
+# This permission is suitable if you want your API to only be accessible to a subset of trusted administrators.
+

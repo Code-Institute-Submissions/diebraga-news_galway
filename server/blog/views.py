@@ -5,7 +5,7 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 from blog.models import BlogPost
 from blog.serializers import BlogPostSerializer
 
-
+# When permisson_classes is not setup default = IsAuthenticated
 class BlogPostListView(ListAPIView):
     # Retrieve all posts 
     queryset = BlogPost.objects.order_by('-date_created')

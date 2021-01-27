@@ -1,6 +1,5 @@
 from django.db import models
 from datetime import datetime
-from django.template.defaultfilters import slugify
 
 
 class Product(models.Model):

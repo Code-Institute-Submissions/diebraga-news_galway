@@ -3,7 +3,7 @@ from rest_framework import permissions
 from .models import Author
 from .serializers import AuthorSerializer
 
-
+# When permisson_classes is not setup default = IsAuthenticated
 class AuthorListView(ListAPIView):
     # List authors
     permission_classes = (permissions.AllowAny, )

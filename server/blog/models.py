@@ -5,11 +5,12 @@ from authors.models import Author
 
 
 class Categories(models.TextChoices):
-        # Categories
-        NEWS = 'news'
-        EVENTS = 'events'
-        GASTRONOMY = 'gastronomy'
-        JOBS = 'jobs'
+    # Categories
+    NEWS = 'news'
+    EVENTS = 'events'
+    GASTRONOMY = 'gastronomy'
+    JOBS = 'jobs'
+    
 
 class BlogPost(models.Model):
     # Model fields create posts and associate to authors model.

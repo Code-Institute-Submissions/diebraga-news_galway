@@ -192,13 +192,13 @@ const Authors = () => {
       />
       <br />
       {loading ? (
-        <div>
-          Loading...
-        </div>
-      ) : (
         <div className="spinner-border" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
+      ) : (
+        <button className="btn btn-primary btn-lg btn-block" type="submit">
+          Send
+        </button>
       )}
       -
     </form>

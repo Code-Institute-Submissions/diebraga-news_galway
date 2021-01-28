@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 // Component fetches all suggestions and list them
 
-const Blog = () => {
+const Suggestions = () => {
   const [suggestions, setSuggestions] = useState([])
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const Blog = () => {
         progress: undefined,
       });
     } catch (error) {
-      toast.error('Error deleting item!', {
+      toast.error('You do not have permission to delete this item!', {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -85,13 +85,14 @@ const Blog = () => {
   const getItems = () => {
       return suggestions && suggestions.map(({ id, user, topic, content }) => {
         return (
-          <div key={id} className="position-relative row mt-3">
-          <button type="button" class="btn-close" aria-label="Close" onClick={() => removeData(id)} />
-
+          <div key={id} className="mt-3 d-flex justify-content-between">
             <div className="col p-4 d-flex flex-column position-static">
-              <h3 className="mb-0">{user}</h3>
-              <h5 className="d-inline-block mb-2 text-primary mt-2">{topic}</h5>
+            <h3 className="mb-0">{user}</h3>
+            <h5 className="d-inline-block mb-2 text-primary mt-2">{topic}</h5>
               <p className="card-text mb-auto mr-2">{content}</p>
+            </div>
+            <div>
+              <button type="button" class="btn-close" aria-label="Close" onClick={() => removeData(id)} />
             </div>
           </div>
           )
@@ -102,8 +103,8 @@ const Blog = () => {
       <>
       <div className="p-4 p-md-5 text-light bg-primary">
         <div className="col-md-12 px-0">
-          <h1 className="text-white">Suggestioin list</h1>
-          <p className="my-3">...</p>
+          <h1 className="text-white">Suggestion list</h1>
+          <p className="my-3">Suggestions made by users. <b className="text-danger">note: Only staff can delete suggestions.</b></p>
           <p className="mb-0"><Link to='/suggest' className="text-white">Suggest <FiCornerDownRight /></Link></p>
         </div>
       </div>
@@ -117,4 +118,4 @@ const Blog = () => {
   )
 }
 
-export default Blog;
+export default Suggestions;

@@ -83,7 +83,8 @@ const Readmore = (props) => {
           </div>
           {/* HTML rendered from backend to keep summernote styles */}
           <div className='mt-5 mb-5' dangerouslySetInnerHTML={createBlog()} />
-            <h6>Posted by: {author.name}</h6>
+            <img className='rounded-circle' width="130" height="130" src={author.photo} alt={author.name}/>
+            <h6 className='mt-3'>Posted by: {author.name}</h6>
             <hr /><ToastContainer />
             <h5 className='p-1 p-md-1 mr-2'>{post.month} {post.day}</h5>
             <p className="p-2 p-md-2 mb-5"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>

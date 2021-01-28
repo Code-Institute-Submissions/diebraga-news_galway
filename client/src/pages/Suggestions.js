@@ -83,18 +83,20 @@ const Suggestions = () => {
   }
 
   const getItems = () => {
-      return suggestions && suggestions.map(({ id, user, topic, content }) => {
+      return suggestions && suggestions.map(({ id, user, topic }) => {
         return (
+          <>
           <div key={id} className="mt-3 d-flex justify-content-between">
             <div className="col p-4 d-flex flex-column position-static">
-            <h3 className="mb-0">{user}</h3>
-            <h5 className="d-inline-block mb-2 text-primary mt-2">{topic}</h5>
-              <p className="card-text mb-auto mr-2">{content}</p>
+              <h6 className="mb-0">{user}</h6>
+              <h6 className="d-inline-block mb-2 text-primary mt-2">{topic}</h6>
             </div>
             <div>
-              <button type="button" class="btn-close" aria-label="Close" onClick={() => removeData(id)} />
+              <button type="button" class="btn-close" aria-label="Close" onClick={() => removeData(id)} /><br />
+              <Link to={`/suggestions/${id}`} className="stretched-link mt-3"><FiCornerDownRight /></Link>
             </div>
           </div>
+          </>
           )
         })
       }

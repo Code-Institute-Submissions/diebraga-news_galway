@@ -17,6 +17,8 @@ import Authors from './pages/Authors';
 import Profile from './components/Profile';
 import Suggestions from './pages/Suggestions';
 import PostSuggestion from './pages/PostSuggestion';
+import test from './pages/test';
+import ReadSuggestion from './components/ReadSuggestion';
 
 import PrivateRoute from './components/PrivateRoute';
 import { Provider } from 'react-redux';
@@ -40,9 +42,11 @@ const App = () => (
           <Route exact path='/success' component={Success} />
           <Route exact path='/blog' component={Blog} />
           <Route exact path='/authors' component={Authors} />
+          <Route exact path='/test' component={test} />
           <PrivateRoute exact path='/subscribe' component={Subscribe} />
           <PrivateRoute exact path='/shop' component={Shop} />
           <PrivateRoute exact path='/blog/:id' component={Readnore} />
+          <PrivateRoute exact path='/suggestions/:id' component={ReadSuggestion} />
           <Route exact path='/category/:id' component={Category} />
           <PrivateRoute exact path='/authors/:id' component={Profile} />
           <PrivateRoute exact path='/suggestions' component={Suggestions} />

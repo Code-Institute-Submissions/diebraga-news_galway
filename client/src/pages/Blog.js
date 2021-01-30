@@ -69,17 +69,18 @@ const Blog = () => {
       axios.delete(`${URL}delete/${id}`, config).then(res => {
         const del = posts.filter(suggestion => id !== suggestion.id)
         setPosts(del)
+
+        toast.info('Item deleted!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });  
       })  
 
-      toast.info('Item deleted!', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
     } catch (error) {
       toast.error('You do not have permission to delete this item!', {
         position: "top-right",
@@ -148,11 +149,12 @@ const Blog = () => {
             </nav>
           </div>
 
-          <div className="p-4 p-md-5 text-light bg-primary row">
+          <div className="pt-4 p-md-5 text-light bg-primary row">
             <div className="col-md-12 px-0">
               <h1 className="text-white">{featuredPost.title}</h1>
               <p className="my-3">{featuredPost.excerpt}</p>
               <p className="mb-0"><Link to={`/blog/${featuredPost.slug}`} className="text-white">read more. <FiCornerDownRight /></Link></p>
+              <p className='text-danger mt-4'>Admins only can delete posts*</p>
             </div>
           </div>
           <ToastContainer />

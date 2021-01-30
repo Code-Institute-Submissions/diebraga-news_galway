@@ -3,7 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 // Component fetches all suggestions and list them
 
@@ -58,17 +58,18 @@ const Suggestions = () => {
       axios.delete(`${URL}delete/${id}`, config).then(res => {
         const del = suggestions.filter(suggestion => id !== suggestion.id)
         setSuggestions(del)
+
+        toast.info('Item deleted!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });  
       })  
 
-      toast.info('Item deleted!', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
     } catch (error) {
       toast.error('You do not have permission to delete this item!', {
         position: "top-right",
@@ -113,6 +114,7 @@ const Suggestions = () => {
       </div>
 
       <div className="container mt-3 mb-5">
+        <ToastContainer />
         <Fade duration={1200}>
           {getItems()}
         </Fade>

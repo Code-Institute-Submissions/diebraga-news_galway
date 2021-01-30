@@ -21,3 +21,4 @@ class UserAdminConfig(UserAdmin):
     ordering = ('email',)
 
 admin.site.register(UserAccount, UserAdminConfig)
+admin.site.site_header = 'Galway News Administrator'

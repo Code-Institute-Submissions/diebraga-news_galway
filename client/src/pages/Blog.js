@@ -110,8 +110,7 @@ const Blog = () => {
             <div className="mb-1 mt-4 text-muted">{Post.month} {Post.day}</div>
           read more <FiCornerDownRight />
           </Link>
-          <br />
-          <Link className='text-danger' aria-label="Close" onClick={() => removePost(Post.id)} >delete post.</Link>
+          <Link to='' className='text-danger' aria-label="Close" onClick={() => removePost(Post.id)} >delete post.</Link>
         </div>
         <div>
           <img className='d-none d-sm-block' width="180" height="230" src={Post.thumbnail} alt={Post.thumbnail} />
@@ -149,12 +148,12 @@ const Blog = () => {
             </nav>
           </div>
 
-          <div className="pt-4 p-md-5 text-light bg-primary row">
+          <div className="p-4 p-md-5 text-light bg-primary row">
             <div className="col-md-12 px-0">
               <h1 className="text-white">{featuredPost.title}</h1>
               <p className="my-3">{featuredPost.excerpt}</p>
               <p className="mb-0"><Link to={`/blog/${featuredPost.slug}`} className="text-white">read more. <FiCornerDownRight /></Link></p>
-              <p className='text-danger mt-4'>Admins only can delete posts*</p>
+              <p className='text-danger mt-3'>only staff can delete posts*</p>
             </div>
           </div>
           <ToastContainer />

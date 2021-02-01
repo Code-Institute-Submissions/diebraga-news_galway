@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
 import { toast, ToastContainer } from 'react-toastify';
-
+import AboutUs from '../components/AboutUs';
 // Component fetchs api authors and list all them.
 
 const Authors = () => {
@@ -112,9 +112,9 @@ const Authors = () => {
         <div className="position-relative col mt-3 text-center mb-5">
           <div className="col p-4 d-flex flex-column position-static align-items-center">
           <img className='rounded-circle' width="230" height="230" src={Author.photo} alt='' />
-            <h3 className="mb-0 mt-4">{Author.name}</h3>
-            <h5 className="mb-0 mt-2">{Author.role}</h5>
-            <Link to={`/authors/${Author.id}`} className="stretched-link mt-3">View profile <FiCornerDownRight /></Link>
+            <h3 className="mb-0 mt-4  text-white">{Author.name}</h3>
+            <h5 className="mb-0 mt-2 text-white">{Author.role}</h5>
+            <Link to={`/authors/${Author.id}`} className="stretched-link mt-3 text-white">View profile <FiCornerDownRight /></Link>
           </div>
         </div>
       </Fade>
@@ -141,18 +141,10 @@ const Authors = () => {
 
   return (
     <>
-    <div className="container mt-5 mb-3">
-      <div className="p-4 p-md-5 text-light bg-primary row">
-        <div className="col-md-12 px-0">
-          <h1 className="text-white">Authors</h1>
-          <h6 className="my-3 mt-5 text-white">Meet our developers and content creators <FiCornerDownRight /></h6>
-        </div>
-      </div>
-    </div>
-    {getAuthors()}
-    <div className='d-flex justify-content-center'>
+    <AboutUs />
+    <div className='d-flex justify-content-center mt-5 mb-5'>
     <form className="form-group col-md-6 align-items-center mt-5" onSubmit={e => onSubmit(e)}>
-      <h4 className='mb-0'>Get in touch <FiCornerDownRight /></h4>
+      <h3 className='mb-0'>Get in touch <FiCornerDownRight /></h3>
       <ToastContainer />
       -
       <input
@@ -202,6 +194,15 @@ const Authors = () => {
       )}
       -
     </form>
+    </div>
+    <div className="p-4 p-md-5 bg-primary">
+      <div className=" p-md-5">
+        <div className="col-md-12 px-0">
+          <h1 className="text-white">Authors</h1>
+          <h6 className="my-3 mt-5 text-white">Meet our developers and content creators <FiCornerDownRight /></h6>
+          {getAuthors()}
+        </div>
+      </div>
     </div>
     </>
   );

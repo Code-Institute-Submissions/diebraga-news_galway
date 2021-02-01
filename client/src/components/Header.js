@@ -48,7 +48,7 @@ const Header = ({ isAuthenticated, logout }) => {
           <Link className="nav-link" to='/shop'>Shop</Link >
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to='/authors'>Authors</Link >
+          <Link className="nav-link" to='/authors'>About</Link >
         </li>
         <li class="nav-item dropdown">
           <Link class="nav-link dropdown-toggle" to="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

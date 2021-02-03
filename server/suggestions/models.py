@@ -1,10 +1,11 @@
 from django.db import models
 from datetime import datetime
 from django.template.defaultfilters import slugify
+from accounts.models import UserAccount
 
 
 class Suggestion(models.Model):
-    user = models.EmailField(max_length=950)
+    user = models.ForeignKey(UserAccount, on_delete=models.DO_NOTHING, editable=False,null=True,blank=True)
     topic = models.CharField(max_length=50)
     slug = models.SlugField(blank=True)
     content = models.TextField(max_length=950, blank=False)

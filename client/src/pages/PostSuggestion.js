@@ -7,11 +7,10 @@ import { toast, ToastContainer } from 'react-toastify';
 const PostSuggestion = () => {
   const [formData, setFormData] = useState({
     topic: '',
-    user: '',
     content: ``,
   });
 
-  const { topic, user, content } = formData;
+  const { topic, content } = formData;
 
   const [loading, setLoading] = useState(false);
 
@@ -33,7 +32,7 @@ const PostSuggestion = () => {
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/api/suggestions/create`,
-        { topic, user, content },
+        { topic, content },
         config,
       )
       .then(res => {
@@ -51,7 +50,6 @@ const PostSuggestion = () => {
 
         setFormData({
           topic: '',
-          user: '',
           content: ``,      
         })
       })
@@ -85,15 +83,6 @@ const PostSuggestion = () => {
       <h4 className='mb-0'>Make your suggestion<FiCornerDownRight /></h4>
       <ToastContainer />
       -
-     <input
-        className="form-control mt-3"
-        name="user"
-        type="email"
-        placeholder="Your email account"
-        onChange={e => onChange(e)}
-        value={user}
-        required
-      />
       <input
         className="form-control mt-3"
         name="topic"

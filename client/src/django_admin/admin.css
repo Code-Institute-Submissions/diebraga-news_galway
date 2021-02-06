@@ -1,25 +1,94 @@
+#container {
+  background-color: black;
+}
+
+.login {
+  background-color: black !important;
+}
+
+#content-related {
+  background: black;
+}
+
 #header {
   height: 50px;
   background-color: black;
   color: #fff;
 }
 
-#branding h1 {
-  color: #fff;
+#user-tools {
+  color: #79AEC8;
 }
 
-a:link,
-a:visited {
-  color: white;
+#branding h1 {
+  color: #fff;
+  font-weight: 400;
+}
+
+.app-authors {
+  background-color: black;
+}
+
+.app-auth {
+  background-color: black;
+}
+
+.app-authtoken {
+  background-color: black;
+}
+
+.app-accounts {
+  background-color: black;
+}
+
+.app-blog {
+  background-color: black;
+}
+
+.app-contacts {
+  background-color: black;
+}
+
+.app-django_summernote {
+  background-color: black;
 }
 
 div.breadcrumbs {
   background-color: black;
+}
+
+.app-products {
+  background-color: black;
+}
+
+.app-subscriptions {
+  background-color: black;
+}
+
+.app-suggestions {
+  background-color: black;
+}
+
+div.breadcrumbs tbody {
+  color: black;
+  background: black;
+}
+
+h2 {
   color: white;
 }
 
-div.breadcrumbs a {
-  color: #333;
+#changelist {
+  background: black;
+}
+
+#changelist-filter {
+  background: black !important;
+}
+
+
+.paginator {
+  background: black !important;
 }
 
 .module h2, .module caption, .inline-group h2 {
@@ -27,6 +96,20 @@ div.breadcrumbs a {
 }
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
-  background-color: #328da8;
+  background-color: black;
   color: #fff;
+  border-radius: 0;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row:hover {
+  background-color: white;
+  color: #000000;
+}
+
+h2, h1 {
+  color: #fff !important;
+}
+
+p {
+  color: rgb(99, 97, 97) !important;
 }

@@ -17,7 +17,7 @@ import Authors from './pages/Authors';
 import Profile from './components/Profile';
 import Suggestions from './pages/Suggestions';
 import PostSuggestion from './pages/PostSuggestion';
-import test from './pages/test';
+import Account from './pages/Account';
 import ReadSuggestion from './components/ReadSuggestion';
 
 import PrivateRoute from './components/PrivateRoute';
@@ -42,7 +42,7 @@ const App = () => (
           <Route exact path='/success' component={Success} />
           <Route exact path='/blog' component={Blog} />
           <Route exact path='/authors' component={Authors} />
-          <Route exact path='/test' component={test} />
+          <PrivateRoute exact path='/account' component={Account} />
           <PrivateRoute exact path='/subscribe' component={Subscribe} />
           <PrivateRoute exact path='/shop' component={Shop} />
           <PrivateRoute exact path='/blog/:id' component={Readnore} />

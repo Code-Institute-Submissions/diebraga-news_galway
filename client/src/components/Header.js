@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../redux/actions/auth';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const Header = ({ isAuthenticated, logout }) => {
   const authLinks = (
     <li className="nav-item">
-      <a className='nav-link' onClick={logout} href='/'>Logout</a>
+      <a className='nav-link' onClick={logout} href='/'>Logout </a>
     </li>
   );
 
@@ -50,16 +51,16 @@ const Header = ({ isAuthenticated, logout }) => {
         <li className="nav-item">
           <Link className="nav-link" to='/authors'>About</Link >
         </li>
-        <li class="nav-item dropdown">
-          <Link class="nav-link dropdown-toggle" to="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li className="nav-item dropdown">
+          <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             More
           </Link>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <Link class="dropdown-item" to="/suggestions">Suggestion list</Link>
-            <Link class="dropdown-item" to="/suggest">Suggest</Link>
-            <Link class="dropdown-item" to="/reset_password">Change password</Link>
+          <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <Link className="dropdown-item" to="/suggestions">Suggestion list</Link>
+            <Link className="dropdown-item" to="/suggest">Suggest</Link>
+            <Link className="dropdown-item" to="/account">Account</Link>
           </div>
-        </li>
+        </li >
           { <>{ isAuthenticated ? authLinks : guestLinks }</> }
           <ToastContainer />
       </ul>

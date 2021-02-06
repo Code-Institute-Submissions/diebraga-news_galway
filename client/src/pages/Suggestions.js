@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
 import { toast, ToastContainer } from 'react-toastify';
 import { FiEdit } from 'react-icons/fi';
+import { GrClose } from 'react-icons/gr';
 import { Button, Accordion, Card } from 'react-bootstrap';
 // Component fetches all suggestions and list them
 
@@ -146,7 +147,7 @@ const Suggestions = () => {
           <>
           <div className="d-flex justify-content-start">
             <div>
-              <button type="button" className="btn-close btn btn-light text-primary" aria-label="Close" onClick={() => deleteSuggestion(id)} /><br />
+              <button type="button" className="btn btn-light text-primary" aria-label="Close" onClick={() => deleteSuggestion(id)} ><GrClose /></button><br />
               <Accordion>
                 <Accordion.Toggle as={Button} className='btn btn-light' variant="link" eventKey="0">
                   <FiEdit />

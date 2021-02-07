@@ -6,7 +6,7 @@ import { FiCornerDownLeft } from 'react-icons/fi';
 import { toast, ToastContainer } from 'react-toastify';
 
 /**
- *  Page fetches api matching author id to 
+ *  Page fetches api matching suggestion id to 
  *  show his profile.
  * 
  *  Get in touch saves message in the database
@@ -14,7 +14,7 @@ import { toast, ToastContainer } from 'react-toastify';
  */
 
 const Profile = (props) => {
-  const [author, setAuthor] = useState({});
+  const [suggestion, setSuggestion] = useState({});
 
   useEffect(() => {
     const id = props.match.params.id;
@@ -30,7 +30,7 @@ const Profile = (props) => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/suggestions/${id}`, config)
       .then(res => {
-        setAuthor(res.data);
+        setSuggestion(res.data);
       })
       .catch(err => {
         toast.error('Error connection!', {
@@ -52,12 +52,13 @@ const Profile = (props) => {
           <Fade duration={1200}>
           <div className="p-4 p-md-5 text-light bg-primary row">
             <div className="col-md-12 px-0">
-              <h1 className="text-white">{author.topic}</h1>
-              <h5 className="my-3 mt-5 text-white">{author.user}</h5>
+              <h1 className="text-white">{suggestion.topic}</h1>
+              <h5 className="my-3 mt-5 text-white">{suggestion.user}</h5>
             </div>
           </div>
+          <ToastContainer />
           <div className='mt-5 mb-5'/>
-            <p>{author.content}</p>
+            <p>{suggestion.content}</p>
           </Fade>
           <p className="p-2 p-md-2 mb-5"><Link to='/suggestions' className="font-weight-bold"><FiCornerDownLeft /> Back to Suggestions list</Link></p>
         </div>

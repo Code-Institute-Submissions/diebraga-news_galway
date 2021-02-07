@@ -73,7 +73,7 @@ const PostSuggestion = () => {
     <>
     <div className="p-4 p-md-5 text-light bg-primary">
       <div className="col-md-12 px-0">
-        <h1 className="text-white">Suggestio request</h1>
+        <h1 className="text-white">Suggestion request</h1>
         <h6 className="my-3 mt-5 text-white">Your suggestion help us to improve our webstite, links, articles or any query.</h6>
         <p className="mb-0"><Link to='/suggestions' className="text-white">Suggestions <FiCornerDownRight /></Link></p>
       </div>
@@ -87,6 +87,7 @@ const PostSuggestion = () => {
         className="form-control mt-3"
         name="topic"
         type="text"
+        minLength='4'
         placeholder="Your topic"
         onChange={e => onChange(e)}
         value={topic}
@@ -95,6 +96,7 @@ const PostSuggestion = () => {
       <textarea
         className="form-control mt-3"
         name="content"
+        minLength='20'
         placeholder="Content"
         onChange={e => onChange(e)}
         value={content}

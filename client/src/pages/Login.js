@@ -3,6 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../redux/actions/auth';
+import { ToastContainer } from 'react-toastify';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -61,6 +62,7 @@ const Login = ({ login, isAuthenticated }) => {
           Forgot your Password? <Link to='/reset_password'>Reset Password</Link>
         </p>
       </Fade>
+      <ToastContainer />
     </div>
   );
 };

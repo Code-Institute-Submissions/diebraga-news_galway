@@ -3,6 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { signup } from '../redux/actions/auth';
+import { ToastContainer } from 'react-toastify';
 
 const Register = ({ signup, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -108,6 +109,7 @@ const Register = ({ signup, isAuthenticated }) => {
         </small>
       </label>
       </Fade>
+      <ToastContainer />
     </div>
   );
 };

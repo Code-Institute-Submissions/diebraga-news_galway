@@ -3,7 +3,7 @@ from .models import Suggestion
 
 
 class SuggestionSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+    user = serializers.PrimaryKeyRelatedField(source='user.email', read_only=True, default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Suggestion

@@ -142,7 +142,7 @@ const Suggestions = () => {
 
   
   const getItems = () => {
-      return suggestions && suggestions.map(({ id, topic, slug }) => {
+      return suggestions && suggestions.map(({ id, topic, slug, user }) => {
         return (
           <>
           <div className="d-flex justify-content-start">
@@ -178,7 +178,8 @@ const Suggestions = () => {
             <div key={slug}>
               <Link to={`/suggestions/${id}`}>
                 <div className="col p-4 d-flex flex-column position-static">
-                  <h3 className="d-inline-block text-primary mt-2">{topic}  <FiCornerDownRight /></h3>
+                  <h2 className='h6'>{user}</h2>
+                  <h1 className="h3 d-inline-block text-primary mt-2">{topic} <FiCornerDownRight /></h1>
                 </div>
               </Link>
             </div>

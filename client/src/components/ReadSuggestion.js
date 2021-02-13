@@ -52,8 +52,8 @@ const Profile = (props) => {
           <Fade duration={1200}>
           <div className="p-4 p-md-5 text-light bg-primary row">
             <div className="col-md-12 px-0">
-              <h1 className="text-white">{suggestion.topic}</h1>
-              <h5 className="my-3 mt-5 text-white">{suggestion.user}</h5>
+              <h1 className="h3 text-white">{suggestion.topic}</h1>
+              <h2 className="h6 my-3 mt-5 text-white">{suggestion.user}</h2>
             </div>
           </div>
           <ToastContainer />

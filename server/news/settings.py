@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'storages',
     'products',
     'subscriptions',
-    'suggestions'
+    'suggestions',
+    'comments'
 ]
 
 MIDDLEWARE = [
@@ -82,17 +83,17 @@ WSGI_APPLICATION = 'news.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # Use db sqlite in development!
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    }
+}
 
 # Use in production!
-DATABASES = {
-    'default': dj_database_url.parse(config('DATABASE_URL'))
-}
+# DATABASES = {
+#     'default': dj_database_url.parse(config('DATABASE_URL'))
+# }
 
 # Email 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

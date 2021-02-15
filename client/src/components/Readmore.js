@@ -4,7 +4,7 @@ import { Fade } from "react-awesome-reveal";
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight, FiCornerDownLeft } from 'react-icons/fi';
 import { toast, ToastContainer } from 'react-toastify';
-
+import Comment from './Comments';
 /**
  *  Component matchs the params between author and post
  *  to render them in the page.
@@ -41,7 +41,8 @@ const Readmore = (props) => {
           progress: undefined,
         });
       });
-    }, [props.match.params.id]);
+    }, [props.match.params.id, post]);
+
 
   useEffect(() => {
     const id = post.author;
@@ -86,7 +87,9 @@ const Readmore = (props) => {
             <img className='rounded-circle' width="130" height="130" src={author.photo} alt={author.name}/>
             <h6 className='mt-3'>Posted by: {author.name}</h6>
             <hr /><ToastContainer />
-            <h5 className='p-1 p-md-1 mr-2'>{post.month} {post.day}</h5>
+            <h5 className='p-1 p-md-1 mr-2'>{post.date_created}</h5>
+            <p className="p-2 p-md-2 mt-3"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
+            <Comment post={post.id} postItem={post.comments}/>
             <p className="p-2 p-md-2 mb-5"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
         </Fade>
       </div>

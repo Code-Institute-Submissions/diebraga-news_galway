@@ -7,7 +7,7 @@ from blog.models import BlogPost
 class Comment(models.Model):
     user = models.ForeignKey(UserAccount, related_name='comments', on_delete=models.CASCADE, editable=False,null=True,blank=True)
     post = models.ForeignKey(BlogPost, related_name='comments', on_delete=models.CASCADE)
-    content = models.TextField(max_length=950, blank=False)
+    content = models.TextField(max_length=500, blank=False)
     date_created = models.DateTimeField(default=datetime.now, blank=True)
 
     @property

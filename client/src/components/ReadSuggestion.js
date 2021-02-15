@@ -58,7 +58,7 @@ const Profile = (props) => {
           </div>
           <ToastContainer />
           <div className='mt-5 mb-5'/>
-            <p>{suggestion.content}</p>
+            <p style={{ overflowWrap: 'break-word'}}>{suggestion.content}</p>
           </Fade>
           <p className="p-2 p-md-2 mb-5"><Link to='/suggestions' className="font-weight-bold"><FiCornerDownLeft /> Back to Suggestions list</Link></p>
         </div>

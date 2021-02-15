@@ -1,13 +1,58 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { FiCornerDownRight } from 'react-icons/fi';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { FiEdit } from 'react-icons/fi';
+import { GrClose } from 'react-icons/gr';
+import { Button, Accordion, Card } from 'react-bootstrap';
 
 const Comments = (props) => {
   const [comment, setComment] = useState('');
+  const [newContent, setNewContent] = useState('');
 
   const [loading, setLoading] = useState(false);
 
+  const updateSuggestion = (id) => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `JWT ${localStorage.getItem('access')}`,
+          'Accept': 'application/json'
+        }
+      };
+  
+      axios.put(`${process.env.REACT_APP_API_URL}/api/comments/update/${id}`, { 
+        id: props.postItem.id, 
+        content: newContent,
+        post: props.post
+       }, config).then(
+        (response) => {
+          setComment('');    
+          toast.info('Item updated!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });        
+        });
+
+      } catch (error) {
+        toast.error('Error updating item!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });  
+      }
+    };
   const handleChange = (e) => {
     setComment(e.currentTarget.value)
   }
@@ -41,13 +86,18 @@ const Comments = (props) => {
         setLoading(false);
 
       });
-  
   }
 
 
   return (
     <>
-    <div className='d-flex justify-content-center mt-5'>
+      <div className="p-4 p-md-5">
+        <div className="col-md-12 px-0">
+          <h1 className="">Comment list</h1>
+          <p className="my-3">Comments made by users. <b className="text-danger">note: only authors can delete or edit they own comments.</b></p>
+        </div>
+      </div>
+    <div className='d-flex justify-content-center'>
     <form className="form-group col-md-9 align-items-center mt-2" onSubmit={onSubmit}>
       <h4 className='mb-0'>Make your comment<FiCornerDownRight /></h4>
       <ToastContainer />
@@ -75,12 +125,30 @@ const Comments = (props) => {
       -
     </form>
     </div>
-    <h4 className='mt-5'>Comments</h4>
+
     <hr />
       {props?.postItem?.map(item => 
         <div className='mt-4' key={item.id}>
           <h6>{item.user_name}</h6>
           <p style={{ overflowWrap: 'break-word'}}>{item.content}</p>
+          <Accordion>
+            <Accordion.Toggle as={Button} className='btn btn-light btn-sm' variant="link" eventKey="0">
+              <FiEdit />
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body className="position-sticky">
+              <textarea
+                className="form-control mt-3"
+                placeholder="Content"
+                onChange={(event) => {setNewContent(event.target.value);}}
+                required
+              />
+              <Button className="mt-2" variant="primary" onClick={() => {updateSuggestion(item.id)}}>
+                Save
+              </Button>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Accordion>
           <p style={{ fontSize: '10px' }}>{item.date_created}</p>
           <hr />
         </div>

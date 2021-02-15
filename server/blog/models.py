@@ -20,8 +20,6 @@ class BlogPost(models.Model):
     category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.NEWS)
     thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     excerpt = models.CharField(max_length=150, blank=False)
-    month = models.CharField(max_length=3)
-    day = models.CharField(max_length=2)
     content = models.TextField()
     featured = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.now, blank=True)

@@ -13,7 +13,37 @@ const Comments = (props) => {
 
   const [loading, setLoading] = useState(false);
 
-  const updateSuggestion = (id) => {
+  const deleteComment = async (id) => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `JWT ${localStorage.getItem('access')}`,
+          'Accept': 'application/json'
+        }
+      };
+  
+      axios.delete(`${process.env.REACT_APP_API_URL}/api/comments/delete/${id}`, config)
+        .then(res => {
+        const del = props.postI.filter(item => id !== item.id)
+        props.setPost(del)
+
+      })  
+
+    } catch (error) {
+      toast.error('Error removing item!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
+
+  const updateComment = (id) => {
     try {
       const config = {
         headers: {
@@ -73,7 +103,6 @@ const Comments = (props) => {
       }
     };
     
-
     setLoading(true);
     axios
       .post(
@@ -129,27 +158,32 @@ const Comments = (props) => {
     <hr />
       {props?.postItem?.map(item => 
         <div className='mt-4' key={item.id}>
+          <div className='d-flex justify-content-between'>
           <h6>{item.user_name}</h6>
-          <p style={{ overflowWrap: 'break-word'}}>{item.content}</p>
-          <Accordion>
-            <Accordion.Toggle as={Button} className='btn btn-light btn-sm' variant="link" eventKey="0">
-              <FiEdit />
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body className="position-sticky">
-              <textarea
-                className="form-control mt-3"
-                placeholder="Content"
-                onChange={(event) => {setNewContent(event.target.value);}}
-                required
-              />
-              <Button className="mt-2" variant="primary" onClick={() => {updateSuggestion(item.id)}}>
-                Save
-              </Button>
-              </Card.Body>
-            </Accordion.Collapse>
-          </Accordion>
           <p style={{ fontSize: '10px' }}>{item.date_created}</p>
+          </div>
+          <p style={{ overflowWrap: 'break-word'}}>{item.content}</p>
+          <div className='d-flex justify-content-start'>
+            <Accordion>
+              <Accordion.Toggle as={Button} className='btn btn-light btn-sm' variant="link" eventKey="0">
+                <FiEdit />
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body className="position-sticky">
+                <textarea
+                  className="form-control mt-3"
+                  placeholder="Content"
+                  onChange={(event) => {setNewContent(event.target.value);}}
+                  required
+                />
+                <Button className="mt-2" variant="primary" onClick={() => {updateComment(item.id)}}>
+                  Save
+                </Button>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Accordion>
+            <Button type="button" className="btn btn-light btn-sm" aria-label="Close" onClick={() => deleteComment(item.id)} ><GrClose /></Button><br />
+          </div>
           <hr />
         </div>
       )} 

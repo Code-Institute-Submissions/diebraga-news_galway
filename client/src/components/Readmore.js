@@ -89,7 +89,7 @@ const Readmore = (props) => {
             <hr /><ToastContainer />
             <h5 className='p-1 p-md-1 mr-2'>{post.date_created}</h5>
             <p className="p-2 p-md-2 mt-3"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
-            <Comment post={post.id} postItem={post.comments}/>
+            <Comment post={post.id} postItem={post.comments} postI={post} setPost={setPost}/>
             <p className="p-2 p-md-2 mb-5"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
         </Fade>
       </div>

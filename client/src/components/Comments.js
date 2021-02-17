@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FiCornerDownRight } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
 import { FiEdit } from 'react-icons/fi';
 import { GrClose } from 'react-icons/gr';
 import { Button, Accordion, Card } from 'react-bootstrap';
@@ -110,6 +109,15 @@ const Comments = (props) => {
       .then(res => {
         setLoading(false);
         setComment('');
+        toast.success('Comment added!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });        
       })
       .catch(err => {
         setLoading(false);

@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
+import { logout } from '../redux/actions/auth';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Accordion, Card } from 'react-bootstrap';
 import { FiCornerDownRight } from 'react-icons/fi';
 import { toast, ToastContainer } from 'react-toastify';
 
-const Account = () => {
+const Account = ({ logout }) => {
   const [user, setUser] = useState([])
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [user])
 
   const getData = async () => {
     const URL = `${process.env.REACT_APP_API_URL}/auth/users/me/`
@@ -57,7 +59,7 @@ const Account = () => {
         name: newName 
        }, config).then(
         (response) => {setUser(response)
-          window.location.reload();
+          
         });
 
       } catch (error) {
@@ -104,11 +106,12 @@ const Account = () => {
                   </Card.Body>
                 </Accordion.Collapse>
               </Accordion>
-              <p style={{cursor: 'not-allowed'}}>Email: &nbsp;{user.email}</p>
-              <p><Link to='/reset_password' className="text-info">Change password</Link></p>
-              <p style={{cursor: 'not-allowed'}}>User_id: &nbsp;{user.id}</p><br />
+              <p style={{cursor: 'not-allowed'}}>Email: &nbsp;<b className="text-info">{user.email}</b></p>
+              <p>Password: <Link to='/reset_password' className="text-info">&nbsp; change password</Link></p>
+              <p style={{cursor: 'not-allowed'}}>Userid: &nbsp;<b className="text-info">{user.id}</b></p><br />
               <p><Link to='/' className="text-white">Home Page <FiCornerDownRight /></Link></p>
               <p><Link to='/blog' className="text-white">Blog Posts <FiCornerDownRight /></Link></p>
+              <a className='text-danger' onClick={logout} href='/'>Logout <FiCornerDownRight /></a>
             </div>
           </div>
         </Fade>
@@ -118,4 +121,8 @@ const Account = () => {
   );
 };
 
-export default Account;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+  });
+  
+export default connect(mapStateToProps, { logout })(Account);

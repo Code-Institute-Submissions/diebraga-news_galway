@@ -21,7 +21,6 @@ class EditCustomPermission(BasePermission):
 class CommentListView(ListAPIView):
     queryset = Comment.objects.order_by('-date_created')
     serializer_class = CommentSerializer
-    permission_classes = (permissions.AllowAny, )
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

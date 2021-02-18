@@ -11,6 +11,7 @@ const stripePromise = loadStripe(`${process.env.REACT_APP_PUBLIC_KEY}`);
 export const Products = () => {
   const [products, setProducts] = useState([]);
 
+  // Render product items
   useEffect(() => {
     const fetchProduct = async () => {
 

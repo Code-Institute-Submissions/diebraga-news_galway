@@ -11,7 +11,7 @@ const stripePromise = loadStripe(`${process.env.REACT_APP_PUBLIC_KEY}`);
 
 export const Subscriptions = () => {
   const [subscriptions, setSubscriptions] = useState([]);
-
+  //  List Subscription items
   useEffect(() => {
     const fetchSubscriptions = async () => {
 
@@ -76,7 +76,7 @@ export const Subscriptions = () => {
         <div className="card-body">
         <FcMoneyTransfer className="card-img-top" style={{ height: '200px' }}/>
           <h5 className="card-title">{Subscription.price}€</h5>
-          <h6 className="card-text">montly</h6>
+          <h6 className="card-text">montlhy</h6>
           <button className='btn btn-primary btn-block' role="link" onClick={handleSubit}>
             SUBSCRIBE
           </button>

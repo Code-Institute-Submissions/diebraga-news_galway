@@ -4,7 +4,8 @@ from .models import Comment
 
 class CommentSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(source='user.email', read_only=True, default=serializers.CurrentUserDefault())
-
+    # Save current logged user that make the comment and return aser email instead of user id
+    
     class Meta:
         model = Comment
         fields = '__all__'

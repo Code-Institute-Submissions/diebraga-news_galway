@@ -6,6 +6,7 @@ from .serializers import CommentSerializer
 from rest_framework.permissions import SAFE_METHODS, BasePermission
 
 
+# Custom permission if user is not the creator return error
 class EditCustomPermission(BasePermission):
     message = 'Editing Comments is restricted to the creator only.'
 
@@ -19,6 +20,7 @@ class EditCustomPermission(BasePermission):
 
 # If non permission classes default is IsAuthenticated
 class CommentListView(ListAPIView):
+    # List all comments
     queryset = Comment.objects.order_by('-date_created')
     serializer_class = CommentSerializer
 
@@ -27,18 +29,21 @@ class CommentListView(ListAPIView):
 
 
 class CommentView(RetrieveAPIView):
+    # List comment by id
     queryset = Comment.objects.order_by('-date_created')
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
 
 class CreateComment(CreateAPIView):
+    # Create comment
     queryset = Comment.objects.order_by('-date_created')
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
 
 class UpdateComment(UpdateAPIView, EditCustomPermission):
+    # Update Comment 'authopr only'
     queryset = Comment.objects.order_by('-date_created')
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
@@ -46,6 +51,7 @@ class UpdateComment(UpdateAPIView, EditCustomPermission):
 
 
 class DeleteComment(RetrieveDestroyAPIView, EditCustomPermission):
+    # Delete Comment 'authopr only'
     queryset = Comment.objects.order_by('-date_created')
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()

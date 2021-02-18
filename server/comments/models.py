@@ -11,6 +11,7 @@ class Comment(models.Model):
     date_created = models.DateTimeField(default=datetime.now, blank=True)
 
     @property
+    # Create property returns user name as 'user_name'
     def user_name(self):
         return self.user.name
 

@@ -12,8 +12,10 @@ const Comments = (props) => {
 
   const [loading, setLoading] = useState(false);
 
+  // Delete request for comment
   const deleteComment = async (id) => {
     try {
+      // Headers with token authorization in the request
       const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -42,8 +44,10 @@ const Comments = (props) => {
     }
   }
 
+  // Update Request for comments
   const updateComment = (id) => {
     try {
+            // Headers with token authorization in the request
       const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -86,14 +90,17 @@ const Comments = (props) => {
     setComment(e.currentTarget.value)
   }
 
+  // Handle Submition form in post request
   const onSubmit = (e) => {
     e.preventDefault();
 
+    // Body in the request the user it's sent by default in the api
     const body = {
       content: comment,
       post: props.post
     }
 
+    // Headers with token authentication in the request
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -136,6 +143,7 @@ const Comments = (props) => {
       </div>
     <div className='d-flex justify-content-center'>
     <form className="form-group col-md-9 align-items-center mt-2" onSubmit={onSubmit}>
+      {/*  Form */}
       <h4 className='mb-0'>Make your comment<FiCornerDownRight /></h4>
       <ToastContainer />
       -
@@ -164,6 +172,7 @@ const Comments = (props) => {
     </div>
 
     <hr />
+    {/* Comment list */}
       {props?.postItem?.map(item => 
         <div className='mt-4' key={item.id}>
           <div className='d-flex justify-content-between'>

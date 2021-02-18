@@ -15,6 +15,7 @@ const Suggestions = () => {
 
   const [suggestions, setSuggestions] = useState([])
 
+  // Render suggestion list
   useEffect(() => {
     getData()
   }, [])
@@ -50,7 +51,8 @@ const Suggestions = () => {
 
   const deleteSuggestion = (id) => {
     const URL = `${process.env.REACT_APP_API_URL}/api/suggestions/`
-
+    // Delete request'author only'
+    // Headers with authentication
     try {
       const config = {
         headers: {
@@ -89,6 +91,8 @@ const Suggestions = () => {
   }
 
   const updateSuggestion = (id) => {
+    // Put request 'author only'
+    // Authentication headers
     try {
       const config = {
         headers: {
@@ -148,6 +152,7 @@ const Suggestions = () => {
           <div className="d-flex justify-content-start">
             <div>
               <button type="button" className="btn btn-light text-primary" aria-label="Close" onClick={() => deleteSuggestion(id)} ><GrClose /></button><br />
+              {/* Form handle update request */}
               <Accordion>
                 <Accordion.Toggle as={Button} className='btn btn-light' variant="link" eventKey="0">
                   <FiEdit />

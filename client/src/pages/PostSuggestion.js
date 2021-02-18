@@ -16,10 +16,12 @@ const PostSuggestion = () => {
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
+  
+  // Handler for post request
   const onSubmit = (e) => {
     e.preventDefault();
 
+    //  Auth headers
     const config = {
       headers: {
         'Content-Type': 'application/json',

@@ -16,9 +16,11 @@ import { toast, ToastContainer } from 'react-toastify';
 const Profile = (props) => {
   const [suggestion, setSuggestion] = useState({});
 
+  // Render single page suggestion with match params
   useEffect(() => {
     const id = props.match.params.id;
 
+    // Auth headers in the request
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +55,7 @@ const Profile = (props) => {
           <div className="p-4 p-md-5 text-light bg-primary row">
             <div className="col-md-12 px-0">
               <h1 className="h3 text-white">{suggestion.topic}</h1>
-              <h2 className="h6 my-3 mt-5 text-white">{suggestion.user}</h2>
+              <h2 style={{ overflowWrap: 'break-word'}} className="h6 my-3 mt-5 text-white">{suggestion.user}</h2>
             </div>
           </div>
           <ToastContainer />

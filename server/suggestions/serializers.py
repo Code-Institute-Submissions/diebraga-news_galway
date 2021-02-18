@@ -4,7 +4,8 @@ from .models import Suggestion
 
 class SuggestionSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(source='user.email', read_only=True, default=serializers.CurrentUserDefault())
-
+    #  Save model logged user to send request and return user email instead of user id
+    
     class Meta:
         model = Suggestion
         fields = '__all__'

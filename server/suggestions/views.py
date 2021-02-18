@@ -5,6 +5,8 @@ from .models import Suggestion
 from .serializers import SuggestionSerializer
 from rest_framework.permissions import SAFE_METHODS, BasePermission
 
+
+# Custom permission only author can edit or delete 'aplied to delete and update views below' or safe methods if non authors
 class EditCustomPermission(BasePermission):
     message = 'Editing suggestions is restricted to the creator only.'
 
@@ -18,24 +20,28 @@ class EditCustomPermission(BasePermission):
 
 # If non permission classes default is IsAuthenticated
 class SuggestionListView(ListAPIView):
+    # List all suggestions
     queryset = Suggestion.objects.order_by('-date_created')
     serializer_class = SuggestionSerializer
     lookup_field = 'slug'
 
 
 class SuggestionView(RetrieveAPIView):
+    # List single suggestion
     queryset = Suggestion.objects.order_by('-date_created')
     queryset = Suggestion.objects.all()
     serializer_class = SuggestionSerializer
 
 
 class CreateSuggestion(CreateAPIView):
+    # Post suggestion
     queryset = Suggestion.objects.order_by('-date_created')
     queryset = Suggestion.objects.all()
     serializer_class = SuggestionSerializer
 
 
 class UpdateSuggestion(UpdateAPIView, EditCustomPermission):
+    # Update suggestion
     queryset = Suggestion.objects.order_by('-date_created')
     serializer_class = SuggestionSerializer
     queryset = Suggestion.objects.all()
@@ -43,6 +49,7 @@ class UpdateSuggestion(UpdateAPIView, EditCustomPermission):
 
 
 class DeleteSuggestion(RetrieveDestroyAPIView, EditCustomPermission):
+    # Delete suggestion
     queryset = Suggestion.objects.order_by('-date_created')
     serializer_class = SuggestionSerializer
     queryset = Suggestion.objects.all()

@@ -14,6 +14,7 @@ const Readmore = (props) => {
   const [post, setPost] = useState({});
   const [author, setAuthor] = useState({});
 
+  // Render single page post matcgh params
   useEffect(() => {
     const slug = props.match.params.id;
     // send auithorization in the localstorage through
@@ -44,6 +45,7 @@ const Readmore = (props) => {
     }, [props.match.params.id, post]);
 
 
+    // Handle display post author
   useEffect(() => {
     const id = post.author;
 
@@ -89,6 +91,7 @@ const Readmore = (props) => {
             <hr /><ToastContainer />
             <h5 className='p-1 p-md-1 mr-2'>{post.date_created}</h5>
             <p className="p-2 p-md-2 mt-3"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
+            {/* Comments feature with params passed as props */}
             <Comment post={post.id} postItem={post.comments} postI={post} setPost={setPost}/>
             <p className="p-2 p-md-2 mb-5"><Link to='/blog' className="font-weight-bold"><FiCornerDownLeft /> Back to Blogs</Link></p>
         </Fade>

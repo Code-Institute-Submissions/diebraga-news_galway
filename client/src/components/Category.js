@@ -13,6 +13,7 @@ const Category = (props) => {
   const [posts, setPost] = useState([]);
   const [currentCategory, setCurrentCategory] = useState('');
 
+  // List posts with same category yusing match params
   useEffect(() => {
     const category = props.match.params.id;
     setCurrentCategory(category);

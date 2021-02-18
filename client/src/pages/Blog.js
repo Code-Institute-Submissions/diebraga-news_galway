@@ -11,6 +11,7 @@ const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [featuredPost, setFeaturedPost] = useState([]);
 
+  // Render featured blog
   useEffect(() => {
     const fetchData = async () => {
 
@@ -40,6 +41,7 @@ const Blog = () => {
     fetchData();
   }, []);
 
+  // List all posts 
   useEffect(() => {
     const fetchPost = async () => {
     try {
@@ -54,6 +56,7 @@ const Blog = () => {
     fetchPost();
   }, []);
 
+  // Remove post Only admin allowed
   const removePost = (id) => {
     const URL = `${process.env.REACT_APP_API_URL}/api/blog/`
 
@@ -102,6 +105,7 @@ const Blog = () => {
   posts.map(Post => {
     return list.push(
       <div className="mt-3 d-flex justify-content-between">
+        {/* Posts list */}
         <div className="col p-4 d-flex flex-column position-static">
           <Link to={`/blog/${Post.slug}`} className="">
             <h3 className="mb-0">{Post.title}</h3>
@@ -140,6 +144,7 @@ const Blog = () => {
       <div className="container mt-3 mb-5">
         <Fade duration={1200}>
           <div className="nav-scroller py-1 mb-2">
+            {/* Category navbar */}
             <nav className="nav d-flex">
               <Link className="p-2" to="/category/news">News</Link>
               <Link className="p-2" to="/category/events">Events</Link>
@@ -149,6 +154,7 @@ const Blog = () => {
           </div>
 
           <div className="p-4 p-md-5 text-light bg-primary row">
+            {/* Featured post */}
             <div className="col-md-12 px-0">
               <h1 className="text-white">{featuredPost.title}</h1>
               <p className="my-3">{featuredPost.excerpt}</p>

@@ -11,6 +11,7 @@ import { toast, ToastContainer } from 'react-toastify';
 const Account = ({ logout }) => {
   const [user, setUser] = useState([])
 
+  // Render user
   useEffect(() => {
     getData()
   }, [user])
@@ -46,6 +47,7 @@ const Account = ({ logout }) => {
   const [newName, setNewName] = useState('');
 
   const updateSuggestion = () => {
+    // Auth headers
     try {
       const config = {
         headers: {
@@ -54,7 +56,7 @@ const Account = ({ logout }) => {
           'Accept': 'application/json'
         }
       };
-      
+      //  Update user request
       axios.put(`${process.env.REACT_APP_API_URL}/auth/users/me/`, { 
         name: newName 
        }, config).then(
@@ -83,7 +85,7 @@ const Account = ({ logout }) => {
           <div className="p-4 p-md-5 text-light bg-primary row">
             <div className="col-md-12 px-0">
               <h1 className='text-white'>Account</h1>
-              <h5 className='text-white mt-3 mb-4' >Personal Informations</h5>
+              <h5 className='text-white mt-3 mb-4' >Personal Information</h5>
               <Accordion>
                 Username:
                 <Accordion.Toggle as={Button} className='text-info' variant="link" eventKey="0">

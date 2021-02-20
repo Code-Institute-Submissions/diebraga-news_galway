@@ -1,15 +1,17 @@
-# news_galway
-Blog app using djangorest framework, Reactjs with ecommerce and subscription funcionalities with Stripe.
+# news galway
+Responsive Blog app using django rest framework, Reactjs with ecommerce funcionalities using Stripe.
 
 ## Live Demo
-The app is deployed running on Heroku: <br/> https://galway-news.herokuapp.com/
+The app is deployed running on Heroku: <br/> https://galway-news-app.herokuapp.com/
 
 ## About
 The app is directed to people from or interested in whats in currently going on in galway city or just interested in follow <br/>
 The staff in what they post. <br/>
 The Blog features the last news from Galway city divided in four categories "News" "Gastronomy" "Events" <br/>
 and "jobs" it has a Donation subscription page and a eccomerce page with a few products that you can buy from. <br/>
-You can also meet our staff, view profile and get in touch sending a e-mail with sugestions or queries. <br/>
+You can also meet our staff, view profile and get in touch sending a e-mail with make sugestions or queries. <br/>
+The app is also provided of a realtime chat that you can get in touch easily with the staff and a comment section <br />
+where authenticated users can interact with posters and view what other users think.
 to read more about the articles, filter, view profile, access shop or subscribe you'll be requested to authenticate. <br/>
 
 ## Technologies
@@ -17,35 +19,227 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 - <a href='https://djoser.readthedocs.io/en/latest/getting_started.html' target='_blank'>Djoser</a><br/>
 - <a href='https://jwt.io/introduction/' target='_blank'>JWT Authentication</a><br/>
 - <a href='https://www.heroku.com/postgres' target='_blank'>Heroku PostgresSQL</a><br/>
+- <a href='https://docs.djangoproject.com/en/3.1/ref/contrib/admin/' target='_blank'>Django admin panel</a><br/>
+- <a href='https://github.com/summernote/django-summernote' target='_blank'>Django Summernote</a><br/>
 - <a href='https://reactjs.org/' target='_blank'>ReactJs</a><br/>
 - <a href='https://react-redux.js.org/' target='_blank'>React Redux</a><br/>
+- <a href='https://reactjs.org/docs/hooks-intro.html' target='_blank'>React Hooks</a><br/>
 - <a href='https://reactrouter.com/web/guides/quick-start' target='_blank'>React router dom</a><br/>
 - <a href='https://getbootstrap.com/' target='_blank'>Bootstrap</a><br/>
 - <a href='https://stripe.com/docs/stripe-js/react' target='_blank'>React Stripe</a><br/>
 - <a href='https://github.com/dennismorello/react-awesome-reveal' target='_blank'>react-awesome-reveal</a><br/>
+- <a href='https://www.intercom.com/dr/sponsor-biz?utm_source=google&utm_medium=sem&utm_campaign=8375307833&utm_term=intercom&utm_ad_collection=88632091427&_bt=434730769386&_bg=88632091427&utm_ad=434730769386&offer=sponsoredbybiz&utm_campaign_name=go_evg_acq_trial_b-a_icm_bld_core_en&utm_ad_collection_name=gen-p_intercom&utm_ad_name=sponsoredbybiz_text_21q2' target='_blank'>Intercom real-time chat bot</a><br/>
 
-## Backend 
-- The Api 'news' built with django-rest-framework consists in 5 app: accounts, authors, blog and contacts. <br/>
-- accounts: Creates and stores in the database users and superusers and show them in the admin panel. <br/>
-- authors: Creates and stores in the database all authors you can add info and a profilo photo in the admin panel only. <br/> 
-- blogs: Creates and stores in the database all posts in the app where you can add, edit, delete all data, thumbnail including <br/>
-costomize the post using django <a href='https://github.com/summernote/django-summernote' target='_blank'>summernote</a>. <br/>
+## User Experience (UX)
+
+-   ### User stories
+
+    -   #### Staff User
+
+        1. As a Staff user, I want to have a nice experience and easily write and edit my blog posts.
+        2. As a Staff user, I want to be able to easily manage the products and the website content.
+        3. As a Staff user, I want to know what non staff users think about my job with comments.
+        3. As a Staff user, I want non staff users have the option to know more about me and get in touch.
+
+    -   #### Non Staff User
+
+        1. As a non staff user, I want to Know where I need to go when I first get into the website.
+        2. As a non staff user, I want to find the best way to get in touch, with the staff.
+        3. As a non staff user, I want to view the relevant news with a nice and beaultiful UI.
+        3. As a non staff user, I want to feel integrated to the app with comments and suggestions.
+
+
+-   ### Design
+    -   #### Colour Scheme
+        -   Galway news use 2 main colors: Black and white.
+    -   #### Typography
+        -   Roboto it's the main font imported from google fonts.
+
+
+## Features and Fuctionalities
+
+### Backend 
+
+- App built in Django Rest Framework divided in 8 apps: accounts, authors, blogs, products, subscriptions cantacts and suggestioins.
+- accounts: Stores all users in the application, the custom user model. using Djoser as library <br/>
+    the app uses Djoser's default permissions. Any CRUD operation in the user it's allowed the  <br />
+    Current user or Admin, in this case if user try to list or any action to users it's gonna have <br />
+    effect to his own user only. you can also: create account 'allow any', activate account email: 'allow any',  <br />
+    create session or token: 'allow any', destroy token: 'Autenticated', reset and comfirm reset password email: 'allow any', <br/>
+    reset and comfirm reset user name email: 'allow any'. Admin users can perform any crud action in the Admin panel to users <br />
+    In the Admin panel admin users can create, update and delete accounts.
+- authors: Stores our staff profile as a separated entity from accounts that represents our staff. Any user can list all authors. <br/> 
+    However you want to get an specific author by id you need to be Authenticated. the app has a one to many to blogs app where <br/>
+    resides all post in the app, The author can have many posts. <br/>
+    In the Admin panel admin users can create, update and delete accounts.
+- blogs: Stores all posts in application. Any user can list all posts but in order to view a single post by slug, users need  <br/>
+    to be authenticated the app is related to authors app. a post can have an Author, only admin users can poerform delete requests. <br/>
+    the app also handler send email fuctionalities when users create when request new passords. <br/>
+    post are created in the Admin panel by admin users only, other than update and delete.
+- comments: Stores all comments in the application, if authenticated users can create and list comments but in order to update or <br/>
+    delete the user has to be the comment owner by custom permission, the app is related to blogs app, a blog post can have,
+    many comments. <br/>
+    In the Admin panel admin users can create, update and delete comments.
+- products: Stores all Stripe products in the databese 'including id keys': Authenticated users can only read products and buy products  <br />
+    the rest in handled by stripe, you can view all logs in the app through stripe dashboard create new products,  <br />
+    custom email template, discount cupons and way more features improving security.  <br />
+    The products can be managed through the admin panel by admin users, create, delete amnd update.
+- subscriptions: Stores all Stripe subscription products in the databese 'including id keys': Authenticated users can only read products   <br />
+    and buy products the rest in handled by stripe, you can view all logs in the app through stripe dashboard create new products,  <br />
+    custom email template, discount cupons and way more features improving security.  <br />
+    The subscriptions products can be managed through the admin panel by admin users, create, delete amnd update.
+- contacts: Handle send email funcionalitie and Stores in the database. Any user can perform a post request to get in touch. <br/>
+    those sent emails can be manage by admin users in the admin panel.
+- suggestions: Stores suggestions made by users, any authenticated user can send a request or list them however only the suggestion owner <br/>
+    can update or delete by custom permission. <br/> 
+    also suggestions can be manage by admin users in the admin panel.
+    
+#### Extra:
+
+- Django administration panel:
+    Django admin panel plays a important role in this application, as staff users are going to make posts and manage the other resoures <br/>
+    through it. because of that the admin interface has been customised in other to match the website's theme colors, and improve <br/>
+    users experience.
     <details>
-    <summary>Click to views details</summary>
-    <img src="assets/24.png" width="200" height="200"/>
+    <summary>Click to views admin login</summary>
+    <img src="assets/adminlogin.png" width="400" height="200"/>
 
     </details>
-- contacts: Handle send email funcionalitie and Stores in the database messages sent by users in the contact us section. <br/><br/>
-    - Authentication: All the authentication and validation procces is handled by <a href='https://djoser.readthedocs.io/en/latest/getting_started.html'>Djoser</a><br/> It is responsible <br/>
-    for handle send account activation, send account update password, Authenticate through JWT tokens and validate <br/>
-    in case the password is to easy, email is non valid already, existent, empty, password does not match etc.
-    - smtp service: I'm using a smtp service ofered by gmail to handle send email get your password to add in your .env files<br/> following those steps on <a href='https://support.google.com/mail/answer/185833?hl=en-GB'>GOOGLE</a>  or use Mailtrap or whatever service you prefer.
-    - Admin panel you can manage all those features.
     <details>
-    <summary>Click to views details</summary>
-    <img src="assets/23.png" width="200" height="200"/>
+    <summary>Click to views admin dashboard</summary>
+    <img src="assets/adminmain.png" width="400" height="200"/>
 
     </details>
+    <details>
+    <summary>Click to views admin logout</summary>
+    <img src="assets/adminlogout.png" width="190" height="200"/>
+
+    </details>
+- <a href='https://github.com/summernote/django-summernote' target='_blank'>Django Summernote:</a><br/>
+    As the application is essentially blog, and staff users can writte the posts through the admin panel django summernote is markdown <br />
+    editor that makes so easy to implement images, videos, links, colors etc... it makes a huge diferrence for staff users writing they <br/>
+    posts. However precations have to be taken while writing or editing the posts. as in the frontend is set innerHTML to render the <br/>
+    a bad adition can break the layout, but it can be fixed editing again the post.
+    </details>
+    <details>
+    <summary>Click to views Django Summernote editor</summary>
+    <img src="assets/summergif.gif" width="400" height="200"/>    
+
+    </details>
+
+ - SMTP configuration: 
+    I'm using a smtp service ofered by gmail to handle send emails, to create account, request new password, oer contact us <br/>
+    create your credentials to fill your .env file following those steps on 
+    <a href='https://support.google.com/mail/answer/185833?hl=en-GB'>GOOGLE</a>  or use Mailtrap or whatever service you prefer.
+
+## Frontend
+- Create react app  using react-router-dom to manage all routes in the app. <br/>
+- Home Page: <br />
+    Landing page that gives you a few options of navigation 'Start' 'Shop' 'Subscribe' 'register' 'login,  github's and likendin's links <br />
+    <details>
+    <summary>Click to views Home Page</summary>
+    <img src="assets/homepage.png" width="400" height="200"/>
+
+    </details>
+- Blog Page: <br />
+    List all posts and the featured post in the application, users can click in each post to read more about the post howerver users <br />
+    need to be authenticated in order to see the post details.
+    <details>
+    <summary>Click to views Blog Page</summary>
+    <img src="assets/blogpage.png" width="400" height="200"/>
+
+    </details>
+    Clicking in any post the user will be direct to a page with all about the post, content, author and when it was posted.
+    <details>
+    <summary>Click to views Blog Single Page</summary>
+    <img src="assets/singlegif.gif" width="400" height="200"/>
+
+    </details>
+
+- Comments: <br />
+    When clicking in one blog users are direct to a read more page. in the botton of the page there's a comments section <br/>
+    where users can iteract with the post comments, theyu can alsdo update and delete they own comments.
+    <details>
+    <summary>Click to views Comments Section </summary>
+    <img src="assets/comment.png" width="400" height="200"/>
+
+    </details>
+
+- Shop and Subscribe Page: <br />
+    Shop page lists all products avalibe in the website. as e-commerce is not the websites focus galway news ha just a few products <br/>
+    that users can purchase, The subscription page is very similar but with montly plans instead, users can subscribe in order to support <br/>
+    the website donating. After users transactions users can have a visual feedback if payment has been made 'Success' or not 'Fail'
+    <details>
+    <summary>Click to views Shop Page</summary>
+    <img src="assets/shopage.png" width="400" height="200"/>
+
+    </details>
+    
+    <details>
+    <summary>Click to views Subscribe Page</summary>
+    <img src="assets/subscribepage.png" width="400" height="200"/>
+
+    </details>
+
+    <details>
+    <summary>Click to views Success Page</summary>
+    <img src="assets/success.png" width="400" height="200"/>
+
+    </details>
+
+    <details>
+    <summary>Click to views Failed Page</summary>
+    <img src="assets/fail.png" width="400" height="200"/>
+
+    </details>
+
+- About Page: <br />
+    About page is devided in 3 subsections, About us: users can have the opportunity to know more about the company  <br/>
+    Get in touch: users can easily get in touch with Galway news sending a Email. <br />
+    Authors: Users can have the opportunity to know more about the staff, users can click to know more info <br />
+    about the but to do that they need to be authenticated.
+    <details>
+    <summary>Click to views about us and get in touch sectiion</summary>
+    <img src="assets/abouttouch.png" width="400" height="200"/>
+
+    </details>
+
+    <details>
+    <summary>Click to views authors sectiion</summary>
+    <img src="assets/authors.png" width="400" height="200"/>
+
+    </details>
+
+- Account Page: <br />
+    Page where users can view their own account information or logout, the page allows users to reset their usernames <br/>
+    or password
+    <details>
+    <summary>Click to views Account Page</summary>
+    <img src="assets/account.png" width="400" height="200"/>
+
+    </details>
+
+- Suggestions and Suggest Pages: <br />
+    In Suggest page is the space where users can send suggestions or queries, Sugestions Page is the space where  <br/>
+    all suggestions are listed. users can also update and delete their own suggestions or know more about it by clicking.
+    <details>
+    <summary>Click to views Suggest Page</summary>
+    <img src="assets/suggest.png" width="400" height="200"/>
+
+    </details>
+
+    <details>
+    <summary>Click to views Suggestions Page</summary>
+    <img src="assets/suggestions.png" width="400" height="200"/>
+
+    </details>
+
+#### Extra:
+
+- React Redux: <br/>
+    The app uses react redux for all authentication actions and states: login, logout, load user, failure or success authentication <br/>
+- React Hooks: <br />
+    The app uses react hooks and axios to fetch and make any api request from the frontend to the backend.
 
 
 ### Structure
@@ -244,21 +438,7 @@ Requirements: <br/>
  <br/>
     Your api is running in your localhost on port: 8000 Now you're ready to go! 🚀
 
-    
-## Frontend
-- A React app consisted in a `src` folder where the all the code source is stored. <br/>
-- `App.js` is what wrappes the project there I've all routes in the application and makes <br/>
-   the store disponible to all children. <br/>
-- it's devide in `Pages` folder stores all primary components in the app `Components` folder <br/>
-  all secondary or elements that can be used more than once in the app, `Redux` folder that <br/>
-  that stores all states and actions in the app, `Styles` folder that stores the global styles <br/>
-  and assets to stores static files in the frontend.
-- In the app users can see all news, all staff but to read more about the articles, view profiles <br/>
-  access shop or donation they will need to authenticate.
-- Shop and Donation 
-  After you choose your product or donation subscription you'll be redirected to checkout page <br/>
-  if the payment is succesfull user is redirected to success page if it fails redirected to cancel page. <br/> 
-  
+     
   
 ### Structure
 

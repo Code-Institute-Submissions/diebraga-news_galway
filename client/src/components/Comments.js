@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { FiCornerDownRight } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
 import { FiEdit } from 'react-icons/fi';
 import { GrClose } from 'react-icons/gr';
-import { Button, Accordion, Card } from 'react-bootstrap';
+import { Button, Accordion, Card, Dropdown } from 'react-bootstrap';
 
 const Comments = (props) => {
+  const user = useSelector(state => state.auth)
   const [comment, setComment] = useState('');
   const [newContent, setNewContent] = useState('');
-
   const [loading, setLoading] = useState(false);
 
   // Delete request for comment
@@ -180,6 +181,8 @@ const Comments = (props) => {
           <p style={{ fontSize: '10px' }}>{item.date_created}</p>
           </div>
           <p style={{ overflowWrap: 'break-word'}}>{item.content}</p>
+          {/* Only user creator can see his own comments update button */}
+          {(user.user.name === item.user_name) ? (
           <div className='d-flex justify-content-start'>
             <Accordion>
               <Accordion.Toggle as={Button} className='btn btn-light btn-sm' variant="link" eventKey="0">
@@ -198,9 +201,17 @@ const Comments = (props) => {
                 </Button>
                 </Card.Body>
               </Accordion.Collapse>
-            </Accordion>
-            <Button type="button" className="btn btn-light btn-sm" aria-label="Close" onClick={() => deleteComment(item.id)} ><GrClose /></Button><br />
+            </Accordion>{' '}
+            
+            <Dropdown>
+              <Dropdown.Toggle className="btn btn-light btn-sm" id="dropdown-basic" />
+
+              <Dropdown.Menu>
+                <Dropdown.Item className='text-danger' href="#" onClick={() => deleteComment(item.id)} >Delete comment</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>{' '}         
           </div>
+          ) : ''}
           <hr />
         </div>
       )} 

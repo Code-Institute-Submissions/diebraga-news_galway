@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Fade } from "react-awesome-reveal";
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FiCornerDownRight } from 'react-icons/fi';
 import { toast, ToastContainer } from 'react-toastify';
@@ -12,6 +13,7 @@ import { Button, Accordion, Card } from 'react-bootstrap';
 const Suggestions = () => {
   const [newTopic, setNewTopic] = useState('');
   const [newContent, setNewContent] = useState('');
+  const user = useSelector(state => state.auth)
 
   const [suggestions, setSuggestions] = useState([])
 
@@ -144,55 +146,62 @@ const Suggestions = () => {
       }
     };
 
+    const getItems = () => {
+      let list = [];
   
-  const getItems = () => {
-      return suggestions && suggestions.map(({ id, topic, slug, user }) => {
-        return (
-          <>
-          <div className="d-flex justify-content-start">
-            <div>
-              <button type="button" className="btn btn-light text-primary" aria-label="Close" onClick={() => deleteSuggestion(id)} ><GrClose /></button><br />
-              {/* Form handle update request */}
-              <Accordion>
-                <Accordion.Toggle as={Button} className='btn btn-light' variant="link" eventKey="0">
-                  <FiEdit />
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey="0">
-                  <Card.Body className="position-sticky">
-                  <h6 className="d-inline-block text-primary mt-2"> <b className='text-danger'>Edit</b> suggestion <FiCornerDownRight /></h6>
-                  <input
-                    className="form-control mt-3"
-                    type="text"
-                    placeholder="Your topic"
-                    onChange={(event) => {setNewTopic(event.target.value);}}
-                    required
-                  />
-                  <textarea
-                    className="form-control mt-3"
-                    placeholder="Content"
-                    onChange={(event) => {setNewContent(event.target.value);}}
-                    required
-                  />
-                  <Button className="mt-2" variant="primary" onClick={() => {updateSuggestion(id)}}>
-                    Save
-                  </Button>
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Accordion>
-            </div>
-            <div key={slug}>
-              <Link to={`/suggestions/${id}`}>
-                <div className="col p-4 d-flex flex-column position-static">
-                  <h2 className='h6'>{user}</h2>
-                  <h1 className="h3 d-inline-block text-primary mt-2">{topic} <FiCornerDownRight /></h1>
-                </div>
-              </Link>
-            </div>
+    suggestions.map(suggestion => {
+      return list.push(
+        <>
+        <div className="d-flex justify-content-start">
+        {(user.user.email === suggestion.user) ? (
+          <div>
+            <button type="button" className="btn btn-light text-primary" aria-label="Close" onClick={() => deleteSuggestion(suggestion.id)} ><GrClose /></button>{' '}<br />
+            {/* Form handle update request */}
+
+            <Accordion>
+              <Accordion.Toggle as={Button} className='btn btn-light' variant="link" eventKey="0">
+                <FiEdit />
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body className="position-sticky">
+                <h6 className="d-inline-block text-primary mt-2"> <b className='text-danger'>Edit</b> suggestion <FiCornerDownRight /></h6>
+                <input
+                  className="form-control mt-3"
+                  type="text"
+                  placeholder="Your topic"
+                  onChange={(event) => {setNewTopic(event.target.value);}}
+                  required
+                />
+                <textarea
+                  className="form-control mt-3"
+                  placeholder="Content"
+                  onChange={(event) => {setNewContent(event.target.value);}}
+                  required
+                />
+                <Button className="mt-2" variant="primary" onClick={() => {updateSuggestion(suggestion.id)}}>
+                  Save
+                </Button>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Accordion>{' '}
           </div>
-          </>
-          )
-        })
-      }
+          ) : ''}
+          <div key={suggestion.slug}>
+            <Link to={`/suggestions/${suggestion.id}`}>
+              <div className="col p-4 d-flex flex-column position-static">
+                <h2 className='h6'>{suggestion.user}</h2>
+                <h1 className="h3 d-inline-block text-primary mt-2">{suggestion.topic} <FiCornerDownRight /></h1>
+              </div>
+            </Link>
+          </div>
+        </div>
+        </>
+      );
+    });
+    
+    return list;
+  };
+  
 
   return (
       <>

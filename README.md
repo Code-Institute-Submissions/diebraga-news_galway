@@ -29,6 +29,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 - <a href='https://stripe.com/docs/stripe-js/react' target='_blank'>React Stripe</a><br/>
 - <a href='https://github.com/dennismorello/react-awesome-reveal' target='_blank'>react-awesome-reveal</a><br/>
 - <a href='https://www.intercom.com/dr/sponsor-biz?utm_source=google&utm_medium=sem&utm_campaign=8375307833&utm_term=intercom&utm_ad_collection=88632091427&_bt=434730769386&_bg=88632091427&utm_ad=434730769386&offer=sponsoredbybiz&utm_campaign_name=go_evg_acq_trial_b-a_icm_bld_core_en&utm_ad_collection_name=gen-p_intercom&utm_ad_name=sponsoredbybiz_text_21q2' target='_blank'>Intercom real-time chat bot</a><br/>
+- <a href='https://stripe.com/ie?utm_campaign=paid_brand-IE_en_Search_Brand_Stripe-1615558792&utm_medium=cpc&utm_source=google&ad_content=307359047676&utm_term=stripe&utm_matchtype=e&utm_adposition=&utm_device=c' target='_blank'>Stripe</a><br/>
 
 ## User Experience (UX)
 
@@ -61,7 +62,8 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 ### Backend 
 
 - App built in Django Rest Framework divided in 8 apps: accounts, authors, blogs, products, subscriptions cantacts and suggestioins.
-- accounts: Stores all users in the application, the custom user model. using Djoser as library <br/>
+- accounts: 
+    Stores all users in the application, the custom user model. using Djoser as library <br/>
     the app uses Djoser's default permissions. Any CRUD operation in the user it's allowed the  <br />
     Current user or Admin, in this case if user try to list or any action to users it's gonna have <br />
     effect to his own user only. you can also: create account 'allow any', activate account email: 'allow any',  <br />
@@ -132,7 +134,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
     create your credentials to fill your .env file following those steps on 
     <a href='https://support.google.com/mail/answer/185833?hl=en-GB'>GOOGLE</a>  or use Mailtrap or whatever service you prefer.
 
-## Frontend
+### Frontend
 - Create react app  using react-router-dom to manage all routes in the app. <br/>
 - Home Page: <br />
     Landing page that gives you a few options of navigation 'Start' 'Shop' 'Subscribe' 'register' 'login,  github's and likendin's links <br />
@@ -168,16 +170,16 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 - Shop and Subscribe Page: <br />
     Shop page lists all products avalibe in the website. as e-commerce is not the websites focus galway news ha just a few products <br/>
     that users can purchase, The subscription page is very similar but with montly plans instead, users can subscribe in order to support <br/>
-    the website donating. After users transactions users can have a visual feedback if payment has been made 'Success' or not 'Fail'
+    the website donating. After users transactions users can have a visual feedback if payment has been made 'Success' or not 'Fail'.
     <details>
     <summary>Click to views Shop Page</summary>
-    <img src="assets/shopage.png" width="400" height="200"/>
+    <img src="assets/shop.png" width="400" height="200"/>
 
     </details>
     
     <details>
     <summary>Click to views Subscribe Page</summary>
-    <img src="assets/subscribepage.png" width="400" height="200"/>
+    <img src="assets/subscribe.png" width="400" height="200"/>
 
     </details>
 
@@ -212,7 +214,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 
 - Account Page: <br />
     Page where users can view their own account information or logout, the page allows users to reset their usernames <br/>
-    or password
+    or password.
     <details>
     <summary>Click to views Account Page</summary>
     <img src="assets/account.png" width="400" height="200"/>
@@ -234,58 +236,66 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 
     </details>
 
-#### Extra:
-
-- React Redux: <br/>
-    The app uses react redux for all authentication actions and states: login, logout, load user, failure or success authentication <br/>
-- React Hooks: <br />
-    The app uses react hooks and axios to fetch and make any api request from the frontend to the backend.
-
-
-### Structure
-
-<details>
-<summary>Click to views the folder structure</summary>
-
-```
-server              
-   ├── accounts
-   ├── authors
-   ├     ├── __init__.py
-   ├     └── admin.py
-   ├     └── apps.py
-   ├     └── models.py
-   ├     └── serializers.py
-   ├     ├── tests.py
-   ├     └── urls.py
-   ├     └── views.py
-   ├── blog
-   ├── contacts
-   ├── news 
-   ├     ├── __init__.py
-   ├     └── asgi.py
-   ├     └── settings.py
-   ├     └── urls.py
-   ├     └── wsgi.py
-   └── staticfiles
-           └── * staicfiles
-
-```
-</details>
 
 ### Database Model.
 
-- <a href='https://drive.google.com/file/d/1DcL5OYMX7CdvsOyOPlMilgYbecAeMfS6/view?usp=sharing'>Click Here</a> to view DB model.
+<details>
+<summary>Click to views Structure</summary>
+<img src="assets/diagram.png" width="490" height="290"/>
+
+</details>
 
 
-## Stripe
-  Usuing Stripe React with <a href='https://stripe.com/docs/payments/checkout'>Checkout</a> The backend <br/>
-  is handled by Stripe in the dashboard, There you can see the POST requests, create your products, see payments, <br/>
-  etc. "To use this you need to enable 'Checkout' in your Stripe Dashboard. <br/>
-  `Warning` after you being redirect to success page make sure the payment has been made in Dashboard. malicious users can direct <br/>
-  to the success page without pay for the product. <br />
+### Mockups
+
+  - Header <br/> 
   
+    <details>
+    <summary>Click to views Mockups</summary>
+    <img src="assets/header.png" width="500" height="300"/>   
+
+    </details>    
+
+  - Authentication <br/> 
   
+    <details>
+    <summary>Click to views Mockups</summary>
+    <img src="assets/auth.png" width="500" height="300"/>   
+
+    </details>        
+
+  - Blog <br/> 
+
+    <details>
+    <summary>Click to views Blog Mockups</summary>
+    <img src="assets/blog.png" width="500" height="300"/>
+
+    </details>
+    
+    <details>
+    <summary>Click to views Comment Mockups</summary>
+    <img src="assets/commentmock.png" width="400" height="500"/>
+
+    </details>        
+
+  - Shop & Subscribe <br/> 
+ 
+    <details>
+    <summary>Click to views Comment Mockups</summary>
+    <img src="assets/shopmock.png" width="500" height="280"/>
+
+    </details>        
+
+  - About <br/> 
+
+    <details>
+    <summary>Click to views About Mockups</summary>
+    <img src="assets/aboutmock.png" width="510" height="500"/>
+
+    </details>            
+
+
+
  ## Test and Validations
   - I'm using <a href="https://insomnia.rest/">Insomnia<a/> to do my api requests and test the api routes, the insominia JSON file is <br/> avalibe in the server root folder. feel free to use <a href="https://www.postman.com/">Postman</a> or any other.
   - Test routes:
@@ -488,34 +498,6 @@ Requirements: <br/>
 ```
 
 </details>
-
-
-### Mockups
-
-  - Header <br/> 
-   
-    <img src="assets/header.png" width="500" height="300"/>   
-    
-
-  - Authentication <br/> 
-   
-    <img src="assets/auth.png" width="500" height="300"/>   
-    
-
-  - Blog <br/> 
-   
-<img src="assets/blog.png" width="500" height="300"/>
-    
-
-  - Shop <br/> 
-   
-<img src="assets/shop.png" width="500" height="280"/>
-    
-
-  - Profile <br/> 
-   
-<img src="assets/profile.png" width="500" height="300"/>
-    
 
 
 ## Test and Validations:

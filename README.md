@@ -56,7 +56,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
         -   Roboto it's the main font imported from google fonts.
 
 
-## Features and Fuctionalities
+## Features, Fuctionalities and Returmimg User Experience
 
 ### Backend 
 
@@ -506,7 +506,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
         To comment users have to be logged in. <br/>
         buttons update and delete appear to suggestion owner only. <br/> 
         Once added posts are rendered in the frontend. <br/><br/>
-     <img src="assets/suggest.gif" width="400" height="200"/>
+     <img src="assets/suggestgif.gif" width="400" height="200"/>
 
      </details>            
     </details>            
@@ -551,7 +551,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 
     <details>
     <summary>Endpoint</summary>
-    
+     <details>
      <summary>Post Email: http://127.0.0.1:8000/api/suggestions/  [POST]</summary>    
         It has one post endpoint only returns: Email sent successfully <br/>
         or Email failed to send if failed. <br/>
@@ -603,6 +603,118 @@ to read more about the articles, filter, view profile, access shop or subscribe 
         Use `4000000000003220`	to 3D Secure 2 authentication must be completed for a successful payment. <br/>
         Use `4000000000009995`	To fails with a decline code of insufficient_funds.<br/><br/>
         <img src="assets/stripe.gif" width="120" height="200"/>    
+
+     </details>            
+    </details>
+    
+- Create account and Authentication
+    
+    <details>
+    <summary>Endpoints</summary>
+    
+     <details>
+     <summary>Create account: http://127.0.0.1:8000/auth/users/  [POST]</summary>    
+        Sending post request to this endpoint with 'name', 'email', 'password'  <br/>
+        and 're_password' returns itself if succefully created: status 200 <br/>
+        However the account remains inactive users need to activate in the email used to create the account <br/>
+        If the email used to create the account already exists returns <br/>
+        "user account with this email already exists" status 400. <br/>
+        The route is public anyone can access. <br/><br/>
+    
+     </details>
+     
+     <details>
+     <summary>Activate account: http://127.0.0.1:8000/auth/users/activation/  [POST]</summary>    
+        To activate account the endpoint requires 2 params 'uid' and 'token'  <br/>
+        those params are sent to the email used to create the account <br/>
+        By sending those params recieved actives the account returning  a status 204 <br/>
+        If the token is invalid it returns "Invalid token for given user." status 400 <br/>
+        If the token has been already used returns "Stale token for given user". status 403 <br/>
+        The route is public anyone can access. <br/><br/>
+         <img src="assets/activate.png" width="500" height="300"/>
+
+    
+     </details>     
+     <details>
+     <summary>Create Session: http://127.0.0.1:8000/auth/jwt/create  [POST]</summary>    
+        To Login account the endpoint requires 2 params 'email' and 'password'  <br/>
+        If the params if correct returns status 200 and access token and refresh <br/>
+        If one of the params are incorrect returns status 401 and <br/>
+        "No active account found with the given credentials" <br/>
+        The route is public anyone can access. <br/><br/>
+         <img src="assets/session.png" width="500" height="300"/>
+
+    
+     </details>     
+     <details>
+     <summary>Request new password: http://127.0.0.1:8000/auth/users/reset_password/  [POST]</summary>    
+        To Request password the endpoint requires a params the current 'email'   <br/>
+        it returns a status 204 and send and email to reset account <br/>
+        The route is public anyone can access. <br/><br/>
+
+     </details>     
+     <details>
+     <summary>Set new password: http://127.0.0.1:8000/auth/users/reset_password_confirm/  [POST]</summary>    
+        To Request password the endpoint requires 4 params 'new_password', 're_new_password   <br/>
+        'uid' and 'token' that the user recieve after Request new password <br/>
+        By sending those params recieved actives the account returning  a status 204 <br/>
+        If the token is invalid it returns "Invalid token for given user." status 400 <br/>
+        If the token has been already used returns "Stale token for given user". status 403 <br/>
+        The route is public anyone can access. <br/><br/>
+
+     </details>     
+
+    </details>            
+
+    <details>
+    <summary>Rendering</summary>
+
+     <details>
+     <summary>Rendering Create account</summary>
+        Complete Register form 'Name", 'email', "Password", "Comfirm Password" <br/>
+        Password field is validated, it requires a good level of complexity. <br/>
+        After send form user is required to comfirm in the email account. <br/> 
+        Users, can be created, updated and deleted by the staff in the admin panel. <br/><br/>
+        Creating account <br/>
+        <img src="assets/creategif.gif" width="400" height="200"/><br/><br/>
+        Email received<br/>
+        <img src="assets/accountemail.png" width="400" height="200"/>
+
+     </details>
+     <details>
+     <summary>Rendering Authentication</summary>
+        Authentication form requires 'Name" and 'email' <br/>
+        If something goes wrong it returns "Authentication Failed". <br/>
+        If Login is successfull the user is redireted to Blog post <br/>
+        Login <br/>
+        <img src="assets/logingif.gif" width="400" height="200"/><br/><br/>
+
+     </details>            
+
+    </details>
+
+- Users
+    
+    <details>
+    <summary>Endpoints</summary>
+    
+     <details>
+     <summary>List, Update or Delete User: http://127.0.0.1:8000/auth/users/me  [GET], [DELETE], [PUT]</summary>    
+        By default Users can List, Delete or Update himself only using this route, <br/>
+        Try to access the route without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401.
+    
+     </details>     
+    </details>            
+
+    <details>
+    <summary>Rendering</summary>
+
+     <details>
+     <summary>Rendering User</summary>
+        User rendered in the frontend. <br/>
+        Renderting User <br/><br/>
+        <img src="assets/account.png" width="400" height="200"/>
 
      </details>            
     </details>

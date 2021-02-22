@@ -304,7 +304,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 
 ### Testing
 
-### Manual testing
+#### Manual testing
 
 - Blog posts
     
@@ -380,7 +380,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
     <summary>Endpoints</summary>
     
      <details>
-     <summary>List blog comments: http://127.0.0.1:8000/api/comments/  [GET]</summary>    
+     <summary>List comments: http://127.0.0.1:8000/api/comments/  [GET]</summary>    
         Endpoint returns all comments in the api: status 200 <br/>
         If there is no posts returns an [ ] status 200 <br/>
         The route is not public try to access without authorization returns <br/>
@@ -391,7 +391,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
      </details>     
      
      <details>
-     <summary>Find blog posts by slug: http://127.0.0.1:8000/api/comments/ {pk}  [GET]</summary>    
+     <summary>Find comment by Id: http://127.0.0.1:8000/api/comments/ {pk}  [GET]</summary>    
         Endpoint find the comment passing the id as the last param: status 200 <br/>
         If the post doesn't exists returns "Not found" status 404 <br/>
         The route is not public try to access without authorization returns <br/>
@@ -438,11 +438,174 @@ to read more about the articles, filter, view profile, access shop or subscribe 
         To comment users have to be logged in. <br/>
         buttons update and delete appear to comment owner only. <br/> 
         Once added posts are rendered in the frontend. <br/><br/>
-     <img src="assets/commentgif.gif" width="400" height="200"/>
+     <img src="assets/commentgit.gif" width="400" height="200"/>
 
      </details>            
 
     </details>            
+
+- Suggestions
+
+    <details>
+    <summary>Endpoints</summary>
+    
+     <details>
+     <summary>List suggestions: http://127.0.0.1:8000/api/suggestions/  [GET]</summary>    
+        Endpoint returns all suggestions in the api: status 200 <br/>
+        If there is no suggestions returns an [ ] status 200 <br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> <br/>
+    
+     <img src="assets/suggestionlist.png" width="500" height="470"/>
+
+     </details>     
+     
+     <details>
+     <summary>Find suggestions by id: http://127.0.0.1:8000/api/suggestions/ {pk}  [GET]</summary>    
+        Endpoint find the suggestion passing the id as the last param: status 200 <br/>
+        If the suggestions doesn't exists returns "Not found" status 404 <br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> 
+
+     </details>            
+
+     <details>
+     <summary>Post suggestion: http://127.0.0.1:8000/api/suggestions/create  [POST]</summary>    
+        Endpoint creates suggestion and returns itself <br/> 
+        By default users must be logged in order to post suggestions<br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> <br/>
+    
+     </details>    
+
+     <details>
+     <summary>delete blog posts by ID: http://127.0.0.1:8000/api/comments/delete {pk}  [DELETE]</summary>    
+        Endpoint deletes suggestion passing id as a param and returns status 204 <br/>
+        If non author user try to delete suggestion returns: 'Editing suggestions is restricted to the creator only'<br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> <br/>
+
+     </details>
+     
+     <details>
+     <summary>delete blog posts by ID: http://127.0.0.1:8000/api/comments/update {pk}  [PUT]</summary>    
+        Endpoint updates suggestion post passing id as a param and returns status 204 <br/>
+        If non author user try to delete suggestion returns: 'Editing suggestions is restricted to the creator only'<br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> <br/>
+
+     </details>    
+
+    </details>            
+
+    <details>
+    <summary>Rendering</summary>
+
+     <details>
+     <summary>Rendering suggestions</summary>
+        To comment users have to be logged in. <br/>
+        buttons update and delete appear to suggestion owner only. <br/> 
+        Once added posts are rendered in the frontend. <br/><br/>
+     <img src="assets/suggest.gif" width="400" height="200"/>
+
+     </details>            
+    </details>            
+
+- Authors
+    
+    <details>
+    <summary>Endpoints</summary>
+    
+     <details>
+     <summary>List authors: http://127.0.0.1:8000/api/authors/  [GET]</summary>    
+        Endpoint returns all blog posts in the api: status 200 <br/>
+        If there is no posts returns an [ ] status 200 <br/>
+        The route is public anyone can access. <br/><br/>
+    
+     </details>   
+     
+     <details>
+     <summary>Find blog posts by id: http://127.0.0.1:8000/api/authors/ {pk}  [GET]</summary>    
+        Endpoint find the author passing the id as the last param: status 200 <br/>
+        If the post doesn't exists returns "Not found" <br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401.
+    
+     </details>              
+    </details>            
+
+    <details>
+    <summary>Rendering</summary>
+
+     <details>
+     <summary>Rendering Authors</summary>
+        Authors can be only added using admin panel. <br/>
+        staff users can also delete or update posts. <br/> 
+        Once added posts are rendered in the frontend. <br/><br/>
+     <img src="assets/authorgif.gif" width="400" height="200"/>
+
+     </details>            
+    </details>
+    
+- Contacts
+
+    <details>
+    <summary>Endpoint</summary>
+    
+     <summary>Post Email: http://127.0.0.1:8000/api/suggestions/  [POST]</summary>    
+        It has one post endpoint only returns: Email sent successfully <br/>
+        or Email failed to send if failed. <br/>
+        The route is public anyone can access. <br/><br/>
+
+     <img src="assets/sendemail.png" width="500" height="470"/>
+    
+     </details>     
+    </details>            
+
+    <details>
+    <summary>Rendering</summary>
+
+     <details>
+     <summary>Rendering Email</summary>
+        To comment users have to be logged in. <br/>
+        buttons update and delete appear to suggestion owner only. <br/> 
+        Once added posts are rendered in the frontend. <br/><br/>
+     <img src="assets/getemail.png" width="400" height="200"/>
+
+     </details>            
+    </details>
+
+- Subscribe and Products
+    
+    <details>
+    <summary>Endpoints</summary>
+    
+     <details>
+     <summary>List Products or Subscriptions: http://127.0.0.1:8000/api/{products || subscriptions}/  [GET]</summary>    
+        Endpoint returns all products or subscriptions in the api: status 200 <br/>
+        If there is no products or subscriptions returns an [ ] status 200 <br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401.
+    
+     </details>     
+    </details>            
+
+    <details>
+    <summary>Rendering</summary>
+
+     <details>
+     <summary>Rendering and transaction</summary>
+        To add product you must get product_id on stripe dashboard <br/>
+        products or subscriptions can be only added using admin panel. <br/>
+        staff users can also delete or update posts. <br/> 
+        Once added posts are rendered in the frontend. <br/>
+        Use `4242424242424242`	to Succeeds and immediately processes the payment. <br/>
+        Use `4000000000003220`	to 3D Secure 2 authentication must be completed for a successful payment. <br/>
+        Use `4000000000009995`	To fails with a decline code of insufficient_funds.<br/><br/>
+        <img src="assets/stripe.gif" width="120" height="200"/>    
+
+     </details>            
+    </details>
 
 ### Usage
 
@@ -569,17 +732,6 @@ ESlint: Tool verify and correct automatcally JS errors, preventing, <br/>
 reporting syntax errors, integrated with prettier  <br/>
 will ensure a beautifull and good style guid for better reading  <br/>
 preventing errors.
-
-#### Stripe
-It's running in test mode <br/>
-
-Use `4242424242424242`	to Succeeds and immediately processes the payment. 
-
-Use `4000000000003220`	to 3D Secure 2 authentication must be completed for a successful payment. 
-
-Use `4000000000009995`	To fails with a decline code of insufficient_funds.
-
-<img src="assets/stripe.gif" width="120" height="200"/>    
 
 
 ## Usage 

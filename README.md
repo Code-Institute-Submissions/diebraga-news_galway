@@ -29,7 +29,6 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 - <a href='https://stripe.com/docs/stripe-js/react' target='_blank'>React Stripe</a><br/>
 - <a href='https://github.com/dennismorello/react-awesome-reveal' target='_blank'>react-awesome-reveal</a><br/>
 - <a href='https://www.intercom.com/dr/sponsor-biz?utm_source=google&utm_medium=sem&utm_campaign=8375307833&utm_term=intercom&utm_ad_collection=88632091427&_bt=434730769386&_bg=88632091427&utm_ad=434730769386&offer=sponsoredbybiz&utm_campaign_name=go_evg_acq_trial_b-a_icm_bld_core_en&utm_ad_collection_name=gen-p_intercom&utm_ad_name=sponsoredbybiz_text_21q2' target='_blank'>Intercom real-time chat bot</a><br/>
-- <a href='https://stripe.com/ie?utm_campaign=paid_brand-IE_en_Search_Brand_Stripe-1615558792&utm_medium=cpc&utm_source=google&ad_content=307359047676&utm_term=stripe&utm_matchtype=e&utm_adposition=&utm_device=c' target='_blank'>Stripe</a><br/>
 
 ## User Experience (UX)
 
@@ -294,131 +293,157 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 
     </details>            
 
+  - Suggestions & Suggest <br/> 
 
-
- ## Test and Validations
-  - I'm using <a href="https://insomnia.rest/">Insomnia<a/> to do my api requests and test the api routes, the insominia JSON file is <br/> avalibe in the server root folder. feel free to use <a href="https://www.postman.com/">Postman</a> or any other.
-  - Test routes:
-    - List Authors <br/> 
-    Method `'GET': http://127.0.0.1:8000/api/authors/` <br/>
     <details>
-    <summary>Click to view</summary>
-    <img src="assets/1.png" width="200" height="200"/>
-        
-        As you can see it returns all authors in the Database if it's empty it simple returns an [] array.
-    </details>
+    <summary>Click to views Suggestions and Suggest Mockups</summary>
+    <img src="assets/suggestions.png" width="510" height="470"/>
 
-    - List Author by pk <br/> 
-    Method `'GET': http://127.0.0.1:8000/api/authors/<pk>` <br/>
-    <details>
-    <summary>Click to view</summary>
-    <img src="assets/2.png" width="200" height="200"/>
-    
-        As you can see typing the id_ at the ending it returns the specific author. if the author does not exist it simple returns "not found".
-    </details>
-    
-    - List Posts <br/> 
-    Method `'GET': http://127.0.0.1:8000/api/blog/` <br/>
-    <details>
-    <summary>Click to view</summary>
-    <img src="assets/3.png" width="200" height="200"/>
-    
-        As you can see it returns all posts in the Database if it's empty it simple returns an [] array.                
-    </details>
-    
-    - List Post by slug <br/> 
-    Method `'GET': http://127.0.0.1:8000/api/blog/<slug>` <br/>
-    <details>
-    <summary>Click to view</summary>
-    <img src="assets/4.png" width="200" height="200"/>      <img src="assets/5.png" width="200" height="200"/>
-    
-        As you can see typing the <slug/> at the ending it returns the specific post with the content. if the 
-        author does not exist it  simple returns "not found".    
-    </details>
-    
-    - Find post by category <br/> 
-    Method `'POST': http://127.0.0.1:8000/api/blog/category` <br/>
-    <details>
-    <summary>Click to view</summary>
-    <img src="assets/6.png" width="200" height="200"/>
+    </details>            
 
-        As you can see simple posting the category it returns an array with all posts in this category is it's empity 
-        it returns an array [].
-    </details>
+
+### Testing
+
+### Manual testing
+
+- Blog posts
     
-    - Create new user <br/> 
-    Method `'GET': http://127.0.0.1:8000/auth/users/` <br/>
     <details>
-    <summary>Click to view</summary>
-    <img src="assets/7.png" width="200" height="200"/>    <img src="assets/8.png" width="200" height="200"/>    <img src="assets/9.png" width="200" height="200"/>
-    <img src="assets/10.png" width="200" height="200"/>
+    <summary>Endpoints</summary>
     
-        As you can see all fields server side validations are handled by Djoser in case of invalid email,
-        week password, blank fields and email already exists, in case of success it returns a status 200 with your id
-        and email.
-    </details>
+     <details>
+     <summary>List blog posts: http://127.0.0.1:8000/api/blog/  [GET]</summary>    
+        Endpoint returns all blog posts in the api: status 200 <br/>
+        If there is no posts returns an [ ] status 200 <br/>
+        The route is public anyone can access. <br/><br/>
     
-    - Activate new user <br/> 
-    Method `'POST': http://127.0.0.1:8000/auth/users/activation/` <br/>
+     <img src="assets/listpost.png" width="510" height="470"/>
+
+     </details>     
+     
+     <details>
+     <summary>Featured blog posts: http://127.0.0.1:8000/api/blog/featured  [GET]</summary>    
+        Endpoint returns the featured blog posts in the api: status 200  <br/>
+        If there is no posts returns an [ ] status 200 <br/>
+        The route is public anyone can access. <br/><br/>
+    
+     <img src="assets/listpost.png" width="510" height="470"/>
+
+     </details>    
+     
+     <details>
+     <summary>Find blog posts by slug: http://127.0.0.1:8000/api/blog/ {slug}  [GET]</summary>    
+        Endpoint find the blog posts passing the slug as the last param: status 200 <br/>
+        If the post doesn't exists returns "Not found" <br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401.
+    
+     </details>            
+
+     <details>
+     <summary>Find blog posts by specific category: http://127.0.0.1:8000/api/blog/category  [POST]</summary>    
+        Endpoint returns all blog posts of spacific category <br/>
+        example: 'jobs' or 'events': status 200  <br/>
+        If there is no posts returns an [ ] status 200 <br/>
+        The route is public anyone can access. <br/><br/>
+    
+     <img src="assets/category.png" width="500" height="300"/>
+
+     </details>    
+
+     <details>
+     <summary>delete blog posts by ID: http://127.0.0.1:8000/api/blog/ {pk}  [DELETE]</summary>    
+        Endpoint deletes blog post passing id as a param and returns status 204 <br/>
+        Only admin users can access the route returns try to access route without <br/>
+        admin powers returns" Authentication credentials were not provided.": status 401.
+
+     </details>    
+    </details>            
+
     <details>
-    <summary>Click to view</summary>
-    <img src="assets/11.png" width="200" height="200"/>    <img src="assets/12.png" width="200" height="200"/>
-    <img src="assets/13.png" width="200" height="200"/>
-    
-    When you recieve the email with the token to activate account you can post the uid and token djoser validates 
-    if the token is valid or not, if it has been sent returns a status 200.
-    clicking it redirects you to the frontent.
+    <summary>Rendering</summary>
 
-    </details>
-    
-    - Create Session <br/> 
-    Method `'POST': http://127.0.0.1:8000/auth/jwt/create` <br/>
+     <details>
+     <summary>Rendering posts</summary>
+        Post can be only added using admin panel. <br/>
+        but staff users can either delete or update posts. <br/> 
+        Once added posts are rendered in the frontend. <br/><br/>
+     <img src="assets/addgif.gif" width="400" height="200"/>
+
+     </details>            
+
+    </details>            
+
+- Comments
+
     <details>
-    <summary>Click to view</summary>
-    <img src="assets/14.png" width="200" height="200"/>    <img src="assets/15.png" width="200" height="200"/>
-    <img src="assets/16.png" width="200" height="200"/>
+    <summary>Endpoints</summary>
     
-    Djoser validates if accout exists or it's blank, if the email and password are correct it returns the token.
+     <details>
+     <summary>List blog comments: http://127.0.0.1:8000/api/comments/  [GET]</summary>    
+        Endpoint returns all comments in the api: status 200 <br/>
+        If there is no posts returns an [ ] status 200 <br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> <br/>
+    
+     <img src="assets/comments.png" width="510" height="470"/>
 
-    </details>
+     </details>     
+     
+     <details>
+     <summary>Find blog posts by slug: http://127.0.0.1:8000/api/comments/ {pk}  [GET]</summary>    
+        Endpoint find the comment passing the id as the last param: status 200 <br/>
+        If the post doesn't exists returns "Not found" status 404 <br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> <br/>
 
-    - Request new password <br/> 
-    Method `'POST': http://127.0.0.1:8000/auth/users/reset_password/` <br/>
+     <img src="assets/commentid.png" width="500" height="300"/>
+
+     </details>            
+
+     <details>
+     <summary>Post comment: http://127.0.0.1:8000/api/comments/create  [POST]</summary>    
+        Endpoint creates blog post and returns itself <br/> 
+        By default users must be logged in order to post comment<br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> <br/>
+    
+     </details>    
+
+     <details>
+     <summary>delete blog posts by ID: http://127.0.0.1:8000/api/comments/delete {pk}  [DELETE]</summary>    
+        Endpoint deletes comment post passing id as a param and returns status 204 <br/>
+        If non author user try to delete comment returns: 'Editing Comments is restricted to the creator only'<br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> <br/>
+
+     </details>
+     
+     <details>
+     <summary>delete blog posts by ID: http://127.0.0.1:8000/api/comments/update {pk}  [PUT]</summary>    
+        Endpoint updates comment post passing id as a param and returns status 204 <br/>
+        If non author user try to delete comment returns: 'Editing Comments is restricted to the creator only'<br/>
+        The route is not public try to access without authorization returns <br/>
+        "Authentication credentials were not provided.": status 401. <br/> <br/>
+
+     </details>    
+
+    </details>            
+
     <details>
-    <summary>Click to view</summary>
-    <img src="assets/17.png" width="200" height="200"/>   
-    
-    Request new password and verify in your email account.
+    <summary>Rendering</summary>
 
-    </details>
+     <details>
+     <summary>Rendering comments</summary>
+        To comment users have to be logged in. <br/>
+        buttons update and delete appear to comment owner only. <br/> 
+        Once added posts are rendered in the frontend. <br/><br/>
+     <img src="assets/commentgif.gif" width="400" height="200"/>
 
-    - Set new password <br/> 
-    Method `'POST': http://127.0.0.1:8000/auth/users/reset_password_confirm/` <br/>
-    <details>
-    <summary>Click to view</summary>
-    <img src="assets/18.png" width="200" height="200"/>    <img src="assets/19.png" width="200" height="200"/>
-    <img src="assets/20.png" width="200" height="200"/>
+     </details>            
 
-    When you recieve the email with the token to reset account you can post the uid and token. djoser validates 
-    if the token is valid, if passsword and repassword does not match, if it has been sent returns a status 200
-    and the password has been modified and you ecieve an email.
-    clicking the link redirects you to the frontend.
+    </details>            
 
-    </details>
-
-    - Send Email <br/> 
-    Method `'POST': http://127.0.0.1:8000/api/contacts/` <br/>
-    <details>
-    <summary>Click to view</summary>
-    <img src="assets/21.png" width="200" height="200"/>    <img src="assets/22.png" width="200" height="200"/>
-    
-    When you send the email it says sent succesfully check your email. it's gonna be saved in the database.
-    </details>
-    
-    <br/>
-    
-    - Server side Validation handled by Djoser ✔  <br/>
-        
 ### Usage
 
 Requirements: <br/>

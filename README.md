@@ -798,7 +798,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 Requirements: <br/>
 <a href='https://www.python.org/'>Python</a> and <a href='https://pypi.org/project/pip/'>Pip</a>
    - In your root diredtory: <br/>     
-   In your `.env.example` rename the file to > `.env` and change the Env variable.
+   In your `.env.example` rename the file to > `.env` and change the Env variables.
    - Windows: <p>
     
     ```
@@ -822,7 +822,7 @@ Requirements: <br/>
  <br/>
     Your api is running in your localhost on port: 8000 Now you're ready to go! 🚀
 
-   #### Run client
+   #### Run client:
 
 Requirements: <br/>
 <a href='https://nodejs.org/en/'>Nodejs and NPM</a> <br/>
@@ -832,7 +832,6 @@ opcional
 In the root folder. <br/>
 `cd client` folder. <br/>
 Rename `.env.example` to `.env` and change the env variables. <br/>
-`warning` prices_id are required* create yours in stripe dashboard. <br/>
 
 in the terminal run `yarn` or `npm run`<br/>
 Than `yarn start` or `npm run start` <br/>
@@ -878,13 +877,37 @@ Don't forget to set your env variables!
 
 Done! you made it! 🚀🚀🚀
 
+#### Extra: Apply custom css to admin panel  `not required`
+    
+   In the `client` folder
+   
+   go to `src/django_admin` folder: <br/><br/>
+   <details>
+     <summary>View folder</summary>    
+     <img src="assets/admind.png" width="214" height="117"/>
+
+   </details>
+   
+   Than paste into the `build` folder like this:
+   
+   <details>
+     <summary>View folder</summary>    
+     <img src="assets/build.png" width="214" height="117"/>
+
+   </details>
+   
+   The files it's simply an html file that extends Django's admin template <br/>
+   with an css file that overrides the currenmt styles.
+
+
 ## Acknowledgements
 
 - I received inspiration for this project from:
   
   https://codeinstitute.net/
-  https://rocketseat.com.br/
-  
+    
+  My mentor for his Aaron Help 
+   
 ## License
 
 - Free Open Source.

@@ -304,7 +304,7 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 
 ### Testing
 
-#### Manual testing
+#### Rendering and Endpoints
 
 - Blog posts
     
@@ -718,9 +718,83 @@ to read more about the articles, filter, view profile, access shop or subscribe 
 
      </details>            
     </details>
+    
+#### Navigation
+
+   Links Header: working fine Usage <Link /> from 'react-router-dom' to define links inside the application. <br/>
+   fluid navigation between pages. <br/>
+   
+   Links Home Page: All links working fine fluid navigation used <a/> blank for external links. <br/>
+   
+   Links Pages and Redirects: All Links diretect to assigned location, Authenticated redirect to <br/>
+   Blogs and "need to login" Redirect working well, No links Broken.
+   
+   
+#### Forms
+    
+   Login and Register form: Both forms required by HTML validation and types specified <br/>
+   Register field requires complex pattern, minLength and javascript validation to increase security. <br/>
+   
+   Post Suggestion and Get in touch form: Both forms Have all fields required and <br/>
+   minLength to prevent send blank.
+   
+   
+#### Buttons
+
+   Event Buttons: Working as expected Login, Register, Suggest, Get in touch, Comment: Posting well. <br/>
+   Account, Comment, Suggestion: Updating well. Comment, Suggestion and Blog Post deleting well. <br/>
+   
+   Comment and Suggestion buttons: Update and deletew buttons are hidden if user is not comment or suggestion <br/>
+   owner.
+   
+   Shop and Subscribe buttons: Redirecting to stripe checkout ok!
+   
+   
+#### Compatibility and Responsive design
+
+   The app has been tested in those browsers:
+   
+   Chrome <br/>
+   Brave <br/>
+   Edge <br/>
+   Firefox
+   
+   Mobile:
+   
+   Iphone 10 <br/>
+   Sansung Galaxy S7 <br/>
+   Sansung A10
+   
+   and Browser inspector 
+   
+   All Sizes.
+   
+#### Javascript and HTML testing
+
+   ESlint: Tool that verifies and correct automatcally javascript and HTML <br/>
+   errors, prevents and reports syntax errors.
+   
+   
+#### Extra info testing
+
+   The app has been tested also by: <br/>
+   other Professional developers <br/>
+   my mentor Aaron. <br/>
+   family and friends <br/>
+   Tested and documented by me.
+   
+   
+### Known Bugs
+
+   Because of Blog posts are set as innerHTML in the frontend <br/>
+   if the edition in the Editor is big than the hyperview can breaks <br/>
+   the layout.
+   
 
 ### Usage
 
+   #### Run api
+   
 Requirements: <br/>
 <a href='https://www.python.org/'>Python</a> and <a href='https://pypi.org/project/pip/'>Pip</a>
    - In your root diredtory: <br/>     
@@ -748,105 +822,7 @@ Requirements: <br/>
  <br/>
     Your api is running in your localhost on port: 8000 Now you're ready to go! 🚀
 
-     
-  
-### Structure
-
-<details>
-<summary>Click to views the folder structure</summary>
-
-```
-  src              
-   ├── assets
-   |    └── *static files
-   ├── components
-   |    ├── Category.js
-   |    ├── Footer.js
-   |    ├── Header.js
-   |    ├── Layoute.js
-   |    ├── PrivateRoute.js
-   |    ├── Products.js
-   |    ├── Profile.js
-   |    ├── Readmore.js
-   |    └── Subscriptions.js
-   ├── pages
-   |    ├── Activate.js
-   |    ├── Authors.js
-   |    ├── Blog.js
-   |    ├── Cancel.js
-   |    ├── Home.js
-   |    ├── Login.js
-   |    ├── Register.js
-   |    ├── ResetPassword.js
-   |    ├── ResetPasswordComfirm.js
-   |    ├── Shop.js
-   |    ├── Subscribe.js
-   |    └── Success.js
-   ├── redux
-   |    ├── actions
-   |    |       ├── auth.js
-   |    |       └── types.js
-   |    ├── reducers
-   |    |       ├── auth.js
-   |    |       └── index.js
-   |    └── store.js
-   ├── styles
-   |    └── globals.js
-   ├── app.js
-   └── index.js
-
-```
-
-</details>
-
-
-## Test and Validations:
-
-#### Functionality Testing. <br/>
-   Routes Links in the app are tested you can free navigate in the application.
-   
-   Links in the app to an external pages are working perfectly with target blank.
-  
-   Compatibility Testing. <br/>
-   I tested the app manually on a variaty of browsers:
-   
-   Chrome <br/>
-   Brave <br/>
-   Edge <br/>
-   
-   and mobile:
-   
-   Iphone 10 <br/>
-   Sansung Galaxy S7
-   
-   Performance Testing. <br/>
-   and different screen sizes using the inspector. <br/>
-   criteria: responsivity, fluidity, design, sizes functionality behavior.   
-   
-Form: <br/>
-HTML Validation <br/>
-fields required + strong password length and patterns <br/>
-Validation through js code. <br/>
-if password does not match and send if strict matches. 
-
-Creation user sending emails. ✔ <br/>
-Request new password.  ✔ <br/>
-Activate account. ✔ <br/>
-Resset password. ✔ <br/>
-Get in touch sending email and storing in the DB ✔ <br/>
-Buttons update and inputs 100% working. ✔ <br/>
-Alerts set in case of network connection and authentication problems. ✔ <br/>
-Link buttons working directs user to the right place. ✔ <br/>
-Link Troggle Buttons working and fluid. ✔ <br/>
-Navbar Links working and responsive. ✔ <br/>
-
-ESlint: Tool verify and correct automatcally JS errors, preventing, <br/>
-reporting syntax errors, integrated with prettier  <br/>
-will ensure a beautifull and good style guid for better reading  <br/>
-preventing errors.
-
-
-## Usage 
+   #### Run client
 
 Requirements: <br/>
 <a href='https://nodejs.org/en/'>Nodejs and NPM</a> <br/>
@@ -913,21 +889,5 @@ Done! you made it! 🚀🚀🚀
 
 - Free Open Source.
   
-
-
-
-
-
-
-  
-
-   
-  
-
-
-
-
-
-    
 
 
